@@ -1,541 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Ismail Rashad - Geo-Analytics Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="GIS, Geo-Analytics, Urban Informatics, Data Science, NYC">
-  <meta name="description" content="Ismail Rashad - Urban Informatics Graduate Student at NYU | Geo-Analytics & Spatial Data Specialist">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ismail Rashad — Geospatial Analyst & Urban Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
-    body { color: #797979; background: #ffffff; font-family: 'Montserrat', sans-serif; }
-    h1,h2,h3,h4,h5,h6 { color: #414141; }
-    a { color: #313131; transition: 0.3s; }
-    a:hover,a:active,a:focus { color: #007fe0; outline: none; text-decoration: none; }
-    .btn:focus,.form-control:focus { box-shadow: none; }
-    .container-fluid { max-width: 1366px; }
-    .btn { padding: 12px 25px; font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #ffffff; background: #007fe0; border: 2px solid transparent; border-radius: 0; box-shadow: inset 0 0 0 50px #007fe0; transition: ease-out 0.3s; }
-    .btn:hover { color: #007fe0; background: transparent; box-shadow: inset 0 0 0 0 #007fe0; border-color: #007fe0; }
-    /* NAV */
-    .nav-bar { position: sticky; top: 0; z-index: 999; padding: 0; background: #ffffff; border-bottom: 1px solid #eeeeee; }
-    .nav-bar .navbar { height: 65px; padding: 0; }
-    .nav-bar .navbar .navbar-brand { color: #007fe0; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
-    .nav-bar .navbar .navbar-nav .nav-link { margin-left: 25px; padding: 5px 0; color: #414141; font-size: 15px; font-weight: 600; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: 0.3s; }
-    .nav-bar .navbar .navbar-nav .nav-link:hover { color: #007fe0; border-bottom-color: #007fe0; }
-    /* HERO */
-    .hero { position: relative; width: 100%; min-height: calc(100vh - 65px); background: #007fe0; display: flex; align-items: center; }
-    .hero .hero-text p { color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 10px; }
-    .hero .hero-text h1 { color: #ffffff; font-size: 55px; font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; }
-    .hero .hero-text h2 { display: inline-block; margin: 0; height: 35px; color: #ffffff; font-size: 30px; font-weight: 600; }
-    .hero .hero-img img { width: 380px; max-width: 100%; border-radius: 50%; border: 6px solid rgba(255,255,255,0.3); object-fit: cover; }
-    .hero-btn .btn { margin-top: 35px; color: #007fe0; background: #ffffff; box-shadow: inset 0 0 0 50px #ffffff; border: 2px solid transparent; }
-    .hero-btn .btn:hover { color: #ffffff; background: transparent; box-shadow: inset 0 0 0 0 #ffffff; border-color: #ffffff; }
-    .hero-btn .btn:first-child { margin-right: 10px; }
-    /* SECTION HEADER */
-    .section-header { margin-bottom: 45px; }
-    .section-header p { display: flex; align-items: center; font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #007fe0; margin-bottom: 5px; }
-    .section-header p::before { content: ''; display: inline-block; width: 30px; height: 2px; background: #007fe0; margin-right: 10px; }
-    .section-header h2 { font-size: 45px; font-weight: 700; color: #414141; }
-    /* SERVICE */
-    .service { padding: 60px 0 30px; background: #fff; }
-    .service-item { display: flex; align-items: center; margin-bottom: 30px; box-shadow: inset 0 0 0 0 transparent; transition: ease-out 0.5s; border: 1px solid #eee; }
-    .service-item:hover { box-shadow: inset 800px 0 0 0 #007fe0; }
-    .service-icon { width: 150px; min-height: 120px; display: flex; align-items: center; justify-content: center; border: 1px solid #007fe0; flex-shrink: 0; }
-    .service-icon i { font-size: 50px; color: #007fe0; }
-    .service-item:hover .service-icon { border-color: #fff; }
-    .service-item:hover .service-icon i { color: #fff; }
-    .service-text { padding: 15px 20px; }
-    .service-text h3 { font-size: 18px; font-weight: 700; color: #414141; }
-    .service-item:hover .service-text h3, .service-item:hover .service-text p { color: #fff; }
-    /* EXPERIENCE */
-    .experience { padding: 60px 0; background: #f8f8f8; }
-    .timeline { position: relative; padding: 0; }
-    .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #007fe0; transform: translateX(-50%); }
-    .timeline-item { position: relative; width: 50%; padding: 15px 40px; }
-    .timeline-item.left { left: 0; text-align: right; }
-    .timeline-item.right { left: 50%; text-align: left; }
-    .timeline-item::after { content: ''; position: absolute; top: 20px; width: 16px; height: 16px; background: #ffffff; border: 2px solid #007fe0; border-radius: 50%; z-index: 1; }
-    .timeline-item.left::after { right: -8px; }
-    .timeline-item.right::after { left: -8px; }
-    .timeline-date { font-size: 13px; font-weight: 700; color: #007fe0; letter-spacing: 1px; margin-bottom: 8px; }
-    .timeline-text { padding: 15px 20px; background: #ffffff; box-shadow: 0 0 20px rgba(0,0,0,0.08); }
-    .timeline-item.left .timeline-text { border-right: 5px solid #007fe0; }
-    .timeline-item.right .timeline-text { border-left: 5px solid #007fe0; }
-    .timeline-text h4 { font-size: 16px; font-weight: 700; color: #414141; margin-bottom: 2px; }
-    .timeline-text h5 { font-size: 13px; font-style: italic; color: #007fe0; margin-bottom: 8px; }
-    .timeline-text p { font-size: 13px; margin-bottom: 0; }
-    /* SKILLS */
-    .skills { padding: 60px 0; background: #fff; }
-    .skill-badge { display: inline-block; padding: 6px 14px; margin: 5px 4px; background: #007fe0; color: #fff; font-size: 13px; font-weight: 600; border-radius: 3px; }
-    .skill-category h5 { font-size: 15px; font-weight: 700; color: #414141; margin-bottom: 12px; border-bottom: 2px solid #007fe0; padding-bottom: 6px; }
-    .skill-category { margin-bottom: 30px; }
-    /* PORTFOLIO */
-    .portfolio { padding: 60px 0; background: #f8f8f8; }
-    .portfolio-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-    .portfolio-filter button { padding: 8px 20px; border: 2px solid #007fe0; background: transparent; color: #007fe0; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-    .portfolio-filter button.active, .portfolio-filter button:hover { background: #007fe0; color: #fff; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .portfolio-card { background: #fff; box-shadow: 0 0 15px rgba(0,0,0,0.08); overflow: hidden; transition: 0.3s; }
-    .portfolio-card:hover { box-shadow: 0 5px 25px rgba(0,127,224,0.2); transform: translateY(-3px); }
-    .portfolio-card-img { height: 160px; background: #e0eefa; display: flex; align-items: center; justify-content: center; }
-    .portfolio-card-img i { font-size: 50px; color: #007fe0; }
-    .portfolio-card-body { padding: 15px; }
-    .portfolio-card-body h4 { font-size: 14px; font-weight: 700; color: #414141; margin-bottom: 6px; }
-    .portfolio-card-body p { font-size: 12px; margin-bottom: 6px; }
-    .badge-tag { display: inline-block; padding: 3px 9px; font-size: 11px; font-weight: 600; border-radius: 2px; margin-right: 3px; margin-bottom: 3px; }
-    .badge-research { background: #d4edda; color: #155724; }
-    .badge-consultation { background: #d1ecf1; color: #0c5460; }
-    .badge-dashboard { background: #e2d9f3; color: #432874; }
-    /* CONTACT */
-    .contact-section { padding: 60px 0; background: #007fe0; }
-    /* FOOTER */
-    .footer { padding: 30px 0; background: #313131; }
-    .footer h4 { color: #fff; font-size: 20px; font-weight: 700; }
-    .footer p { color: #aaa; font-size: 13px; margin: 0; }
-    .footer .social-btn a { display: inline-flex; width: 35px; height: 35px; align-items: center; justify-content: center; background: #fff; color: #313131; margin: 0 3px; border-radius: 50%; font-size: 15px; transition: 0.3s; }
-    .footer .social-btn a:hover { background: #007fe0; color: #fff; }
-    @media(max-width:991px){
-      .hero { padding: 60px 0; min-height: auto; }
-      .hero .hero-img img { width: 220px; margin-top: 30px; }
-      .hero .hero-text h1 { font-size: 36px; }
-      .timeline::before { display: none; }
-      .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding: 10px 15px; }
-      .timeline-item::after { display: none; }
+    :root {
+      --bg: #f5f7f4; --bg2: #eef1ed; --bg3: #e6ebe4;
+      --accent: #1a7a5e; --accent2: #1a6fa8; --accent3: #c94f1a;
+      --text: #141c18; --muted: #5a6e62; --border: #d0d9cc;
+      --grid: rgba(26,122,94,0.07);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; cursor:none; }
+    .cursor { position:fixed; width:8px; height:8px; background:var(--accent); border-radius:50%; pointer-events:none; z-index:9999; transition:transform 0.1s ease; mix-blend-mode:multiply; }
+    .cursor-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(26,122,94,0.4); border-radius:50%; pointer-events:none; z-index:9998; transition:transform 0.15s ease, width 0.2s, height 0.2s, border-color 0.2s; }
+    .grid-bg { position:fixed; inset:0; background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.5rem 3rem; background:linear-gradient(to bottom,rgba(245,247,244,0.97),transparent); backdrop-filter:blur(2px); }
+    .nav-logo { font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--accent); letter-spacing:0.15em; text-transform:uppercase; }
+    .nav-coords { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; transition:opacity 0.3s; }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a { font-family:'Space Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; position:relative; }
+    .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s; }
+    .nav-links a:hover { color:var(--accent); }
+    .nav-links a:hover::after { width:100%; }
+    .hero { position:relative; z-index:2; min-height:100vh; display:flex; align-items:center; padding:0 3rem; overflow:hidden; }
+    .hero-content { max-width:860px; padding-top:6rem; }
+    .hero-tag { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:2rem; opacity:0; animation:fadeUp 0.8s forwards 0.2s; }
+    .hero-tag::before { content:''; display:inline-block; width:20px; height:1px; background:var(--accent); }
+    .hero-name { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(3.5rem,8vw,7rem); line-height:0.92; letter-spacing:-0.02em; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s forwards 0.4s; }
+    .hero-name .accent-line { display:block; color:transparent; -webkit-text-stroke:1.5px rgba(26,122,94,0.35); }
+    .hero-desc { max-width:560px; font-size:1.05rem; line-height:1.7; color:var(--muted); margin-bottom:3rem; opacity:0; animation:fadeUp 0.8s forwards 0.6s; }
+    .hero-desc strong { color:var(--text); font-weight:400; }
+    .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.8s forwards 0.8s; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.6rem; padding:0.85rem 1.8rem; background:var(--accent); color:#fff; font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; font-weight:700; transition:all 0.25s; clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px)); }
+    .btn-primary:hover { background:var(--bg); color:var(--accent); box-shadow:inset 0 0 0 1.5px var(--accent); }
+    .btn-secondary { display:inline-flex; align-items:center; gap:0.6rem; padding:0.85rem 1.8rem; border:1px solid var(--border); color:var(--muted); font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:all 0.25s; }
+    .btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
+    .hero-viz { position:absolute; right:-80px; top:50%; transform:translateY(-50%); width:580px; height:580px; opacity:0; animation:fadeIn 1.2s forwards 1s; }
+    .hero-viz svg { width:100%; height:100%; }
+    .stats-strip { position:relative; z-index:2; border-top:1px solid var(--border); border-bottom:1px solid var(--border); display:grid; grid-template-columns:repeat(4,1fr); }
+    .stat-item { padding:2rem 2.5rem; border-right:1px solid var(--border); position:relative; overflow:hidden; }
+    .stat-item:last-child { border-right:none; }
+    .stat-item::before { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.6s; }
+    .stat-item:hover::before { width:100%; }
+    .stat-num { font-family:'Syne',sans-serif; font-weight:800; font-size:2.5rem; color:var(--accent); line-height:1; margin-bottom:0.3rem; }
+    .stat-label { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
+    section { position:relative; z-index:2; }
+    .section-inner { max-width:1200px; margin:0 auto; padding:6rem 3rem; }
+    .section-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:4rem; }
+    .section-num { font-family:'Space Mono',monospace; font-size:0.65rem; color:var(--accent); letter-spacing:0.15em; }
+    .section-line { flex:1; height:1px; background:var(--border); max-width:60px; }
+    .section-title { font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(1.8rem,3.5vw,2.8rem); letter-spacing:-0.02em; }
+    .about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:start; }
+    .about-text p { font-size:1.05rem; line-height:1.8; color:var(--muted); margin-bottom:1.5rem; }
+    .about-text p strong { color:var(--text); font-weight:400; }
+    .about-text .highlight { border-left:2px solid var(--accent); padding-left:1.2rem; margin:2rem 0; font-size:1.1rem; color:var(--text); line-height:1.6; font-style:italic; }
+    .edu-list { display:flex; flex-direction:column; gap:1rem; }
+    .edu-item { padding:1.2rem 1.4rem; border:1px solid var(--border); background:var(--bg2); position:relative; }
+    .edu-item::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); }
+    .edu-school { font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; margin-bottom:0.2rem; }
+    .edu-degree { font-size:0.82rem; color:var(--muted); margin-bottom:0.15rem; }
+    .edu-year { font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--accent); letter-spacing:0.1em; }
+    .exp-section { background:var(--bg2); }
+    .exp-item { display:grid; grid-template-columns:200px 1fr; gap:3rem; padding:2.5rem 0; border-bottom:1px solid var(--border); }
+    .exp-item:last-child { border-bottom:none; }
+    .exp-period { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--accent); text-transform:uppercase; margin-bottom:0.5rem; }
+    .exp-org { font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--muted); }
+    .exp-role { font-family:'Syne',sans-serif; font-weight:600; font-size:1.1rem; margin-bottom:0.8rem; }
+    .exp-desc { font-size:0.92rem; line-height:1.75; color:var(--muted); }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+    .tag { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.7rem; border:1px solid var(--border); color:var(--muted); }
+    .tag.accent { border-color:rgba(26,122,94,0.35); color:var(--accent); }
+    .tag.blue { border-color:rgba(26,111,168,0.3); color:var(--accent2); }
+    .datakota-section { background:var(--bg3); }
+    .datakota-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .datakota-intro p { font-size:1.05rem; line-height:1.8; color:var(--muted); margin-bottom:1.2rem; }
+    .datakota-intro p strong { color:var(--text); font-weight:400; }
+    .clients-label { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; margin-top:2rem; }
+    .clients-list { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .client-chip { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; padding:0.35rem 0.8rem; background:var(--bg); border:1px solid var(--border); color:var(--muted); }
+    .services-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+    .service-item { padding:1rem 1.1rem; border:1px solid var(--border); background:var(--bg); position:relative; overflow:hidden; }
+    .service-item::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.4s; }
+    .service-item:hover::after { width:100%; }
+    .service-icon { font-size:1.1rem; margin-bottom:0.4rem; display:block; }
+    .service-name { font-family:'Syne',sans-serif; font-weight:600; font-size:0.8rem; }
+    .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); }
+    .work-card { background:var(--bg); padding:2rem; position:relative; overflow:hidden; transition:background 0.3s; }
+    .work-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
+    .work-card:hover { background:var(--bg2); }
+    .work-card:hover::before { transform:scaleX(1); }
+    .work-card.featured { grid-column:span 2; }
+    .work-num { font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--border); margin-bottom:1.2rem; }
+    .work-icon { font-size:1.5rem; margin-bottom:0.8rem; display:block; }
+    .work-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.6rem; line-height:1.3; }
+    .work-desc { font-size:0.875rem; line-height:1.7; color:var(--muted); margin-bottom:1.2rem; }
+    .work-link { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; }
+    .work-link::after { content:'→'; transition:transform 0.2s; }
+    .work-link:hover::after { transform:translateX(4px); }
+    .work-link.disabled { color:var(--muted); pointer-events:none; }
+    .awards-section { background:var(--bg2); }
+    .award-item { display:grid; grid-template-columns:60px 1fr auto; gap:2rem; align-items:start; padding:2rem 0; border-bottom:1px solid var(--border); }
+    .award-item:last-child { border-bottom:none; }
+    .award-icon { font-size:1.6rem; padding-top:0.1rem; }
+    .award-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.4rem; }
+    .award-org { font-size:0.88rem; color:var(--muted); line-height:1.6; }
+    .award-year { font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--accent); letter-spacing:0.1em; text-align:right; padding-top:0.2rem; white-space:nowrap; }
+    .award-link { font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent2); text-decoration:none; display:inline-flex; align-items:center; gap:0.3rem; margin-top:0.4rem; }
+    .award-link:hover { text-decoration:underline; }
+    .contact-section { background:var(--bg3); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+    .contact-headline { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.5rem,5vw,4rem); line-height:1.05; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+    .contact-headline span { color:var(--accent); }
+    .contact-sub { font-size:1rem; line-height:1.7; color:var(--muted); margin-bottom:2.5rem; }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; }
+    .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; padding:1rem 1.2rem; border:1px solid var(--border); transition:all 0.3s; background:var(--bg); }
+    .contact-link:hover { border-color:var(--accent); background:rgba(26,122,94,0.03); }
+    .contact-link-icon { width:32px; height:32px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-family:'Space Mono',monospace; flex-shrink:0; transition:border-color 0.3s; color:var(--muted); }
+    .contact-link:hover .contact-link-icon { border-color:var(--accent); color:var(--accent); }
+    .contact-link-label { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; }
+    .contact-link-value { font-size:0.88rem; color:var(--text); }
+    .terminal { background:var(--bg); border:1px solid var(--border); overflow:hidden; }
+    .terminal-bar { background:var(--bg3); padding:0.6rem 1rem; display:flex; align-items:center; gap:0.5rem; border-bottom:1px solid var(--border); }
+    .terminal-dot { width:8px; height:8px; border-radius:50%; }
+    .terminal-dot:nth-child(1){background:#ff5f57;} .terminal-dot:nth-child(2){background:#ffbd2e;} .terminal-dot:nth-child(3){background:#28c840;}
+    .terminal-title { font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--muted); margin-left:0.5rem; }
+    .terminal-body { padding:1.5rem; font-family:'Space Mono',monospace; font-size:0.72rem; line-height:2; color:var(--muted); }
+    .terminal-body .cmd{color:var(--accent);} .terminal-body .val{color:var(--accent2);} .terminal-body .comment{color:#a0b0a8;} .terminal-body .str{color:var(--accent3);}
+    .terminal-cursor { display:inline-block; width:6px; height:12px; background:var(--accent); animation:blink 1s step-end infinite; vertical-align:text-bottom; }
+    footer { position:relative; z-index:2; border-top:1px solid var(--border); padding:1.5rem 3rem; display:flex; align-items:center; justify-content:space-between; }
+    footer p { font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--muted); letter-spacing:0.08em; }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes blink{50%{opacity:0;}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:900px){
+      nav{padding:1.2rem 1.5rem;} .nav-coords,.nav-links{display:none;}
+      .hero{padding:0 1.5rem;} .hero-viz{display:none;}
+      .stats-strip{grid-template-columns:repeat(2,1fr);}
+      .section-inner{padding:4rem 1.5rem;}
+      .about-grid,.contact-grid,.datakota-grid{grid-template-columns:1fr;gap:3rem;}
+      .services-grid{grid-template-columns:1fr 1fr;}
+      .work-grid{grid-template-columns:1fr;} .work-card.featured{grid-column:span 1;}
+      .exp-item{grid-template-columns:1fr;gap:0.5rem;}
+      .award-item{grid-template-columns:40px 1fr;} .award-year{display:none;}
+      footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
     }
   </style>
 </head>
 <body>
-<!-- NAV -->
-<div class="nav-bar">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#home">irsrashad</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ml-auto">
-          <a href="#home" class="nav-link">Home</a>
-          <a href="#service" class="nav-link">Services</a>
-          <a href="#experience" class="nav-link">Experience</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#portfolio" class="nav-link">Projects</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
-<!-- HERO -->
-<div class="hero" id="home">
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-lg-7 hero-text">
-        <p>Hi there... I'm</p>
-        <h1>Ismail Rashad</h1>
-        <h2><span id="typed-text"></span></h2>
-        <div class="hero-btn">
-          <a href="https://github.com/irsrashad" target="_blank" class="btn">Visit My Github</a>
-          <a href="https://www.linkedin.com/in/irsrashad" target="_blank" class="btn">LinkedIn</a>
-        </div>
-      </div>
-      <div class="col-lg-5 text-center hero-img">
-        <img src="https://avatars.githubusercontent.com/u/144382685?v=4" alt="Ismail Rashad" />
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div class="grid-bg"></div>
+
+  <nav>
+    <div class="nav-logo">Ismail.io</div>
+    <div class="nav-coords" id="coords">-6.2088° S, 106.8456° E · Jakarta</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#datakota">Datakota</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Geospatial Analyst · Urban Intelligence · Jakarta, ID</div>
+      <h1 class="hero-name">Ismail<span class="accent-line">Rashad.</span></h1>
+      <p class="hero-desc"><strong>Where business strategy meets spatial thinking.</strong> Geospatial data analyst with 4+ years translating location data into decisions — across mobility, urban systems, climate, and city-scale analytics in Southeast Asia and the US.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn-primary">View Work</a>
+        <a href="https://bit.ly/ismail-geoanalytics" target="_blank" class="btn-secondary">Portfolio ↗</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
       </div>
     </div>
-  </div>
-</div>
-<!-- SERVICES -->
-<div class="service" id="service">
-  <div class="container-fluid">
-    <div class="section-header text-center">
-      <p>WHAT I DO</p>
-      <h2>Services</h2>
+    <div class="hero-viz">
+      <svg viewBox="0 0 580 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="290" cy="290" r="260" stroke="rgba(26,122,94,0.08)" stroke-width="1"/>
+        <circle cx="290" cy="290" r="200" stroke="rgba(26,122,94,0.1)" stroke-width="1"/>
+        <circle cx="290" cy="290" r="140" stroke="rgba(26,122,94,0.13)" stroke-width="1"/>
+        <circle cx="290" cy="290" r="80" stroke="rgba(26,122,94,0.16)" stroke-width="1"/>
+        <circle cx="290" cy="290" r="40" stroke="#1a7a5e" stroke-width="1.5" opacity="0.4">
+          <animate attributeName="r" values="40;120;40" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0;0.4" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <line x1="290" y1="30" x2="290" y2="550" stroke="rgba(26,122,94,0.07)" stroke-width="1"/>
+        <line x1="30" y1="290" x2="550" y2="290" stroke="rgba(26,122,94,0.07)" stroke-width="1"/>
+        <line x1="107" y1="107" x2="473" y2="473" stroke="rgba(26,122,94,0.05)" stroke-width="1"/>
+        <line x1="473" y1="107" x2="107" y2="473" stroke="rgba(26,122,94,0.05)" stroke-width="1"/>
+        <circle cx="290" cy="290" r="6" fill="#1a7a5e" opacity="0.9"/>
+        <circle cx="290" cy="290" r="14" fill="none" stroke="#1a7a5e" stroke-width="1" opacity="0.35"/>
+        <circle cx="380" cy="220" r="4" fill="#1a6fa8" opacity="0.7"/>
+        <circle cx="200" cy="350" r="4" fill="#1a6fa8" opacity="0.7"/>
+        <circle cx="340" cy="380" r="3" fill="#c94f1a" opacity="0.8"/>
+        <circle cx="220" cy="180" r="3" fill="#c94f1a" opacity="0.8"/>
+        <circle cx="420" cy="330" r="3" fill="#1a7a5e" opacity="0.6"/>
+        <circle cx="170" cy="260" r="2.5" fill="#1a6fa8" opacity="0.5"/>
+        <circle cx="360" cy="160" r="2.5" fill="#1a7a5e" opacity="0.5"/>
+        <line x1="290" y1="290" x2="380" y2="220" stroke="rgba(26,122,94,0.35)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="200" y2="350" stroke="rgba(26,111,168,0.35)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="340" y2="380" stroke="rgba(201,79,26,0.3)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="220" y2="180" stroke="rgba(201,79,26,0.25)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="420" y2="330" stroke="rgba(26,122,94,0.2)" stroke-width="1"/>
+        <line x1="290" y1="290" x2="170" y2="260" stroke="rgba(26,111,168,0.2)" stroke-width="1"/>
+        <circle r="2" fill="#1a7a5e" opacity="0.8">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M290,290 L380,220"/>
+          <animate attributeName="opacity" values="0;0.8;0" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="2" fill="#1a6fa8" opacity="0.8">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M290,290 L200,350"/>
+          <animate attributeName="opacity" values="0;0.8;0" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="1.5" fill="#c94f1a" opacity="0.8">
+          <animateMotion dur="2.5s" repeatCount="indefinite" path="M290,290 L340,380"/>
+          <animate attributeName="opacity" values="0;0.8;0" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <text x="296" y="288" font-family="monospace" font-size="7" fill="rgba(26,122,94,0.65)">JKT</text>
+        <text x="386" y="218" font-family="monospace" font-size="6" fill="rgba(26,111,168,0.65)">GOJEK</text>
+        <text x="205" y="368" font-family="monospace" font-size="6" fill="rgba(26,111,168,0.65)">DATAKOTA</text>
+        <text x="163" y="248" font-family="monospace" font-size="6" fill="rgba(201,79,26,0.65)">NYC</text>
+        <path d="M 160 290 A 130 130 0 0 1 290 160" stroke="rgba(26,122,94,0.1)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
+        <path d="M 420 290 A 130 130 0 0 1 290 420" stroke="rgba(26,111,168,0.1)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
+      </svg>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="service-item">
-          <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
-          <div class="service-text">
-            <h3>Geo-Analytics & GIS</h3>
-            <p>Spatial data analysis, GIS modelling, and location intelligence using ArcGIS Pro, QGIS, and PostGIS for urban and business use cases.</p>
+  </section>
+
+  <div class="stats-strip reveal">
+    <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Years Geospatial Analytics</div></div>
+    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Sectors & Industries</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Countries · SEA + US</div></div>
+    <div class="stat-item"><div class="stat-num">NYU</div><div class="stat-label">MS Urban Data Science · 2025</div></div>
+  </div>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">01 /</span><div class="section-line"></div><h2 class="section-title">About</h2></div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a <strong>geospatial data analyst with 4+ years of experience</strong> across Southeast Asia and the United States, translating spatial data into decision-ready insights and tools through research, consulting, pre-sales solutioning, and analytics roles.</p>
+          <p>At <strong>GoTo Group (Gojek)</strong>, I design and analyze experiments to evaluate routing and cartography improvements, building self-serve data products for engineering and product teams. As co-founder of <strong>Datakota</strong>, I lead geospatial intelligence consulting across Indonesia — from retail market analysis to climate vulnerability mapping.</p>
+          <blockquote class="highlight">My edge is working across the technical and the strategic — I speak both GIS and the boardroom, and I've done it from Jakarta to New York City.</blockquote>
+          <p>Experienced across urban science, climate, mobility, FMCG, healthcare, and real estate use cases, with a strong track record of cross-functional collaboration aligning analysis with stakeholder needs.</p>
+        </div>
+        <div class="reveal">
+          <div style="margin-bottom:1.5rem; position:relative; overflow:hidden;">
+            <img src="photo.jpeg" alt="Ismail Rashad at NYU graduation"
+              style="width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center top; display:block; border:1px solid var(--border);" />
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:0.8rem 1rem; background:linear-gradient(transparent, rgba(245,247,244,0.95)); font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; color:var(--accent); text-transform:uppercase;">
+              NYU Tandon Commencement · Brooklyn, NY · 2025
+            </div>
+          </div>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-school">New York University — Tandon / CUSP</div>
+              <div class="edu-degree">MS Urban Data Science</div>
+              <div class="edu-degree" style="font-size:0.78rem;margin-top:0.2rem;">Urban Spatial Analytics · Clean Energy · Disaster Risk · Climate Innovation</div>
+              <div class="edu-year">2025 · New York City, NY</div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-school">Valar Institute @ Quantic</div>
+              <div class="edu-degree">MBA — Strategy & Leadership</div>
+              <div class="edu-degree" style="font-size:0.78rem;margin-top:0.2rem;">Global business strategy, leadership & technology-driven innovation</div>
+              <div class="edu-year">Expected Sep 2026 · Remote</div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-school">Bandung Institute of Technology (ITB)</div>
+              <div class="edu-degree">BS Urban Planning — GIS Analysis & Modelling</div>
+              <div class="edu-degree" style="font-size:0.78rem;margin-top:0.2rem;">Cellular Automata land-use forecasting · Course Assistant for GIS & Planning</div>
+              <div class="edu-year">2019 · Bandung, West Java</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="service-item">
-          <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
-          <div class="service-text">
-            <h3>Data Analysis & Visualization</h3>
-            <p>Statistical analysis, data cleaning, and compelling visualizations to support data-driven decision making in public and private sectors.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="exp-section">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">02 /</span><div class="section-line"></div><h2 class="section-title">Experience</h2></div>
+      <div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">Jan 2025 — Present</div><div class="exp-org">GoTo Group · Indonesia</div></div>
+          <div>
+            <div class="exp-role">Geospatial Analyst — L2</div>
+            <div class="exp-desc">Designed and analyzed experiments to evaluate routing and cartography improvements, conducting deep geospatial and exploratory analysis (SQL / R / Python) to inform engineering and business decisions. Built self-serve data products — dashboards and metric tables — partnering with Data Scientists, Product Engineers, and PMs to deploy and scale data science solutions for routing systems.</div>
+            <div class="exp-tags"><span class="tag accent">Routing</span><span class="tag accent">Geospatial</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">Dashboards</span></div>
+          </div>
+        </div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">Jun 2024 — Present</div><div class="exp-org">Datakota · Indonesia</div></div>
+          <div>
+            <div class="exp-role">Co-Founder & Urban Data Scientist</div>
+            <div class="exp-desc">Delivered spatial analytics projects across Indonesia — neighborhood-level socio-economic profiling in Jakarta (270 neighborhoods; ~5M residents), a climate vulnerability index for 10 coastal cities, geospatial market research for FNB clients, and computer vision pedestrian counting for NGO public space activation events.</div>
+            <div class="exp-tags"><span class="tag accent">Consulting</span><span class="tag accent">Location Intel</span><span class="tag">Market Research</span><span class="tag">Climate Risk</span><span class="tag">QGIS</span><span class="tag">Computer Vision</span></div>
+          </div>
+        </div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">Jun – Dec 2025</div><div class="exp-org">Bhumi Varta Technology · Indonesia</div></div>
+          <div>
+            <div class="exp-role">Senior Business Analyst — Solutioning & Pre-Sales</div>
+            <div class="exp-desc">Led geospatial solutioning and advisory engagements for clients across Japan and Southeast Asia — owning requirement gathering, ideation, proposal development, cost estimation, and stakeholder presentations. Delivered work across solar site selection, FMCG, smart cities, retail, and climate resilience use cases. Speaker at Regional Tech Summit 2025 (150+ attendees).</div>
+            <div class="exp-tags"><span class="tag">Pre-Sales</span><span class="tag">Solutioning</span><span class="tag">Japan + SEA</span><span class="tag accent">Solar Siting</span><span class="tag">Smart Cities</span></div>
+          </div>
+        </div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">Apr – May 2025</div><div class="exp-org">NYU Marron Institute · New York</div></div>
+          <div>
+            <div class="exp-role">GIS Research Assistant — Transportation & Land Use</div>
+            <div class="exp-desc">Constructed a standardized GIS database of bus priority policies across 10 North American cities. Applied the Transit Priority Atlas methodology to classify dedicated lanes, queue jumps, and congestion pricing zones, supporting comparative equity analysis and policy-relevant design guidelines for bus lane placement.</div>
+            <div class="exp-tags"><span class="tag blue">Transit Policy</span><span class="tag">Network Analysis</span><span class="tag">Equity</span><span class="tag">ArcGIS</span></div>
+          </div>
+        </div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">Sep 2024 – May 2025</div><div class="exp-org">Con Edison · New York City</div></div>
+          <div>
+            <div class="exp-role">Clean Energy Analyst — Client-Facing Capstone</div>
+            <div class="exp-desc">Analyzed clean energy adoption across 2,325 NYC census tracts; identified 353 low/zero-adoption tracts as predominantly residential. Evaluated cost efficiency by building type (older low-rise at ~$649/MMBtu vs. >$4,000/MMBtu for newer tall buildings) and built an interactive Power BI dashboard integrating adoption, cost, and demographics.</div>
+            <div class="exp-tags"><span class="tag accent">Clean Energy</span><span class="tag">Power BI</span><span class="tag">Census Analysis</span><span class="tag">NYC</span></div>
+          </div>
+        </div>
+        <div class="exp-item reveal">
+          <div><div class="exp-period">May 2021 – Jun 2023</div><div class="exp-org">CityPlan Indonesia</div></div>
+          <div>
+            <div class="exp-role">GIS Data Analyst</div>
+            <div class="exp-desc">Standardized nationwide POI data across 10+ categories and built geospatial pipelines and dashboards for multi-sector analytics. Improved same-day healthcare delivery by ~20% (11,000+ service points) and accelerated market expansion by 80%, saving $10K+ in survey costs. Co-developed geospatial analytics platform — 2nd place, ActCelerate 2021 Startup Accelerator.</div>
+            <div class="exp-tags"><span class="tag">GIS Pipelines</span><span class="tag">Logistics</span><span class="tag">Healthcare</span><span class="tag accent">Site Selection</span><span class="tag">Startup</span></div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="service-item">
-          <div class="service-icon"><i class="fas fa-brain"></i></div>
-          <div class="service-text">
-            <h3>Machine Learning for Cities</h3>
-            <p>Applying predictive analytics and ML models to urban challenges — from building energy consumption to transit optimization.</p>
+    </div>
+  </section>
+
+  <section id="datakota" class="datakota-section">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">03 /</span><div class="section-line"></div><h2 class="section-title">Datakota</h2></div>
+      <div class="datakota-grid">
+        <div class="datakota-intro reveal">
+          <p><strong>Datakota</strong> is a geospatial and urban analytics consulting firm in Indonesia, co-founded with Daniel C. Pratama (Urban Analyst, World Bank · MIT City Planning '23). We help organizations discover insights through data and geospatial intelligence.</p>
+          <p>We've delivered work across urbanism, real estate, retail & FNB, traffic & transport, NGOs, disaster risk management, infrastructure, and environment & biodiversity — for clients ranging from Greenpeace to Agung Sedayu Group.</p>
+          <div class="clients-label">Our Clients</div>
+          <div class="clients-list">
+            <span class="client-chip">Greenpeace</span><span class="client-chip">Aruna</span><span class="client-chip">Agung Sedayu Group</span><span class="client-chip">McMaster University</span><span class="client-chip">Gakarsa Group</span><span class="client-chip">Wamesa Policy</span><span class="client-chip">Mind V Vorks</span><span class="client-chip">Ayo ke Taman</span>
+          </div>
+          <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://datakota.streamlit.app" target="_blank" class="btn-primary">datakota.streamlit.app ↗</a>
+            <a href="https://lokacheck.lovable.app" target="_blank" class="btn-secondary">LokaCheck App ↗</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="services-grid">
+            <div class="service-item"><span class="service-icon">🗺</span><div class="service-name">Mapping</div></div>
+            <div class="service-item"><span class="service-icon">📊</span><div class="service-name">Spatial Analysis</div></div>
+            <div class="service-item"><span class="service-icon">🔗</span><div class="service-name">Network Analysis</div></div>
+            <div class="service-item"><span class="service-icon">📈</span><div class="service-name">Data Visualization</div></div>
+            <div class="service-item"><span class="service-icon">🏪</span><div class="service-name">Market Research</div></div>
+            <div class="service-item"><span class="service-icon">🤖</span><div class="service-name">Machine Learning</div></div>
+            <div class="service-item"><span class="service-icon">🌐</span><div class="service-name">Web Map Apps</div></div>
+            <div class="service-item"><span class="service-icon">👁</span><div class="service-name">Computer Vision</div></div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="service-item">
-          <div class="service-icon"><i class="fas fa-city"></i></div>
-          <div class="service-text">
-            <h3>Urban Research & Consultation</h3>
-            <p>Academic research and B2B geo-analytics consultation services, including feasibility studies, market expansion analysis, and policy evaluation.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">04 /</span><div class="section-line"></div><h2 class="section-title">Selected Work</h2></div>
+      <div class="work-grid reveal">
+        <div class="work-card featured">
+          <div class="work-num">001 · Featured · NYU GIS Day Winner</div>
+          <span class="work-icon">🚑</span>
+          <div class="work-title">Life Lines: Emergency Care Access in Los Angeles</div>
+          <div class="work-desc">Network-based drive-time analysis for 90+ hospitals across LA County, identifying access gaps for 2.8M residents beyond 15-minute trauma response zones. Findings supported spatial equity recommendations for emergency healthcare infrastructure. Awarded at NYU GIS Day Competition.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag accent">Network Analysis</span><span class="tag">Drive-time</span><span class="tag">Healthcare</span><span class="tag">ArcGIS</span></div>
+          <a href="https://arcg.is/P95fL" target="_blank" class="work-link">View Project Report</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">002</div>
+          <span class="work-icon">🏙️</span>
+          <div class="work-title">LokaCheck — Climate Risk Web App</div>
+          <div class="work-desc">Interactive web app for real-estate developers to navigate disaster and climate risk across Indonesia — flood, earthquake, landslide, volcano risk layers with land price overlays and grid-level analytics.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag accent">Datakota</span><span class="tag">Web App</span><span class="tag">Climate Risk</span><span class="tag">Real Estate</span></div>
+          <a href="https://lokacheck.lovable.app" target="_blank" class="work-link">Live App</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">003</div>
+          <span class="work-icon">☀️</span>
+          <div class="work-title">Renewable Energy Siting in Maine</div>
+          <div class="work-desc">Spatial suitability analysis to identify optimal solar PV sites along Maine's I-95 corridor, assessing slope, aspect, and solar radiation to support Maine's 80% renewable energy target by 2030.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag accent">Solar Siting</span><span class="tag">Suitability</span><span class="tag">GIS</span><span class="tag">Energy Policy</span></div>
+          <a href="https://arcg.is/1bGyPG0" target="_blank" class="work-link">View Project Report</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">004</div>
+          <span class="work-icon">🌡️</span>
+          <div class="work-title">Urban Heat Risk in Chicago</div>
+          <div class="work-desc">Analyzed spatial relationships between built environment features (tree canopy, surface type, housing density) and extreme heat vulnerability. Proposed green infrastructure and zoning strategies for high-risk neighborhoods.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Urban Heat</span><span class="tag">Spatial Regression</span><span class="tag">Policy</span><span class="tag">Chicago</span></div>
+          <a href="#" class="work-link disabled">In Progress</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">005</div>
+          <span class="work-icon">🚌</span>
+          <div class="work-title">Mobility & Air Quality Optimization — NYC</div>
+          <div class="work-desc">Multimodal routing model using NYC transit, land use, and air quality data. Identified priority zones where reduced commute times (up to 30%) aligned with improved PM2.5 outcomes and equitable mobility access.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Routing Model</span><span class="tag">Air Quality</span><span class="tag">Python</span><span class="tag">Equity</span></div>
+          <a href="#" class="work-link disabled">In Progress</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">006</div>
+          <span class="work-icon">⚡</span>
+          <div class="work-title">NYC Clean Energy Adoption — Con Edison</div>
+          <div class="work-desc">Adoption analysis across 2,325 NYC census tracts; 353 low-adoption tracts identified as predominantly residential. Power BI dashboard integrating adoption, cost efficiency by building type, and demographic overlays.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag accent">Clean Energy</span><span class="tag">Power BI</span><span class="tag">Census</span><span class="tag">NYC</span></div>
+          <a href="#" class="work-link disabled">Client Project</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">007</div>
+          <span class="work-icon">🌊</span>
+          <div class="work-title">Climate Vulnerability Index — 10 Coastal Cities</div>
+          <div class="work-desc">Composite vulnerability index for 10 Indonesian coastal cities using a hazards–exposure–adaptive capacity framework. Delivered for NGO and civic society clients via Datakota.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Climate Risk</span><span class="tag accent">Vulnerability Index</span><span class="tag">Indonesia</span><span class="tag">NGO</span></div>
+          <a href="#" class="work-link disabled">Client Project</a>
+        </div>
+        <div class="work-card">
+          <div class="work-num">008</div>
+          <span class="work-icon">🍽️</span>
+          <div class="work-title">B2B Market Analysis — Restaurant Customer Profiling</div>
+          <div class="work-desc">Geospatial market research for an Indonesian authentic restaurant — estimated target customer demand and catchment zones, built demographic profiles of the surrounding area, benchmarked competitors spatially, and designed a quantitative approach to validate menu pricing by segment.</div>
+          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag accent">Datakota</span><span class="tag">Market Research</span><span class="tag">Catchment Analysis</span><span class="tag">FNB</span><span class="tag">Pricing</span></div>
+          <a href="#" class="work-link disabled">Client Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" class="awards-section">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">05 /</span><div class="section-line"></div><h2 class="section-title">Awards & Leadership</h2></div>
+      <div class="reveal">
+        <div class="award-item">
+          <div class="award-icon">🏆</div>
+          <div>
+            <div class="award-title">NYU Tandon Scholastic & Community Leadership Awards</div>
+            <div class="award-org">Recognized for graduating with the highest GPA and for outstanding leadership in building an inclusive, collaborative student community at NYU Tandon School of Engineering.</div>
+            <a href="https://engineering.nyu.edu/life-tandon/student-life/commencement/2025/awards#chapter-id-70611" target="_blank" class="award-link">Official Award Listing ↗</a>
+          </div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🗺</div>
+          <div>
+            <div class="award-title">Winner — NYU GIS Day Competition</div>
+            <div class="award-org">Analyzed emergency healthcare access in Los Angeles, identifying gaps affecting 40% of residents. Recognized for impactful geospatial storytelling and methodological rigor.</div>
+            <a href="https://www.instagram.com/p/DDKSDlGxtjc/" target="_blank" class="award-link">Media Coverage ↗</a>
+          </div>
+          <div class="award-year">2024</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🎓</div>
+          <div>
+            <div class="award-title">President — NYU Urban Science Association</div>
+            <div class="award-org">Led executive board, organized events for 100+ students, increased participation by 30%, and secured additional funding through multi-department coordination.</div>
+            <a href="https://engage.nyu.edu/organization/applied-urban-science-association" target="_blank" class="award-link">Official Webpage ↗</a>
+          </div>
+          <div class="award-year">2024–2025</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🎤</div>
+          <div>
+            <div class="award-title">Speaker — Regional Tech Summit 2025</div>
+            <div class="award-org">Represented Bhumi Varta Technology before 150+ industry stakeholders including C-level attendees. Joined panel alongside Directors from XL Smart Analytics and Jaklingo to discuss enterprise geospatial intelligence.</div>
+            <a href="https://www.youtube.com/watch?v=IjTO3rHgfrs&t=1560s" target="_blank" class="award-link">Watch Recording ↗</a>
+          </div>
+          <div class="award-year">2025</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🥈</div>
+          <div>
+            <div class="award-title">2nd Place — ActCelerate 2021 Startup Accelerator</div>
+            <div class="award-org">Selected from 170+ startups for co-developing CityPlan's geospatial analytics platform. Recognized by judges from MCash, SiCepat, and AC Ventures for business impact and innovation.</div>
+            <a href="https://news.dailysocial.id/post/algobash-menjadi-pemenang-actcelerate-2021/" target="_blank" class="award-link">Media Coverage ↗</a>
+          </div>
+          <div class="award-year">2021</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">💡</div>
+          <div>
+            <div class="award-title">Top 10 Finalist — PLN Innovation Challenge</div>
+            <div class="award-org">Proposed transforming idle PLN assets into a co-working space and café, projecting >$13,000 in revenue and showcasing creative spatial business solutions.</div>
+            <a href="https://www.linkedin.com/posts/cityplanindonesia_cityplan-pln-startup-activity-7043492118874488833-aIBo" target="_blank" class="award-link">Media Coverage ↗</a>
+          </div>
+          <div class="award-year">2022</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-inner">
+      <div class="section-header reveal"><span class="section-num">06 /</span><div class="section-line"></div><h2 class="section-title">Contact</h2></div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <h3 class="contact-headline">Let's build something <span>spatial.</span></h3>
+          <p class="contact-sub">Open to consulting engagements, research collaborations, and conversations about urban analytics, location intelligence, and spatial strategy across Southeast Asia and beyond.</p>
+          <a href="mailto:irsrashad3@gmail.com" class="btn-primary">Send a Message</a>
+        </div>
+        <div class="reveal">
+          <div class="terminal">
+            <div class="terminal-bar"><div class="terminal-dot"></div><div class="terminal-dot"></div><div class="terminal-dot"></div><span class="terminal-title">ismail_profile.json</span></div>
+            <div class="terminal-body">
+              <span class="comment">// contact &amp; links</span><br>
+              {<br>
+              &nbsp;&nbsp;<span class="cmd">"name"</span>: <span class="str">"Ismail Rashad"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"role"</span>: <span class="str">"Geospatial Analyst"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"orgs"</span>: <span class="str">"GoTo Group · Datakota"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"email"</span>: <span class="val">"irsrashad3@gmail.com"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"linkedin"</span>: <span class="val">"linkedin.com/in/irsrashad"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"portfolio"</span>: <span class="val">"bit.ly/ismail-geoanalytics"</span>,<br>
+              &nbsp;&nbsp;<span class="cmd">"open_to"</span>: [<span class="str">"consulting"</span>, <span class="str">"research"</span>, <span class="str">"speaking"</span>]<br>
+              }<br>
+              <span class="terminal-cursor"></span>
+            </div>
+          </div>
+          <div class="contact-links" style="margin-top:1.5rem;">
+            <a href="https://linkedin.com/in/irsrashad" class="contact-link" target="_blank">
+              <div class="contact-link-icon">in</div>
+              <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/irsrashad</div></div>
+            </a>
+            <a href="https://github.com/irsrashad" class="contact-link" target="_blank">
+              <div class="contact-link-icon">gh</div>
+              <div><div class="contact-link-label">GitHub</div><div class="contact-link-value">github.com/irsrashad</div></div>
+            </a>
+            <a href="https://bit.ly/ismail-geoanalytics" class="contact-link" target="_blank">
+              <div class="contact-link-icon">↗</div>
+              <div><div class="contact-link-label">Portfolio</div><div class="contact-link-value">bit.ly/ismail-geoanalytics</div></div>
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- EXPERIENCE -->
-<div class="experience" id="experience">
-  <div class="container-fluid">
-    <div class="section-header text-center">
-      <p>MY RESUME</p>
-      <h2>Experience</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item left">
-        <div class="timeline-date">SEP 2024 – NOW</div>
-        <div class="timeline-text">
-          <h4>Course Assistant – GIS & Spatial Analytics</h4>
-          <h5>NYU Tandon School of Engineering, New York</h5>
-          <p>Supporting GIS and spatial analytics coursework as a part-time course assistant.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="timeline-date">SEP 2024 – NOW</div>
-        <div class="timeline-text">
-          <h4>Student Capstone Consultant – Con Edison</h4>
-          <h5>NYU CUSP, New York</h5>
-          <p>Internship capstone consulting project in partnership with Con Edison utility company.</p>
-        </div>
-      </div>
-      <div class="timeline-item left">
-        <div class="timeline-date">JUN 2024 – NOW</div>
-        <div class="timeline-text">
-          <h4>Freelance Urban Data Analyst</h4>
-          <h5>Datakota.app, Remote</h5>
-          <p>Freelance urban data analytics work, delivering geo-analytics insights and consultation services.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="timeline-date">AUG 2023 – MAY 2025</div>
-        <div class="timeline-text">
-          <h4>Graduate Student</h4>
-          <h5>CUSP NYU, New York</h5>
-          <p>Master's in Applied Urban Science and Informatics. Focus on geo-analytics, GIS, and urban data science.</p>
-        </div>
-      </div>
-      <div class="timeline-item left">
-        <div class="timeline-date">MAY 2021 – JUN 2023</div>
-        <div class="timeline-text">
-          <h4>Research & Product Team</h4>
-          <h5>Cityplan ID, Indonesia</h5>
-          <p>2+ years in a location intelligence startup. Led consultation services, research projects, and contributed to SaaS product development.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="timeline-date">JAN 2020 – DEC 2020</div>
-        <div class="timeline-text">
-          <h4>Research Associate</h4>
-          <h5>Bandung Institute of Technology, Indonesia</h5>
-          <p>Conducted academic research in urban planning and spatial analysis.</p>
-        </div>
-      </div>
-      <div class="timeline-item left">
-        <div class="timeline-date">JUN 2019 – DEC 2019</div>
-        <div class="timeline-text">
-          <h4>Research Consultant</h4>
-          <h5>PT. LAPI ITB, Indonesia</h5>
-          <p>Research consultancy work in planning and spatial studies.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="timeline-date">JUN 2018 – AUG 2018</div>
-        <div class="timeline-text">
-          <h4>Intern Planner</h4>
-          <h5>Inside 25 Consultant, Indonesia</h5>
-          <p>Urban planning internship with hands-on project work.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- SKILLS -->
-<div class="skills" id="skills">
-  <div class="container-fluid">
-    <div class="section-header text-center">
-      <p>MY TOOLKIT</p>
-      <h2>Skills</h2>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <div class="skill-category">
-          <h5><i class="fas fa-cogs mr-2"></i>Core Skills</h5>
-          <span class="skill-badge">Geo-Analytics</span>
-          <span class="skill-badge">Statistics & GIS</span>
-          <span class="skill-badge">Project Management</span>
-          <span class="skill-badge">Research</span>
-          <span class="skill-badge">Data Science</span>
-          <span class="skill-badge">Causal Inference</span>
-          <span class="skill-badge">Disaster Risk Analysis</span>
-          <span class="skill-badge">ML for Cities</span>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="skill-category">
-          <h5><i class="fas fa-code mr-2"></i>Programming</h5>
-          <span class="skill-badge">Python</span>
-          <span class="skill-badge">Data Science Libraries</span>
-          <span class="skill-badge">ML Libraries</span>
-          <span class="skill-badge">PostGIS (Learning)</span>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="skill-category">
-          <h5><i class="fas fa-tools mr-2"></i>Software</h5>
-          <span class="skill-badge">ArcGIS Pro</span>
-          <span class="skill-badge">QGIS</span>
-          <span class="skill-badge">Excel</span>
-          <span class="skill-badge">Google Suite</span>
-          <span class="skill-badge">Notion</span>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <div class="skill-category">
-          <h5><i class="fas fa-language mr-2"></i>Languages</h5>
-          <span class="skill-badge">English (IELTS 7.5)</span>
-          <span class="skill-badge">Indonesian (Native)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- PROJECTS -->
-<div class="portfolio" id="portfolio">
-  <div class="container-fluid">
-    <div class="section-header text-center">
-      <p>MY PORTFOLIO</p>
-      <h2>Featured Projects</h2>
-    </div>
-    <div class="portfolio-filter mb-4">
-      <button class="active" onclick="filterProjects('all', this)">All</button>
-      <button onclick="filterProjects('research', this)">Research</button>
-      <button onclick="filterProjects('consultation', this)">Consultation</button>
-      <button onclick="filterProjects('dashboard', this)">Dashboard</button>
-    </div>
-    <div class="portfolio-grid" id="portfolio-grid">
-      <div class="portfolio-card" data-cat="research consultation">
-        <div class="portfolio-card-img"><i class="fas fa-water"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Climate Vulnerability Assessment for Coastal Communities in Indonesia</h4>
-          <p>Multistakeholder consultation using GIS to assess climate risk for coastal communities. (2024)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-heartbeat"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Understanding Diabetes Prevalence in the US</h4>
-          <p>Data-driven analysis based on demographic & socioeconomic factors using ML methods. (2024)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-building"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Predicting Residential Building Energy Consumption in NYC</h4>
-          <p>ML model to predict building energy consumption using NYC urban datasets. (2024)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-solar-panel"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Powering the Future: Renewable Energy Expansion in Maine</h4>
-          <p>ArcGIS StoryMap exploring Maine's I-95 renewable energy potential. (2024)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research consultation">
-        <div class="portfolio-card-img"><i class="fas fa-bus-alt"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Network Analysis of Multi-Modal Share Preferences in NYC</h4>
-          <p>Reducing environmental emissions of transit modes through network analysis. (2024)</p>
-          <span class="badge-tag badge-research">Research</span>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-laptop-code"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Navigating the Digital Future: DapurDataJabar</h4>
-          <p>Catalyzing data literacy transformation in West Java through digital education. (2023)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-ambulance"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Life Line: Emergency Care Access in LA</h4>
-          <p>StoryMap on access, timing, and the gap in healthcare equity across LA. (2023)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="consultation">
-        <div class="portfolio-card-img"><i class="fas fa-tooth"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Market Expansion for Dental Clinic</h4>
-          <p>Location intelligence and market analysis for dental clinic expansion. (2023)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="dashboard">
-        <div class="portfolio-card-img"><i class="fas fa-map"></i></div>
-        <div class="portfolio-card-body">
-          <h4>SaaS Product Development – Spatia</h4>
-          <p>Dashboard and coaching product for spatial data & analytics platform. (2023)</p>
-          <span class="badge-tag badge-dashboard">Dashboard</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research dashboard">
-        <div class="portfolio-card-img"><i class="fas fa-bolt"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Highest & Best Use – State Electricity Company Indonesia</h4>
-          <p>GIS-based pilot study for Indonesia's state-owned electricity company. (2022)</p>
-          <span class="badge-tag badge-research">Research</span>
-          <span class="badge-tag badge-dashboard">Dashboard</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-home"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Land and Property Value Modelling</h4>
-          <p>Geo-statistical model to estimate land and property values. (2022)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="dashboard consultation">
-        <div class="portfolio-card-img"><i class="fas fa-truck"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Delivery Service Market Expansion Dashboard</h4>
-          <p>PRD-level dashboard for delivery company market expansion strategy. (2021)</p>
-          <span class="badge-tag badge-dashboard">Dashboard</span>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="consultation">
-        <div class="portfolio-card-img"><i class="fas fa-pills"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Optimizing Same-Day Delivery of Pharma Products</h4>
-          <p>GIS routing and spatial optimization for pharmaceutical logistics. (2021)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="consultation">
-        <div class="portfolio-card-img"><i class="fas fa-car"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Unlocking Business Expansion for Automotive Company</h4>
-          <p>Location analysis to identify high-potential areas for automotive expansion. (2021)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="research">
-        <div class="portfolio-card-img"><i class="fas fa-landmark"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Place Branding Research (P3MI Grant)</h4>
-          <p>Academic research on place branding strategies for cities. (2021)</p>
-          <span class="badge-tag badge-research">Research</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="consultation">
-        <div class="portfolio-card-img"><i class="fas fa-industry"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Pre-Feasibility Study for Special Economic Zone</h4>
-          <p>Feasibility and spatial planning study for a special economic zone development. (2019)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-      <div class="portfolio-card" data-cat="consultation">
-        <div class="portfolio-card-img"><i class="fas fa-recycle"></i></div>
-        <div class="portfolio-card-body">
-          <h4>Aerocity Solid Waste Management System Business Model</h4>
-          <p>Developing a sustainable waste management business model for an aerocity development. (2018)</p>
-          <span class="badge-tag badge-consultation">Consultation</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <div class="container-fluid text-center">
-    <div class="section-header">
-      <p style="color:rgba(255,255,255,0.7);justify-content:center;">LET'S WORK TOGETHER</p>
-      <h2 style="color:#fff;">Get In Touch</h2>
-    </div>
-    <p style="color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto 30px;">If you're intrigued by the prospect of teaming up and exploring exciting opportunities, don't hesitate to drop me a line and let's set the ball rolling!</p>
-    <a href="mailto:ismail.rashad@nyu.edu" class="btn" style="background:#fff;color:#007fe0;box-shadow:inset 0 0 0 50px #fff;border:2px solid transparent;margin-right:10px;">
-      <i class="fas fa-envelope mr-2"></i>ismail.rashad@nyu.edu
-    </a>
-    <a href="https://www.linkedin.com/in/irsrashad" target="_blank" class="btn" style="background:transparent;color:#fff;box-shadow:none;border:2px solid #fff;">
-      <i class="fab fa-linkedin mr-2"></i>LinkedIn
-    </a>
-  </div>
-</div>
-<!-- FOOTER -->
-<div class="footer">
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <h4>Ismail Rashad</h4>
-        <p>Brooklyn, New York, United States</p>
-        <p>ismail.rashad@nyu.edu</p>
-      </div>
-      <div class="col-md-6 text-md-right mt-3 mt-md-0">
-        <div class="social-btn mb-2">
-          <a href="mailto:ismail.rashad@nyu.edu" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/irsrashad" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/irsrashad" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.kaggle.com/promises12" target="_blank" title="Kaggle"><i class="fab fa-kaggle"></i></a>
-        </div>
-        <p>© 2025 Ismail Rashad Portfolio. All Rights Reserved.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://juniomata.github.io/lib/typed/typed.min.js"></script>
-<script>
-  new Typed('#typed-text', {
-    strings: ['Geo-Analytics Specialist', 'Urban Data Scientist', 'GIS Analyst', 'Urban Informatics Researcher'],
-    typeSpeed: 60, backSpeed: 40, loop: true
-  });
-  function filterProjects(cat, btn) {
-    document.querySelectorAll('.portfolio-filter button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.portfolio-card').forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat.includes(cat)) ? '' : 'none';
+  </section>
+
+  <footer>
+    <p>© 2025 Ismail Rashad · Geospatial Analyst · Jakarta, Indonesia</p>
+    <p>Built with intention · <span style="color:var(--accent)">irsrashad.github.io</span></p>
+  </footer>
+
+  <script>
+    const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=(mx-4)+'px';cursor.style.top=(my-4)+'px';});
+    function animRing(){rx+=(mx-rx-16)*0.12;ry+=(my-ry-16)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+    animRing();
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2.5)';ring.style.width='48px';ring.style.height='48px';ring.style.borderColor='rgba(26,122,94,0.7)';});
+      el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.width='32px';ring.style.height='32px';ring.style.borderColor='rgba(26,122,94,0.4)';});
     });
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
+    const coordEl=document.getElementById('coords');
+    const cities=['-6.2088° S, 106.8456° E · Jakarta','40.6943° N, 73.9249° W · Brooklyn, NY','40.7128° N, 74.0060° W · New York','-7.2575° S, 112.7521° E · Surabaya','-6.9175° S, 107.6191° E · Bandung'];
+    let ci=0;coordEl.style.transition='opacity 0.3s';
+    setInterval(()=>{ci=(ci+1)%cities.length;coordEl.style.opacity='0';setTimeout(()=>{coordEl.textContent=cities[ci];coordEl.style.opacity='1';},300);},3000);
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+  </script>
 </body>
 </html>
