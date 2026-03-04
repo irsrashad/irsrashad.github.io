@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ismail Rashad - Geo-Analytics Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="GIS, Geo-Analytics, Urban Informatics, Data Science, NYC">
+  <meta name="description" content="Ismail Rashad - Urban Informatics Graduate Student at NYU | Geo-Analytics & Spatial Data Specialist">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+  <style>
+    body { color: #797979; background: #ffffff; font-family: 'Montserrat', sans-serif; }
+    h1,h2,h3,h4,h5,h6 { color: #414141; }
+    a { color: #313131; transition: 0.3s; }
+    a:hover,a:active,a:focus { color: #007fe0; outline: none; text-decoration: none; }
+    .btn:focus,.form-control:focus { box-shadow: none; }
+    .container-fluid { max-width: 1366px; }
+    .btn { padding: 12px 25px; font-size: 14px; font-weight: 600; letter-spacing: 1px; color: #ffffff; background: #007fe0; border: 2px solid transparent; border-radius: 0; box-shadow: inset 0 0 0 50px #007fe0; transition: ease-out 0.3s; }
+    .btn:hover { color: #007fe0; background: transparent; box-shadow: inset 0 0 0 0 #007fe0; border-color: #007fe0; }
+    /* NAV */
+    .nav-bar { position: sticky; top: 0; z-index: 999; padding: 0; background: #ffffff; border-bottom: 1px solid #eeeeee; }
+    .nav-bar .navbar { height: 65px; padding: 0; }
+    .nav-bar .navbar .navbar-brand { color: #007fe0; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+    .nav-bar .navbar .navbar-nav .nav-link { margin-left: 25px; padding: 5px 0; color: #414141; font-size: 15px; font-weight: 600; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: 0.3s; }
+    .nav-bar .navbar .navbar-nav .nav-link:hover { color: #007fe0; border-bottom-color: #007fe0; }
+    /* HERO */
+    .hero { position: relative; width: 100%; min-height: calc(100vh - 65px); background: #007fe0; display: flex; align-items: center; }
+    .hero .hero-text p { color: #ffffff; font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+    .hero .hero-text h1 { color: #ffffff; font-size: 55px; font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; }
+    .hero .hero-text h2 { display: inline-block; margin: 0; height: 35px; color: #ffffff; font-size: 30px; font-weight: 600; }
+    .hero .hero-img img { width: 380px; max-width: 100%; border-radius: 50%; border: 6px solid rgba(255,255,255,0.3); object-fit: cover; }
+    .hero-btn .btn { margin-top: 35px; color: #007fe0; background: #ffffff; box-shadow: inset 0 0 0 50px #ffffff; border: 2px solid transparent; }
+    .hero-btn .btn:hover { color: #ffffff; background: transparent; box-shadow: inset 0 0 0 0 #ffffff; border-color: #ffffff; }
+    .hero-btn .btn:first-child { margin-right: 10px; }
+    /* SECTION HEADER */
+    .section-header { margin-bottom: 45px; }
+    .section-header p { display: flex; align-items: center; font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #007fe0; margin-bottom: 5px; }
+    .section-header p::before { content: ''; display: inline-block; width: 30px; height: 2px; background: #007fe0; margin-right: 10px; }
+    .section-header h2 { font-size: 45px; font-weight: 700; color: #414141; }
+    /* SERVICE */
+    .service { padding: 60px 0 30px; background: #fff; }
+    .service-item { display: flex; align-items: center; margin-bottom: 30px; box-shadow: inset 0 0 0 0 transparent; transition: ease-out 0.5s; border: 1px solid #eee; }
+    .service-item:hover { box-shadow: inset 800px 0 0 0 #007fe0; }
+    .service-icon { width: 150px; min-height: 120px; display: flex; align-items: center; justify-content: center; border: 1px solid #007fe0; flex-shrink: 0; }
+    .service-icon i { font-size: 50px; color: #007fe0; }
+    .service-item:hover .service-icon { border-color: #fff; }
+    .service-item:hover .service-icon i { color: #fff; }
+    .service-text { padding: 15px 20px; }
+    .service-text h3 { font-size: 18px; font-weight: 700; color: #414141; }
+    .service-item:hover .service-text h3, .service-item:hover .service-text p { color: #fff; }
+    /* EXPERIENCE */
+    .experience { padding: 60px 0; background: #f8f8f8; }
+    .timeline { position: relative; padding: 0; }
+    .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #007fe0; transform: translateX(-50%); }
+    .timeline-item { position: relative; width: 50%; padding: 15px 40px; }
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.right { left: 50%; text-align: left; }
+    .timeline-item::after { content: ''; position: absolute; top: 20px; width: 16px; height: 16px; background: #ffffff; border: 2px solid #007fe0; border-radius: 50%; z-index: 1; }
+    .timeline-item.left::after { right: -8px; }
+    .timeline-item.right::after { left: -8px; }
+    .timeline-date { font-size: 13px; font-weight: 700; color: #007fe0; letter-spacing: 1px; margin-bottom: 8px; }
+    .timeline-text { padding: 15px 20px; background: #ffffff; box-shadow: 0 0 20px rgba(0,0,0,0.08); }
+    .timeline-item.left .timeline-text { border-right: 5px solid #007fe0; }
+    .timeline-item.right .timeline-text { border-left: 5px solid #007fe0; }
+    .timeline-text h4 { font-size: 16px; font-weight: 700; color: #414141; margin-bottom: 2px; }
+    .timeline-text h5 { font-size: 13px; font-style: italic; color: #007fe0; margin-bottom: 8px; }
+    .timeline-text p { font-size: 13px; margin-bottom: 0; }
+    /* SKILLS */
+    .skills { padding: 60px 0; background: #fff; }
+    .skill-badge { display: inline-block; padding: 6px 14px; margin: 5px 4px; background: #007fe0; color: #fff; font-size: 13px; font-weight: 600; border-radius: 3px; }
+    .skill-category h5 { font-size: 15px; font-weight: 700; color: #414141; margin-bottom: 12px; border-bottom: 2px solid #007fe0; padding-bottom: 6px; }
+    .skill-category { margin-bottom: 30px; }
+    /* PORTFOLIO */
+    .portfolio { padding: 60px 0; background: #f8f8f8; }
+    .portfolio-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+    .portfolio-filter button { padding: 8px 20px; border: 2px solid #007fe0; background: transparent; color: #007fe0; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+    .portfolio-filter button.active, .portfolio-filter button:hover { background: #007fe0; color: #fff; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .portfolio-card { background: #fff; box-shadow: 0 0 15px rgba(0,0,0,0.08); overflow: hidden; transition: 0.3s; }
+    .portfolio-card:hover { box-shadow: 0 5px 25px rgba(0,127,224,0.2); transform: translateY(-3px); }
+    .portfolio-card-img { height: 160px; background: #e0eefa; display: flex; align-items: center; justify-content: center; }
+    .portfolio-card-img i { font-size: 50px; color: #007fe0; }
+    .portfolio-card-body { padding: 15px; }
+    .portfolio-card-body h4 { font-size: 14px; font-weight: 700; color: #414141; margin-bottom: 6px; }
+    .portfolio-card-body p { font-size: 12px; margin-bottom: 6px; }
+    .badge-tag { display: inline-block; padding: 3px 9px; font-size: 11px; font-weight: 600; border-radius: 2px; margin-right: 3px; margin-bottom: 3px; }
+    .badge-research { background: #d4edda; color: #155724; }
+    .badge-consultation { background: #d1ecf1; color: #0c5460; }
+    .badge-dashboard { background: #e2d9f3; color: #432874; }
+    /* CONTACT */
+    .contact-section { padding: 60px 0; background: #007fe0; }
+    /* FOOTER */
+    .footer { padding: 30px 0; background: #313131; }
+    .footer h4 { color: #fff; font-size: 20px; font-weight: 700; }
+    .footer p { color: #aaa; font-size: 13px; margin: 0; }
+    .footer .social-btn a { display: inline-flex; width: 35px; height: 35px; align-items: center; justify-content: center; background: #fff; color: #313131; margin: 0 3px; border-radius: 50%; font-size: 15px; transition: 0.3s; }
+    .footer .social-btn a:hover { background: #007fe0; color: #fff; }
+    @media(max-width:991px){
+      .hero { padding: 60px 0; min-height: auto; }
+      .hero .hero-img img { width: 220px; margin-top: 30px; }
+      .hero .hero-text h1 { font-size: 36px; }
+      .timeline::before { display: none; }
+      .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding: 10px 15px; }
+      .timeline-item::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#home">irsrashad</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#service" class="nav-link">Services</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#portfolio" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-lg-7 hero-text">
+        <p>Hi there... I'm</p>
+        <h1>Ismail Rashad</h1>
+        <h2><span id="typed-text"></span></h2>
+        <div class="hero-btn">
+          <a href="https://github.com/irsrashad" target="_blank" class="btn">Visit My Github</a>
+          <a href="https://www.linkedin.com/in/irsrashad" target="_blank" class="btn">LinkedIn</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center hero-img">
+        <img src="https://avatars.githubusercontent.com/u/144382685?v=4" alt="Ismail Rashad" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SERVICES -->
+<div class="service" id="service">
+  <div class="container-fluid">
+    <div class="section-header text-center">
+      <p>WHAT I DO</p>
+      <h2>Services</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="service-item">
+          <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div class="service-text">
+            <h3>Geo-Analytics & GIS</h3>
+            <p>Spatial data analysis, GIS modelling, and location intelligence using ArcGIS Pro, QGIS, and PostGIS for urban and business use cases.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="service-item">
+          <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="service-text">
+            <h3>Data Analysis & Visualization</h3>
+            <p>Statistical analysis, data cleaning, and compelling visualizations to support data-driven decision making in public and private sectors.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="service-item">
+          <div class="service-icon"><i class="fas fa-brain"></i></div>
+          <div class="service-text">
+            <h3>Machine Learning for Cities</h3>
+            <p>Applying predictive analytics and ML models to urban challenges — from building energy consumption to transit optimization.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="service-item">
+          <div class="service-icon"><i class="fas fa-city"></i></div>
+          <div class="service-text">
+            <h3>Urban Research & Consultation</h3>
+            <p>Academic research and B2B geo-analytics consultation services, including feasibility studies, market expansion analysis, and policy evaluation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- EXPERIENCE -->
+<div class="experience" id="experience">
+  <div class="container-fluid">
+    <div class="section-header text-center">
+      <p>MY RESUME</p>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-date">SEP 2024 – NOW</div>
+        <div class="timeline-text">
+          <h4>Course Assistant – GIS & Spatial Analytics</h4>
+          <h5>NYU Tandon School of Engineering, New York</h5>
+          <p>Supporting GIS and spatial analytics coursework as a part-time course assistant.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-date">SEP 2024 – NOW</div>
+        <div class="timeline-text">
+          <h4>Student Capstone Consultant – Con Edison</h4>
+          <h5>NYU CUSP, New York</h5>
+          <p>Internship capstone consulting project in partnership with Con Edison utility company.</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-date">JUN 2024 – NOW</div>
+        <div class="timeline-text">
+          <h4>Freelance Urban Data Analyst</h4>
+          <h5>Datakota.app, Remote</h5>
+          <p>Freelance urban data analytics work, delivering geo-analytics insights and consultation services.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-date">AUG 2023 – MAY 2025</div>
+        <div class="timeline-text">
+          <h4>Graduate Student</h4>
+          <h5>CUSP NYU, New York</h5>
+          <p>Master's in Applied Urban Science and Informatics. Focus on geo-analytics, GIS, and urban data science.</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-date">MAY 2021 – JUN 2023</div>
+        <div class="timeline-text">
+          <h4>Research & Product Team</h4>
+          <h5>Cityplan ID, Indonesia</h5>
+          <p>2+ years in a location intelligence startup. Led consultation services, research projects, and contributed to SaaS product development.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-date">JAN 2020 – DEC 2020</div>
+        <div class="timeline-text">
+          <h4>Research Associate</h4>
+          <h5>Bandung Institute of Technology, Indonesia</h5>
+          <p>Conducted academic research in urban planning and spatial analysis.</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-date">JUN 2019 – DEC 2019</div>
+        <div class="timeline-text">
+          <h4>Research Consultant</h4>
+          <h5>PT. LAPI ITB, Indonesia</h5>
+          <p>Research consultancy work in planning and spatial studies.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-date">JUN 2018 – AUG 2018</div>
+        <div class="timeline-text">
+          <h4>Intern Planner</h4>
+          <h5>Inside 25 Consultant, Indonesia</h5>
+          <p>Urban planning internship with hands-on project work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SKILLS -->
+<div class="skills" id="skills">
+  <div class="container-fluid">
+    <div class="section-header text-center">
+      <p>MY TOOLKIT</p>
+      <h2>Skills</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="skill-category">
+          <h5><i class="fas fa-cogs mr-2"></i>Core Skills</h5>
+          <span class="skill-badge">Geo-Analytics</span>
+          <span class="skill-badge">Statistics & GIS</span>
+          <span class="skill-badge">Project Management</span>
+          <span class="skill-badge">Research</span>
+          <span class="skill-badge">Data Science</span>
+          <span class="skill-badge">Causal Inference</span>
+          <span class="skill-badge">Disaster Risk Analysis</span>
+          <span class="skill-badge">ML for Cities</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="skill-category">
+          <h5><i class="fas fa-code mr-2"></i>Programming</h5>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">Data Science Libraries</span>
+          <span class="skill-badge">ML Libraries</span>
+          <span class="skill-badge">PostGIS (Learning)</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="skill-category">
+          <h5><i class="fas fa-tools mr-2"></i>Software</h5>
+          <span class="skill-badge">ArcGIS Pro</span>
+          <span class="skill-badge">QGIS</span>
+          <span class="skill-badge">Excel</span>
+          <span class="skill-badge">Google Suite</span>
+          <span class="skill-badge">Notion</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="skill-category">
+          <h5><i class="fas fa-language mr-2"></i>Languages</h5>
+          <span class="skill-badge">English (IELTS 7.5)</span>
+          <span class="skill-badge">Indonesian (Native)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- PROJECTS -->
+<div class="portfolio" id="portfolio">
+  <div class="container-fluid">
+    <div class="section-header text-center">
+      <p>MY PORTFOLIO</p>
+      <h2>Featured Projects</h2>
+    </div>
+    <div class="portfolio-filter mb-4">
+      <button class="active" onclick="filterProjects('all', this)">All</button>
+      <button onclick="filterProjects('research', this)">Research</button>
+      <button onclick="filterProjects('consultation', this)">Consultation</button>
+      <button onclick="filterProjects('dashboard', this)">Dashboard</button>
+    </div>
+    <div class="portfolio-grid" id="portfolio-grid">
+      <div class="portfolio-card" data-cat="research consultation">
+        <div class="portfolio-card-img"><i class="fas fa-water"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Climate Vulnerability Assessment for Coastal Communities in Indonesia</h4>
+          <p>Multistakeholder consultation using GIS to assess climate risk for coastal communities. (2024)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-heartbeat"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Understanding Diabetes Prevalence in the US</h4>
+          <p>Data-driven analysis based on demographic & socioeconomic factors using ML methods. (2024)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-building"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Predicting Residential Building Energy Consumption in NYC</h4>
+          <p>ML model to predict building energy consumption using NYC urban datasets. (2024)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-solar-panel"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Powering the Future: Renewable Energy Expansion in Maine</h4>
+          <p>ArcGIS StoryMap exploring Maine's I-95 renewable energy potential. (2024)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research consultation">
+        <div class="portfolio-card-img"><i class="fas fa-bus-alt"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Network Analysis of Multi-Modal Share Preferences in NYC</h4>
+          <p>Reducing environmental emissions of transit modes through network analysis. (2024)</p>
+          <span class="badge-tag badge-research">Research</span>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-laptop-code"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Navigating the Digital Future: DapurDataJabar</h4>
+          <p>Catalyzing data literacy transformation in West Java through digital education. (2023)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-ambulance"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Life Line: Emergency Care Access in LA</h4>
+          <p>StoryMap on access, timing, and the gap in healthcare equity across LA. (2023)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="consultation">
+        <div class="portfolio-card-img"><i class="fas fa-tooth"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Market Expansion for Dental Clinic</h4>
+          <p>Location intelligence and market analysis for dental clinic expansion. (2023)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="dashboard">
+        <div class="portfolio-card-img"><i class="fas fa-map"></i></div>
+        <div class="portfolio-card-body">
+          <h4>SaaS Product Development – Spatia</h4>
+          <p>Dashboard and coaching product for spatial data & analytics platform. (2023)</p>
+          <span class="badge-tag badge-dashboard">Dashboard</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research dashboard">
+        <div class="portfolio-card-img"><i class="fas fa-bolt"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Highest & Best Use – State Electricity Company Indonesia</h4>
+          <p>GIS-based pilot study for Indonesia's state-owned electricity company. (2022)</p>
+          <span class="badge-tag badge-research">Research</span>
+          <span class="badge-tag badge-dashboard">Dashboard</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-home"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Land and Property Value Modelling</h4>
+          <p>Geo-statistical model to estimate land and property values. (2022)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="dashboard consultation">
+        <div class="portfolio-card-img"><i class="fas fa-truck"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Delivery Service Market Expansion Dashboard</h4>
+          <p>PRD-level dashboard for delivery company market expansion strategy. (2021)</p>
+          <span class="badge-tag badge-dashboard">Dashboard</span>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="consultation">
+        <div class="portfolio-card-img"><i class="fas fa-pills"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Optimizing Same-Day Delivery of Pharma Products</h4>
+          <p>GIS routing and spatial optimization for pharmaceutical logistics. (2021)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="consultation">
+        <div class="portfolio-card-img"><i class="fas fa-car"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Unlocking Business Expansion for Automotive Company</h4>
+          <p>Location analysis to identify high-potential areas for automotive expansion. (2021)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="research">
+        <div class="portfolio-card-img"><i class="fas fa-landmark"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Place Branding Research (P3MI Grant)</h4>
+          <p>Academic research on place branding strategies for cities. (2021)</p>
+          <span class="badge-tag badge-research">Research</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="consultation">
+        <div class="portfolio-card-img"><i class="fas fa-industry"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Pre-Feasibility Study for Special Economic Zone</h4>
+          <p>Feasibility and spatial planning study for a special economic zone development. (2019)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+      <div class="portfolio-card" data-cat="consultation">
+        <div class="portfolio-card-img"><i class="fas fa-recycle"></i></div>
+        <div class="portfolio-card-body">
+          <h4>Aerocity Solid Waste Management System Business Model</h4>
+          <p>Developing a sustainable waste management business model for an aerocity development. (2018)</p>
+          <span class="badge-tag badge-consultation">Consultation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="container-fluid text-center">
+    <div class="section-header">
+      <p style="color:rgba(255,255,255,0.7);justify-content:center;">LET'S WORK TOGETHER</p>
+      <h2 style="color:#fff;">Get In Touch</h2>
+    </div>
+    <p style="color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto 30px;">If you're intrigued by the prospect of teaming up and exploring exciting opportunities, don't hesitate to drop me a line and let's set the ball rolling!</p>
+    <a href="mailto:ismail.rashad@nyu.edu" class="btn" style="background:#fff;color:#007fe0;box-shadow:inset 0 0 0 50px #fff;border:2px solid transparent;margin-right:10px;">
+      <i class="fas fa-envelope mr-2"></i>ismail.rashad@nyu.edu
+    </a>
+    <a href="https://www.linkedin.com/in/irsrashad" target="_blank" class="btn" style="background:transparent;color:#fff;box-shadow:none;border:2px solid #fff;">
+      <i class="fab fa-linkedin mr-2"></i>LinkedIn
+    </a>
+  </div>
+</div>
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h4>Ismail Rashad</h4>
+        <p>Brooklyn, New York, United States</p>
+        <p>ismail.rashad@nyu.edu</p>
+      </div>
+      <div class="col-md-6 text-md-right mt-3 mt-md-0">
+        <div class="social-btn mb-2">
+          <a href="mailto:ismail.rashad@nyu.edu" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/irsrashad" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/irsrashad" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.kaggle.com/promises12" target="_blank" title="Kaggle"><i class="fab fa-kaggle"></i></a>
+        </div>
+        <p>© 2025 Ismail Rashad Portfolio. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://juniomata.github.io/lib/typed/typed.min.js"></script>
+<script>
+  new Typed('#typed-text', {
+    strings: ['Geo-Analytics Specialist', 'Urban Data Scientist', 'GIS Analyst', 'Urban Informatics Researcher'],
+    typeSpeed: 60, backSpeed: 40, loop: true
+  });
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.portfolio-filter button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat.includes(cat)) ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
