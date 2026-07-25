@@ -4,574 +4,461 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ismail Rashad — Geospatial Analyst & Urban Intelligence</title>
+  <meta name="description" content="Ismail Rashad — geospatial analyst and urban data scientist working across mobility, climate, and city-scale analytics in Southeast Asia and the US." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    :root {
-      --bg:#f5f7f4; --bg2:#eef1ed; --bg3:#e6ebe4;
-      --accent:#1a7a5e; --accent2:#1a6fa8; --accent3:#c94f1a;
-      --text:#141c18; --muted:#5a6e62; --border:#d0d9cc;
-      --grid:rgba(26,122,94,0.07);
+    /* ---------- HERO ---------- */
+    .hero {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: clamp(3.5rem, 9vw, 7rem) var(--pad-x) clamp(3rem, 6vw, 5rem);
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center;
+      position: relative;
     }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--mint); margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.15s;
+    }
+    .hero-tag::before { content: ''; width: 26px; height: 1px; background: var(--mint); }
+    .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--survey); animation: blink-dot 1.8s infinite; }
+    @keyframes blink-dot { 50% { opacity: 0.25; } }
+    .hero h1 {
+      font-size: clamp(3.2rem, 7.5vw, 6rem); font-weight: 850; line-height: 0.95;
+      margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.8s forwards 0.3s;
+    }
+    .hero h1 .stroke {
+      display: block; color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,107,53,0.55);
+    }
+    .hero-lede {
+      max-width: 520px; color: var(--mist); font-size: 1.06rem; margin-bottom: 2.6rem;
+      opacity: 0; animation: fadeUp 0.8s forwards 0.45s;
+    }
+    .hero-lede strong { color: var(--paper); font-weight: 550; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s forwards 0.6s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
 
-    /* CURSOR */
-    .cursor{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.1s;mix-blend-mode:multiply;}
-    .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(26,122,94,0.4);border-radius:50%;pointer-events:none;z-index:9998;transition:width 0.2s,height 0.2s,border-color 0.2s;}
+    /* hero radar viz */
+    .hero-viz { position: relative; aspect-ratio: 1; max-width: 520px; margin-left: auto; opacity: 0; animation: fadeIn 1.4s forwards 0.7s; }
+    .hero-viz svg { width: 100%; height: 100%; display: block; }
+    .viz-caption {
+      position: absolute; bottom: -6px; left: 0; right: 0; display: flex; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.14em; color: var(--faint); text-transform: uppercase;
+    }
 
-    /* GRID BG */
-    .grid-bg{position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+    /* ---------- STAT STRIP ---------- */
+    .stat-strip {
+      border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+      background: var(--ink-2);
+    }
+    .stat-grid { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat {
+      padding: 1.9rem var(--pad-x); border-right: 1px solid var(--line-soft);
+      position: relative; overflow: hidden;
+    }
+    .stat:last-child { border-right: 0; }
+    .stat::after {
+      content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+      background: var(--survey); transition: width 0.5s ease;
+    }
+    .stat:hover::after { width: 100%; }
+    .stat b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 2.3rem; color: var(--mint); line-height: 1.1; }
+    .stat span { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--faint); }
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 3rem;background:linear-gradient(to bottom,rgba(245,247,244,0.97),transparent);backdrop-filter:blur(2px);}
-    .nav-logo{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;}
-    .nav-coords{font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;transition:opacity 0.3s;}
-    .nav-links{display:flex;gap:2.5rem;list-style:none;}
-    .nav-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;}
-    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s;}
-    .nav-links a:hover{color:var(--accent);}
-    .nav-links a:hover::after{width:100%;}
+    /* ---------- INTRO SPLIT ---------- */
+    .intro-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem; align-items: start; }
+    .intro-grid .bio p { color: var(--mist); font-size: 1.02rem; margin-bottom: 1.4rem; }
+    .intro-grid .bio p strong { color: var(--paper); font-weight: 550; }
+    .pull-quote {
+      border-left: 2px solid var(--survey); padding: 0.4rem 0 0.4rem 1.3rem; margin: 2rem 0;
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; line-height: 1.45; color: var(--paper);
+    }
+    .pull-quote em { color: var(--survey); font-style: normal; }
+    .photo-frame { position: relative; border: 1px solid var(--line); }
+    .photo-frame img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; filter: saturate(0.85) contrast(1.02); transition: filter 0.4s; }
+    .photo-frame:hover img { filter: saturate(1); }
+    .photo-frame .cap {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 0.65rem 0.9rem;
+      background: linear-gradient(transparent, rgba(11,16,14,0.92));
+      font-family: var(--font-mono); font-size: 0.53rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--mint);
+    }
 
-    /* HERO */
-    .hero{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;padding:0 3rem;overflow:hidden;}
-    .hero-content{max-width:860px;padding-top:6rem;}
-    .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s forwards 0.2s;}
-    .hero-tag::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
-    .hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,8vw,7rem);line-height:0.92;letter-spacing:-0.02em;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s forwards 0.4s;}
-    .hero-name .outline{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(26,122,94,0.35);}
-    .hero-desc{max-width:560px;font-size:1.05rem;line-height:1.7;color:var(--muted);margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s forwards 0.6s;}
-    .hero-desc strong{color:var(--text);font-weight:400;}
-    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s forwards 0.8s;}
+    /* ---------- EXPLORE INDEX ---------- */
+    .explore-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .explore-card { display: block; text-decoration: none; color: inherit; padding: 2rem; }
+    .explore-card .num { font-family: var(--font-mono); font-size: 0.56rem; color: var(--faint); letter-spacing: 0.14em; margin-bottom: 1.2rem; display: block; }
+    .explore-card h3 { font-size: 1.45rem; font-weight: 750; margin-bottom: 0.6rem; display: flex; align-items: baseline; gap: 0.7rem; }
+    .explore-card h3 .arrow { color: var(--survey); font-family: var(--font-mono); font-size: 1rem; transition: transform 0.25s; }
+    .explore-card:hover h3 .arrow { transform: translateX(6px); }
+    .explore-card p { font-size: 0.9rem; color: var(--mist); margin-bottom: 1.1rem; }
+    .explore-card .meta { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); }
 
-    .btn-primary{display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 1.8rem;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:700;transition:all 0.25s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));}
-    .btn-primary:hover{background:var(--bg);color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent);}
-    .btn-secondary{display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 1.8rem;border:1px solid var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;}
-    .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+    /* ---------- FEATURED WORK ---------- */
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .feat-card { display: flex; flex-direction: column; }
+    .feat-card.wide { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .feat-label { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--survey); margin-bottom: 1rem; }
+    .feat-card h3 { font-size: 1.3rem; font-weight: 750; margin-bottom: 0.7rem; }
+    .feat-card.wide h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+    .feat-card p { font-size: 0.9rem; color: var(--mist); margin-bottom: 1.3rem; flex: 1; }
+    .feat-card .tags { margin-bottom: 1.3rem; }
+    .mini-map { border: 1px solid var(--line-soft); background: var(--ink); position: relative; overflow: hidden; }
+    .mini-map svg { display: block; width: 100%; height: auto; }
 
-    /* HERO VIZ */
-    .hero-viz{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:560px;height:560px;opacity:0;animation:fadeIn 1.2s forwards 1s;}
-    .hero-viz svg{width:100%;height:100%;}
+    /* ---------- NEWS ---------- */
+    .news-list { border-top: 1px solid var(--line-soft); }
+    .news-row {
+      display: grid; grid-template-columns: 130px 1fr auto; gap: 2rem; align-items: baseline;
+      padding: 1.4rem 0.4rem; border-bottom: 1px solid var(--line-soft);
+      text-decoration: none; color: inherit; transition: background 0.2s, padding-left 0.25s;
+    }
+    a.news-row:hover { background: var(--ink-2); padding-left: 1rem; }
+    .news-date { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; color: var(--survey); text-transform: uppercase; }
+    .news-txt { font-size: 0.95rem; color: var(--paper); }
+    .news-txt span { color: var(--mist); }
+    .news-cat { font-family: var(--font-mono); font-size: 0.53rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); border: 1px solid var(--line); padding: 0.25rem 0.55rem; white-space: nowrap; }
 
-    /* STATS */
-    .stats-strip{position:relative;z-index:2;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);}
-    .stat-item{padding:2rem 2.5rem;border-right:1px solid var(--border);position:relative;overflow:hidden;}
-    .stat-item:last-child{border-right:none;}
-    .stat-item::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.6s;}
-    .stat-item:hover::before{width:100%;}
-    .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:0.3rem;}
-    .stat-label{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
-
-    /* SECTIONS */
-    section{position:relative;z-index:2;}
-    .section-inner{max-width:1200px;margin:0 auto;padding:6rem 3rem;}
-    .section-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:4rem;}
-    .section-num{font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:0.15em;}
-    .section-line{flex:1;height:1px;background:var(--border);max-width:60px;}
-    .section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-0.02em;}
-
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:5rem;align-items:start;}
-    .about-text p{font-size:1.05rem;line-height:1.85;color:var(--muted);margin-bottom:1.5rem;}
-    .about-text p strong{color:var(--text);font-weight:400;}
-    .about-quote{border-left:2px solid var(--accent);padding-left:1.2rem;margin:2rem 0;font-size:1.05rem;color:var(--text);line-height:1.6;font-style:italic;}
-    .photo-wrap{position:relative;margin-bottom:1.4rem;overflow:hidden;border:1px solid var(--border);}
-    .photo-wrap img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;filter:saturate(0.9);transition:filter 0.4s;}
-    .photo-wrap:hover img{filter:saturate(1);}
-    .photo-caption{position:absolute;bottom:0;left:0;right:0;padding:0.7rem 1rem;background:linear-gradient(transparent,rgba(245,247,244,0.95));font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;}
-    .edu-list{display:flex;flex-direction:column;gap:0.9rem;}
-    .edu-item{padding:1.1rem 1.3rem;border:1px solid var(--border);background:var(--bg2);position:relative;transition:border-color 0.2s;}
-    .edu-item:hover{border-color:var(--accent);}
-    .edu-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);}
-    .edu-school{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;margin-bottom:0.2rem;}
-    .edu-degree{font-size:0.82rem;color:var(--muted);}
-    .edu-note{font-size:0.75rem;color:var(--muted);margin-top:0.1rem;}
-    .edu-year{font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--accent);letter-spacing:0.1em;margin-top:0.3rem;}
-
-    /* EXPERIENCE */
-    .exp-section{background:var(--bg2);}
-    .exp-item{display:grid;grid-template-columns:200px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid var(--border);}
-    .exp-item:last-child{border-bottom:none;}
-    .exp-period{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem;}
-    .exp-org{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--muted);}
-    .exp-role{font-family:'Syne',sans-serif;font-weight:600;font-size:1.1rem;margin-bottom:0.8rem;}
-    .exp-desc{font-size:0.92rem;line-height:1.78;color:var(--muted);}
-    .exp-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;}
-    .tag{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.65rem;border:1px solid var(--border);color:var(--muted);}
-    .tag.g{border-color:rgba(26,122,94,0.35);color:var(--accent);}
-    .tag.b{border-color:rgba(26,111,168,0.3);color:var(--accent2);}
-
-    /* WORK */
-    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
-    .work-card{background:var(--bg);padding:2rem;position:relative;overflow:hidden;transition:background 0.3s;}
-    .work-card.span2{grid-column:span 2;}
-    .work-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
-    .work-card:hover{background:var(--bg2);}
-    .work-card:hover::before{transform:scaleX(1);}
-    .work-num{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--border);margin-bottom:1rem;}
-    .work-icon{font-size:1.4rem;margin-bottom:0.7rem;display:block;}
-    .work-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.55rem;line-height:1.3;}
-    .work-desc{font-size:0.84rem;line-height:1.7;color:var(--muted);margin-bottom:1.1rem;}
-    .work-link{font-family:'Space Mono',monospace;font-size:0.57rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;}
-    .work-link::after{content:'→';transition:transform 0.2s;}
-    .work-link:hover::after{transform:translateX(4px);}
-    .work-link.off{color:var(--muted);pointer-events:none;}
-    .work-link.off::after{content:'';}
-
-    /* AWARDS */
-    .awards-section{background:var(--bg2);}
-    .award-item{display:grid;grid-template-columns:52px 1fr auto;gap:2rem;align-items:start;padding:1.8rem 0;border-bottom:1px solid var(--border);}
-    .award-item:last-child{border-bottom:none;}
-    .award-icon{font-size:1.5rem;}
-    .award-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.35rem;}
-    .award-org{font-size:0.85rem;color:var(--muted);line-height:1.6;}
-    .award-link{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);text-decoration:none;margin-top:0.35rem;display:inline-block;}
-    .award-link:hover{text-decoration:underline;}
-    .award-year{font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--accent);white-space:nowrap;padding-top:0.2rem;}
-
-    /* CONTACT */
-    .contact-section{background:var(--bg3);}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-    .contact-hl{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.2rem;}
-    .contact-hl span{color:var(--accent);}
-    .contact-sub{font-size:0.97rem;line-height:1.7;color:var(--muted);margin-bottom:2.2rem;}
-    .contact-links{display:flex;flex-direction:column;gap:0.8rem;}
-    .contact-link{display:flex;align-items:center;gap:1rem;text-decoration:none;padding:0.9rem 1.1rem;border:1px solid var(--border);background:var(--bg);transition:all 0.25s;}
-    .contact-link:hover{border-color:var(--accent);background:rgba(26,122,94,0.03);}
-    .contact-icon{width:30px;height:30px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--muted);flex-shrink:0;transition:all 0.25s;}
-    .contact-link:hover .contact-icon{border-color:var(--accent);color:var(--accent);}
-    .contact-lbl{font-family:'Space Mono',monospace;font-size:0.57rem;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
-    .contact-val{font-size:0.85rem;color:var(--text);}
-    .terminal{background:var(--bg);border:1px solid var(--border);}
-    .t-bar{background:var(--bg3);padding:0.55rem 1rem;display:flex;align-items:center;gap:0.45rem;border-bottom:1px solid var(--border);}
-    .t-dot{width:7px;height:7px;border-radius:50%;}
-    .t-dot:nth-child(1){background:#ff5f57;}.t-dot:nth-child(2){background:#ffbd2e;}.t-dot:nth-child(3){background:#28c840;}
-    .t-title{font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--muted);margin-left:0.4rem;}
-    .t-body{padding:1.4rem;font-family:'Space Mono',monospace;font-size:0.7rem;line-height:2;color:var(--muted);}
-    .t-body .k{color:var(--accent);}.t-body .v{color:var(--accent2);}.t-body .s{color:var(--accent3);}.t-body .c{color:#b0c4b8;}
-    .t-cursor{display:inline-block;width:6px;height:11px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:text-bottom;}
-
-    /* FOOTER */
-    footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;}
-    footer p{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--muted);letter-spacing:0.08em;}
-
-    /* ANIMATIONS */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-    @keyframes blink{50%{opacity:0;}}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
-    .reveal.on{opacity:1;transform:translateY(0);}
-
-    /* MOBILE */
-    @media(max-width:900px){
-      nav{padding:1.2rem 1.5rem;}.nav-coords,.nav-links{display:none;}
-      .hero{padding:0 1.5rem;}.hero-viz{display:none;}
-      .stats-strip{grid-template-columns:repeat(2,1fr);}
-      .section-inner{padding:4rem 1.5rem;}
-      .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem;}
-      .work-grid{grid-template-columns:1fr;}.work-card.span2{grid-column:span 1;}
-      .exp-item{grid-template-columns:1fr;gap:0.5rem;}
-      .award-item{grid-template-columns:40px 1fr;}.award-year{display:none;}
-      footer{padding:1.2rem 1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-viz { display: none; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .explore-grid { grid-template-columns: 1fr; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .feat-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+      .news-row { grid-template-columns: 1fr; gap: 0.35rem; }
+      .news-cat { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="cursor" id="cur"></div>
-  <div class="cursor-ring" id="cur-ring"></div>
-  <div class="grid-bg"></div>
+  <div class="graticule"></div>
+  <div class="grain"></div>
 
-  <nav>
-    <div class="nav-logo">Ismail Rashad</div>
-    <div class="nav-coords" id="coords">-6.2088° S, 106.8456° E · Jakarta</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-tag">Geospatial Analyst · Urban Intelligence · Jakarta, ID</div>
-      <h1 class="hero-name">
-        Ismail
-        <span class="outline">Rashad.</span>
-      </h1>
-      <p class="hero-desc"><strong>Where business strategy meets spatial thinking.</strong> 4+ years translating location data into decisions — mobility, urban systems, climate, and city-scale analytics across SEA and the US.</p>
-      <div class="hero-cta">
-        <a href="#work" class="btn-primary">View Work</a>
-        <a href="#contact" class="btn-secondary">Get in Touch</a>
-      </div>
+  <div class="ticker-bar">
+    <div class="ticker-track" id="ticker">
+      <span>LAT <b>-6.2088</b> LON <b>106.8456</b> · JAKARTA ID</span>
+      <span><i>●</i> GEOSPATIAL ANALYST @ GOTO GROUP</span>
+      <span>URBAN DATA SCIENTIST @ DATAKOTA</span>
+      <span>MS URBAN DATA SCIENCE · <b>NYU CUSP '25</b></span>
+      <span><i>●</i> OPEN TO CONSULTING · RESEARCH · SPEAKING</span>
+      <span>ROUTING · CLIMATE RISK · LOCATION INTELLIGENCE</span>
+      <span>LAT <b>-6.2088</b> LON <b>106.8456</b> · JAKARTA ID</span>
+      <span><i>●</i> GEOSPATIAL ANALYST @ GOTO GROUP</span>
+      <span>URBAN DATA SCIENTIST @ DATAKOTA</span>
+      <span>MS URBAN DATA SCIENCE · <b>NYU CUSP '25</b></span>
+      <span><i>●</i> OPEN TO CONSULTING · RESEARCH · SPEAKING</span>
+      <span>ROUTING · CLIMATE RISK · LOCATION INTELLIGENCE</span>
     </div>
-    <div class="hero-viz">
-      <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="280" cy="280" r="250" stroke="rgba(26,122,94,0.08)" stroke-width="1"/>
-        <circle cx="280" cy="280" r="190" stroke="rgba(26,122,94,0.10)" stroke-width="1"/>
-        <circle cx="280" cy="280" r="130" stroke="rgba(26,122,94,0.13)" stroke-width="1"/>
-        <circle cx="280" cy="280" r="70"  stroke="rgba(26,122,94,0.16)" stroke-width="1"/>
-        <circle cx="280" cy="280" r="35" stroke="#1a7a5e" stroke-width="1.5" opacity="0.4">
-          <animate attributeName="r" values="35;110;35" dur="4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.4;0;0.4" dur="4s" repeatCount="indefinite"/>
-        </circle>
-        <line x1="280" y1="30"  x2="280" y2="530" stroke="rgba(26,122,94,0.07)" stroke-width="1"/>
-        <line x1="30"  y1="280" x2="530" y2="280" stroke="rgba(26,122,94,0.07)" stroke-width="1"/>
-        <line x1="100" y1="100" x2="460" y2="460" stroke="rgba(26,122,94,0.05)" stroke-width="1"/>
-        <line x1="460" y1="100" x2="100" y2="460" stroke="rgba(26,122,94,0.05)" stroke-width="1"/>
-        <!-- nodes -->
-        <circle cx="280" cy="280" r="6"   fill="#1a7a5e" opacity="0.9"/>
-        <circle cx="280" cy="280" r="14"  fill="none" stroke="#1a7a5e" stroke-width="1" opacity="0.3"/>
-        <circle cx="370" cy="210" r="4"   fill="#1a6fa8" opacity="0.75"/>
-        <circle cx="195" cy="345" r="4"   fill="#1a6fa8" opacity="0.75"/>
-        <circle cx="335" cy="375" r="3.5" fill="#c94f1a" opacity="0.85"/>
-        <circle cx="215" cy="175" r="3.5" fill="#c94f1a" opacity="0.85"/>
-        <circle cx="415" cy="325" r="3"   fill="#1a7a5e" opacity="0.6"/>
-        <circle cx="165" cy="255" r="2.5" fill="#1a6fa8" opacity="0.5"/>
-        <circle cx="355" cy="155" r="2.5" fill="#1a7a5e" opacity="0.5"/>
-        <!-- edges -->
-        <line x1="280" y1="280" x2="370" y2="210" stroke="rgba(26,122,94,0.35)"  stroke-width="1"/>
-        <line x1="280" y1="280" x2="195" y2="345" stroke="rgba(26,111,168,0.35)" stroke-width="1"/>
-        <line x1="280" y1="280" x2="335" y2="375" stroke="rgba(201,79,26,0.30)"  stroke-width="1"/>
-        <line x1="280" y1="280" x2="215" y2="175" stroke="rgba(201,79,26,0.25)"  stroke-width="1"/>
-        <line x1="280" y1="280" x2="415" y2="325" stroke="rgba(26,122,94,0.20)"  stroke-width="1"/>
-        <line x1="280" y1="280" x2="165" y2="255" stroke="rgba(26,111,168,0.20)" stroke-width="1"/>
-        <!-- animated particles -->
-        <circle r="2" fill="#1a7a5e" opacity="0.9">
-          <animateMotion dur="3s" repeatCount="indefinite" path="M280,280 L370,210"/>
-          <animate attributeName="opacity" values="0;0.9;0" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="2" fill="#1a6fa8" opacity="0.9">
-          <animateMotion dur="4s" repeatCount="indefinite" path="M280,280 L195,345"/>
-          <animate attributeName="opacity" values="0;0.9;0" dur="4s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="1.5" fill="#c94f1a" opacity="0.9">
-          <animateMotion dur="2.5s" repeatCount="indefinite" path="M280,280 L335,375"/>
-          <animate attributeName="opacity" values="0;0.9;0" dur="2.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle r="1.5" fill="#1a7a5e" opacity="0.9">
-          <animateMotion dur="3.5s" repeatCount="indefinite" path="M280,280 L415,325"/>
-          <animate attributeName="opacity" values="0;0.9;0" dur="3.5s" repeatCount="indefinite"/>
-        </circle>
-        <!-- labels -->
-        <text x="286" y="278" font-family="monospace" font-size="7" fill="rgba(26,122,94,0.65)">JKT</text>
-        <text x="376" y="208" font-family="monospace" font-size="6" fill="rgba(26,111,168,0.65)">GOJEK</text>
-        <text x="200" y="363" font-family="monospace" font-size="6" fill="rgba(26,111,168,0.65)">DATAKOTA</text>
-        <text x="158" y="244" font-family="monospace" font-size="6" fill="rgba(201,79,26,0.65)">NYC</text>
-        <text x="360" y="153" font-family="monospace" font-size="6" fill="rgba(26,122,94,0.55)">ITB</text>
-        <path d="M155,280 A125,125 0 0 1 280,155" stroke="rgba(26,122,94,0.10)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
-        <path d="M415,280 A135,135 0 0 1 280,415" stroke="rgba(26,111,168,0.10)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats-strip reveal">
-    <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Years Geospatial Analytics</div></div>
-    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Sectors & Industries</div></div>
-    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Countries · SEA + US</div></div>
-    <div class="stat-item"><div class="stat-num">NYU</div><div class="stat-label">MS Urban Data Science · 2025</div></div>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="section-header reveal"><span class="section-num">01 /</span><div class="section-line"></div><h2 class="section-title">About</h2></div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>I'm a <strong>geospatial data analyst with 4+ years of experience</strong> across Southeast Asia and the United States, translating spatial data into decision-ready insights and tools through research, consulting, pre-sales, and analytics roles.</p>
-          <p>At <strong>GoTo Group (Gojek)</strong>, I design and analyze experiments evaluating routing and cartography improvements, building self-serve data products for engineering and product teams. At <strong>Datakota</strong>, I work as an Urban Data Scientist leading geospatial intelligence projects across Indonesia — from retail market analysis to climate vulnerability mapping.</p>
-          <blockquote class="about-quote">My edge is bridging the technical and the strategic — I speak both GIS and the boardroom, and I've done it from Jakarta to New York City.</blockquote>
-          <p>Experienced across urban science, climate, mobility, FMCG, healthcare, and real estate use cases, with a strong track record of cross-functional work aligning analysis with stakeholder needs.</p>
-        </div>
-        <div class="reveal">
-          <div class="photo-wrap">
-            <img src="photo.jpeg" alt="Ismail Rashad at NYU graduation" />
-            <div class="photo-caption">NYU Tandon Commencement · Brooklyn, NY · 2025</div>
-          </div>
-          <div class="edu-list">
-            <div class="edu-item">
-              <div class="edu-school">New York University — Tandon / CUSP</div>
-              <div class="edu-degree">MS Urban Data Science</div>
-              <div class="edu-note">Urban Spatial Analytics · Clean Energy · Disaster Risk</div>
-              <div class="edu-year">2025 · New York City, NY</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-school">Valar Institute @ Quantic</div>
-              <div class="edu-degree">MBA — Strategy & Leadership</div>
-              <div class="edu-year">Expected Sep 2026 · Remote</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-school">Bandung Institute of Technology (ITB)</div>
-              <div class="edu-degree">BS Urban Planning — GIS Analysis & Modelling</div>
-              <div class="edu-year">2019 · Bandung, West Java</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
     </div>
-  </section>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="exp-section">
-    <div class="section-inner">
-      <div class="section-header reveal"><span class="section-num">02 /</span><div class="section-line"></div><h2 class="section-title">Experience</h2></div>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
       <div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">Jan 2025 — Present</div><div class="exp-org">GoTo Group · Indonesia</div></div>
-          <div>
-            <div class="exp-role">Geospatial Analyst — L2</div>
-            <div class="exp-desc">Designed and analyzed experiments to evaluate routing and cartography improvements, conducting deep geospatial and exploratory analysis (SQL / R / Python). Built self-serve data products — dashboards and metric tables — partnering with Data Scientists, Product Engineers, and PMs to deploy and scale solutions for routing systems.</div>
-            <div class="exp-tags"><span class="tag g">Routing</span><span class="tag g">Geospatial</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">Dashboards</span></div>
-          </div>
+        <div class="hero-tag"><span class="dot"></span>Geospatial Analyst · Urban Intelligence · Jakarta</div>
+        <h1>Ismail <span class="stroke">Rashad</span></h1>
+        <p class="hero-lede"><strong>Where business strategy meets spatial thinking.</strong> I translate location data into decisions — mobility, climate, and city-scale analytics across Southeast Asia and the United States.</p>
+        <div class="hero-cta">
+          <a href="projects.html" class="btn btn-solid">Explore Projects</a>
+          <a href="services.html" class="btn btn-ghost">Work With Me</a>
         </div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">Jun 2024 — Present</div><div class="exp-org">Datakota · Indonesia</div></div>
-          <div>
-            <div class="exp-role">Urban Data Scientist</div>
-            <div class="exp-desc">Delivered spatial analytics projects across Indonesia — climate vulnerability index for 10 coastal cities, B2B market research for FNB clients (catchment analysis, competitor benchmarking, pricing validation), and computer vision pedestrian counting for NGO public space events.</div>
-            <div class="exp-tags"><span class="tag g">Consulting</span><span class="tag g">Location Intel</span><span class="tag">Market Research</span><span class="tag">Climate Risk</span><span class="tag">QGIS</span></div>
-          </div>
+      </div>
+      <div class="hero-viz">
+        <svg viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- graticule rings -->
+          <circle cx="260" cy="260" r="238" stroke="rgba(111,224,178,0.08)" stroke-width="1"/>
+          <circle cx="260" cy="260" r="180" stroke="rgba(111,224,178,0.10)" stroke-width="1"/>
+          <circle cx="260" cy="260" r="122" stroke="rgba(111,224,178,0.13)" stroke-width="1"/>
+          <circle cx="260" cy="260" r="64"  stroke="rgba(111,224,178,0.17)" stroke-width="1"/>
+          <line x1="260" y1="14" x2="260" y2="506" stroke="rgba(111,224,178,0.07)"/>
+          <line x1="14" y1="260" x2="506" y2="260" stroke="rgba(111,224,178,0.07)"/>
+          <line x1="86" y1="86" x2="434" y2="434" stroke="rgba(111,224,178,0.05)"/>
+          <line x1="434" y1="86" x2="86" y2="434" stroke="rgba(111,224,178,0.05)"/>
+          <!-- radar sweep -->
+          <g style="transform-origin:260px 260px" opacity="0.9">
+            <path d="M260,260 L260,22 A238,238 0 0 1 380,54 Z" fill="url(#sweep)">
+              <animateTransform attributeName="transform" type="rotate" from="0 260 260" to="360 260 260" dur="7s" repeatCount="indefinite"/>
+            </path>
+          </g>
+          <defs>
+            <linearGradient id="sweep" x1="260" y1="22" x2="380" y2="120" gradientUnits="userSpaceOnUse">
+              <stop stop-color="rgba(111,224,178,0.16)"/>
+              <stop offset="1" stop-color="rgba(111,224,178,0)"/>
+            </linearGradient>
+          </defs>
+          <!-- expanding ping -->
+          <circle cx="260" cy="260" r="30" stroke="#ff6b35" stroke-width="1.2" opacity="0.5">
+            <animate attributeName="r" values="30;110;30" dur="4.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;0;0.5" dur="4.5s" repeatCount="indefinite"/>
+          </circle>
+          <!-- network nodes -->
+          <circle cx="260" cy="260" r="5.5" fill="#ff6b35"/>
+          <circle cx="260" cy="260" r="13" fill="none" stroke="rgba(255,107,53,0.4)"/>
+          <circle cx="352" cy="192" r="4" fill="#6fe0b2" opacity="0.85"/>
+          <circle cx="178" cy="326" r="4" fill="#6fe0b2" opacity="0.85"/>
+          <circle cx="318" cy="356" r="3.5" fill="#6db5e8" opacity="0.85"/>
+          <circle cx="198" cy="160" r="3.5" fill="#6db5e8" opacity="0.85"/>
+          <circle cx="396" cy="304" r="3" fill="#6fe0b2" opacity="0.6"/>
+          <circle cx="148" cy="238" r="2.5" fill="#6db5e8" opacity="0.55"/>
+          <circle cx="336" cy="140" r="2.5" fill="#6fe0b2" opacity="0.55"/>
+          <!-- edges -->
+          <line x1="260" y1="260" x2="352" y2="192" stroke="rgba(111,224,178,0.35)"/>
+          <line x1="260" y1="260" x2="178" y2="326" stroke="rgba(111,224,178,0.35)"/>
+          <line x1="260" y1="260" x2="318" y2="356" stroke="rgba(109,181,232,0.3)"/>
+          <line x1="260" y1="260" x2="198" y2="160" stroke="rgba(109,181,232,0.25)"/>
+          <line x1="260" y1="260" x2="396" y2="304" stroke="rgba(111,224,178,0.2)"/>
+          <line x1="260" y1="260" x2="148" y2="238" stroke="rgba(109,181,232,0.2)"/>
+          <!-- particles -->
+          <circle r="2" fill="#6fe0b2"><animateMotion dur="3s" repeatCount="indefinite" path="M260,260 L352,192"/><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></circle>
+          <circle r="2" fill="#6db5e8"><animateMotion dur="4s" repeatCount="indefinite" path="M260,260 L178,326"/><animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/></circle>
+          <circle r="1.6" fill="#ff6b35"><animateMotion dur="2.6s" repeatCount="indefinite" path="M260,260 L318,356"/><animate attributeName="opacity" values="0;1;0" dur="2.6s" repeatCount="indefinite"/></circle>
+          <!-- labels -->
+          <text x="268" y="252" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(255,107,53,0.8)">JKT</text>
+          <text x="360" y="188" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(111,224,178,0.7)">GOJEK</text>
+          <text x="128" y="345" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(111,224,178,0.7)">DATAKOTA</text>
+          <text x="140" y="150" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(109,181,232,0.7)">NYC</text>
+          <text x="344" y="134" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(111,224,178,0.6)">ITB</text>
+        </svg>
+        <div class="viz-caption"><span>FIG. 01 — FIELD NETWORK</span><span>SCALE 1:CAREER</span></div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stat-strip">
+      <div class="stat-grid">
+        <div class="stat"><b>4+</b><span>Years in geospatial analytics</span></div>
+        <div class="stat"><b>10+</b><span>Sectors & industries served</span></div>
+        <div class="stat"><b>2</b><span>Countries · SEA + US</span></div>
+        <div class="stat"><b>NYU</b><span>MS Urban Data Science · 2025</span></div>
+      </div>
+    </div>
+
+    <!-- INTRO -->
+    <section class="section" id="about">
+      <div class="section-head reveal">
+        <span class="idx">01 /</span><h2>Field Notes</h2><div class="rule"></div>
+        <span class="side-note">WHO I AM</span>
+      </div>
+      <div class="intro-grid">
+        <div class="bio reveal">
+          <p>I'm a <strong>geospatial data analyst with 4+ years of experience</strong> across Southeast Asia and the United States, translating spatial data into decision-ready insights through research, consulting, pre-sales, and analytics roles.</p>
+          <p>At <strong>GoTo Group (Gojek)</strong> I design and analyze experiments evaluating routing and cartography improvements. At <strong>Datakota</strong> I lead geospatial intelligence projects across Indonesia — from retail market analysis to climate vulnerability mapping.</p>
+          <div class="pull-quote">My edge is bridging the technical and the strategic — I speak both <em>GIS</em> and the <em>boardroom</em>, from Jakarta to New York City.</div>
+          <p>Experienced across urban science, climate, mobility, FMCG, healthcare, and real estate use cases, with a track record of cross-functional work aligning analysis with stakeholder needs.</p>
+          <a href="about.html" class="text-link" style="margin-top:0.5rem">Full profile & CV</a>
         </div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">Jun – Dec 2025</div><div class="exp-org">Bhumi Varta Technology</div></div>
-          <div>
-            <div class="exp-role">Senior Business Analyst — Solutioning & Pre-Sales</div>
-            <div class="exp-desc">Led geospatial solutioning engagements for clients across Japan and Southeast Asia — solar site selection, FMCG, smart cities, retail, and climate resilience. Owned requirement gathering, proposals, cost estimation, and stakeholder presentations. Speaker at Regional Tech Summit 2025 (150+ attendees).</div>
-            <div class="exp-tags"><span class="tag">Pre-Sales</span><span class="tag">Solutioning</span><span class="tag">Japan + SEA</span><span class="tag g">Solar Siting</span><span class="tag">Smart Cities</span></div>
-          </div>
-        </div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">Apr – May 2025</div><div class="exp-org">NYU Marron Institute</div></div>
-          <div>
-            <div class="exp-role">GIS Research Assistant — Transportation & Land Use</div>
-            <div class="exp-desc">Constructed a GIS database of bus priority policies across 10 North American cities. Applied the Transit Priority Atlas methodology to classify dedicated lanes, queue jumps, and congestion pricing zones — supporting equity analysis and policy design guidelines.</div>
-            <div class="exp-tags"><span class="tag b">Transit Policy</span><span class="tag">Network Analysis</span><span class="tag">Equity</span><span class="tag">ArcGIS</span></div>
-          </div>
-        </div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">Sep 2024 – May 2025</div><div class="exp-org">Con Edison · NYC</div></div>
-          <div>
-            <div class="exp-role">Clean Energy Analyst — Client-Facing Capstone</div>
-            <div class="exp-desc">Analyzed clean energy adoption across 2,325 NYC census tracts; identified 353 low-adoption tracts as predominantly residential. Built Power BI dashboard integrating adoption rates, building-type cost efficiency, and demographics for program monitoring.</div>
-            <div class="exp-tags"><span class="tag g">Clean Energy</span><span class="tag">Power BI</span><span class="tag">Census</span><span class="tag">NYC</span></div>
-          </div>
-        </div>
-        <div class="exp-item reveal">
-          <div><div class="exp-period">May 2021 – Jun 2023</div><div class="exp-org">CityPlan Indonesia</div></div>
-          <div>
-            <div class="exp-role">GIS Data Analyst</div>
-            <div class="exp-desc">Standardized nationwide POI data across 10+ categories, built geospatial pipelines and dashboards. Improved same-day healthcare delivery ~20% (11,000+ service points) and accelerated market expansion by 80%, saving $10K+ in survey costs. Co-developed analytics platform — 2nd place, ActCelerate 2021.</div>
-            <div class="exp-tags"><span class="tag">GIS Pipelines</span><span class="tag">Logistics</span><span class="tag">Healthcare</span><span class="tag g">Site Selection</span></div>
+        <div class="reveal d1">
+          <div class="photo-frame">
+            <img src="photo.jpeg" alt="Ismail Rashad at NYU Tandon commencement" />
+            <div class="cap">NYU TANDON COMMENCEMENT · BROOKLYN NY · 2025</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WORK -->
-  <section id="work">
-    <div class="section-inner">
-      <div class="section-header reveal"><span class="section-num">03 /</span><div class="section-line"></div><h2 class="section-title">Selected Work</h2></div>
-      <div class="work-grid reveal">
-        <div class="work-card span2">
-          <div class="work-num">001 · Featured · NYU GIS Day Winner</div>
-          <span class="work-icon">🚑</span>
-          <div class="work-title">Life Lines: Emergency Care Access in Los Angeles</div>
-          <div class="work-desc">Network-based drive-time analysis for 90+ hospitals across LA County, identifying access gaps for 2.8M residents beyond 15-minute trauma response zones. Findings supported spatial equity recommendations for emergency healthcare infrastructure.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag g">Network Analysis</span><span class="tag">Drive-time</span><span class="tag">Healthcare</span><span class="tag">ArcGIS</span></div>
-          <a href="https://arcg.is/P95fL" target="_blank" class="work-link">View Project Report</a>
+    <!-- EXPLORE -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">02 /</span><h2>Atlas Index</h2><div class="rule"></div>
+        <span class="side-note">NAVIGATE THE SITE</span>
+      </div>
+      <div class="explore-grid">
+        <a href="projects.html" class="xcard explore-card reveal"><span class="xtick"></span>
+          <span class="num">SHEET A — 8 ENTRIES</span>
+          <h3>Projects <span class="arrow">→</span></h3>
+          <p>Network analysis, climate risk indices, solar siting, mobility optimization — case studies from LA County to coastal Indonesia.</p>
+          <span class="meta">CLIMATE · MOBILITY · ENERGY · MARKETS</span>
+        </a>
+        <a href="services.html" class="xcard explore-card reveal d1"><span class="xtick"></span>
+          <span class="num">SHEET B — CONSULTING</span>
+          <h3>Services <span class="arrow">→</span></h3>
+          <p>Location intelligence, market research, climate risk assessment, and spatial data products for organizations across SEA and beyond.</p>
+          <span class="meta">AVAILABLE FOR ENGAGEMENTS</span>
+        </a>
+        <a href="publications.html" class="xcard explore-card reveal d2"><span class="xtick"></span>
+          <span class="num">SHEET C — REPORTS & WRITING</span>
+          <h3>Publications <span class="arrow">→</span></h3>
+          <p>StoryMaps, technical reports, and applied research outputs on emergency access, renewable siting, and urban systems.</p>
+          <span class="meta">STORYMAPS · REPORTS · RESEARCH</span>
+        </a>
+        <a href="talks.html" class="xcard explore-card reveal d3"><span class="xtick"></span>
+          <span class="num">SHEET D — SPEAKING & MEDIA</span>
+          <h3>Talks <span class="arrow">→</span></h3>
+          <p>Conference panels, competition presentations, and media coverage — from Regional Tech Summit to NYU GIS Day.</p>
+          <span class="meta">KEYNOTES · PANELS · COVERAGE</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURED WORK -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">03 /</span><h2>Featured Surveys</h2><div class="rule"></div>
+        <a href="projects.html" class="text-link">All projects</a>
+      </div>
+      <div class="feat-grid">
+        <div class="xcard feat-card wide reveal"><span class="xtick"></span>
+          <div>
+            <div class="feat-label">◆ Featured · NYU GIS Day Winner 2024</div>
+            <h3>Life Lines — Emergency Care Access in Los Angeles</h3>
+            <p>Network-based drive-time analysis for 90+ hospitals across LA County, identifying access gaps for 2.8M residents beyond 15-minute trauma response zones. Findings supported spatial equity recommendations for emergency healthcare infrastructure.</p>
+            <div class="tags"><span class="tag hot">Network Analysis</span><span class="tag">Drive-time</span><span class="tag">Healthcare</span><span class="tag">ArcGIS</span></div>
+            <br>
+            <a href="https://arcg.is/P95fL" target="_blank" rel="noopener" class="text-link ext">View project report</a>
+          </div>
+          <div class="mini-map">
+            <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="420" height="300" fill="#0b100e"/>
+              <g stroke="rgba(111,224,178,0.06)"><line x1="0" y1="60" x2="420" y2="60"/><line x1="0" y1="120" x2="420" y2="120"/><line x1="0" y1="180" x2="420" y2="180"/><line x1="0" y1="240" x2="420" y2="240"/><line x1="70" y1="0" x2="70" y2="300"/><line x1="140" y1="0" x2="140" y2="300"/><line x1="210" y1="0" x2="210" y2="300"/><line x1="280" y1="0" x2="280" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g>
+              <!-- isochrone blobs -->
+              <path d="M120,150 C120,110 170,90 210,100 C260,112 290,140 280,180 C270,220 210,235 165,220 C130,208 120,185 120,150 Z" fill="rgba(255,107,53,0.10)" stroke="rgba(255,107,53,0.5)" stroke-width="1"/>
+              <path d="M140,152 C140,124 178,108 210,116 C248,125 268,146 260,176 C252,206 208,216 175,204 C150,195 140,176 140,152 Z" fill="rgba(255,107,53,0.14)" stroke="rgba(255,107,53,0.65)" stroke-width="1"/>
+              <path d="M165,153 C165,136 188,126 210,131 C234,137 246,150 241,169 C236,188 208,194 187,186 C171,180 165,167 165,153 Z" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="1.2"/>
+              <circle cx="205" cy="158" r="4" fill="#ff6b35"/>
+              <circle cx="205" cy="158" r="9" fill="none" stroke="rgba(255,107,53,0.5)"><animate attributeName="r" values="9;20;9" dur="3.4s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3.4s" repeatCount="indefinite"/></circle>
+              <!-- roads -->
+              <g stroke="rgba(232,237,233,0.16)" stroke-width="1"><path d="M0,90 C90,80 180,110 260,95 C330,82 380,95 420,88"/><path d="M0,210 C80,225 200,200 300,218 C360,228 400,220 420,224"/><path d="M95,0 C105,80 90,180 108,300"/><path d="M330,0 C318,90 340,210 326,300"/></g>
+              <!-- hospitals -->
+              <g fill="#6fe0b2"><rect x="88" y="86" width="5" height="5"/><rect x="256" y="92" width="5" height="5"/><rect x="322" y="212" width="5" height="5"/><rect x="150" y="248" width="5" height="5"/><rect x="300" y="40" width="5" height="5"/></g>
+              <text x="14" y="26" font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(111,224,178,0.6)" letter-spacing="2">DRIVE-TIME ISOCHRONES · LA COUNTY</text>
+              <text x="14" y="284" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(92,107,99,0.9)">■ HOSPITAL   ◉ TRAUMA CENTER   — 5/10/15 MIN</text>
+            </svg>
+          </div>
         </div>
-        <div class="work-card">
-          <div class="work-num">002</div>
-          <span class="work-icon">🏙️</span>
-          <div class="work-title">LokaCheck — Climate Risk Web App</div>
-          <div class="work-desc">Interactive web app for real-estate developers to navigate disaster and climate risk across Indonesia — flood, earthquake, landslide, and volcano risk layers with land price overlays.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag g">Datakota</span><span class="tag">Web App</span><span class="tag">Climate Risk</span></div>
-          <a href="https://lokacheck.lovable.app" target="_blank" class="work-link">Live App</a>
+
+        <div class="xcard feat-card reveal"><span class="xtick"></span>
+          <div class="feat-label">Datakota · Live App</div>
+          <h3>LokaCheck — Climate Risk Web App</h3>
+          <p>Interactive tool for real-estate developers navigating disaster and climate risk across Indonesia — flood, earthquake, landslide, and volcano layers with land price overlays.</p>
+          <div class="tags"><span class="tag cool">Web App</span><span class="tag">Climate Risk</span><span class="tag">Real Estate</span></div>
+          <br>
+          <a href="https://lokacheck.lovable.app" target="_blank" rel="noopener" class="text-link ext">Live app</a>
         </div>
-        <div class="work-card">
-          <div class="work-num">003</div>
-          <span class="work-icon">☀️</span>
-          <div class="work-title">Renewable Energy Siting in Maine</div>
-          <div class="work-desc">Spatial suitability analysis to identify optimal solar PV sites along Maine's I-95 corridor, assessing slope, aspect, and solar radiation to support Maine's 80% renewable energy target by 2030.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag g">Solar Siting</span><span class="tag">Suitability</span><span class="tag">GIS</span></div>
-          <a href="https://arcg.is/1bGyPG0" target="_blank" class="work-link">View Report</a>
+
+        <div class="xcard feat-card reveal d1"><span class="xtick"></span>
+          <div class="feat-label">Renewable Energy</div>
+          <h3>Solar PV Siting — Maine, USA</h3>
+          <p>Spatial suitability analysis identifying optimal solar sites along the I-95 corridor — slope, aspect, and solar radiation modeling supporting Maine's 80% renewable target by 2030.</p>
+          <div class="tags"><span class="tag cool">Suitability</span><span class="tag">Solar</span><span class="tag">GIS</span></div>
+          <br>
+          <a href="https://arcg.is/1bGyPG0" target="_blank" rel="noopener" class="text-link ext">View report</a>
         </div>
-        <div class="work-card">
-          <div class="work-num">004</div>
-          <span class="work-icon">🌡️</span>
-          <div class="work-title">Urban Heat Risk in Chicago</div>
-          <div class="work-desc">Spatial relationships between built environment features and extreme heat vulnerability. Proposed green infrastructure and zoning strategies for high-risk neighborhoods.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Urban Heat</span><span class="tag">Spatial Regression</span><span class="tag">Policy</span></div>
-          <a href="#" class="work-link off">In Progress</a>
-        </div>
-        <div class="work-card">
-          <div class="work-num">005</div>
-          <span class="work-icon">🚌</span>
-          <div class="work-title">Mobility & Air Quality — NYC</div>
-          <div class="work-desc">Multimodal routing model optimizing travel time and PM2.5 emissions. Identified zones where reduced commute times (up to 30%) aligned with improved air quality and equitable access.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Routing</span><span class="tag">Air Quality</span><span class="tag">Python</span></div>
-          <a href="#" class="work-link off">In Progress</a>
-        </div>
-        <div class="work-card">
-          <div class="work-num">006</div>
-          <span class="work-icon">⚡</span>
-          <div class="work-title">NYC Clean Energy Adoption — Con Edison</div>
-          <div class="work-desc">Adoption analysis across 2,325 census tracts; 353 low-adoption tracts identified. Power BI dashboard integrating adoption, cost efficiency by building type, and demographic overlays.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag g">Clean Energy</span><span class="tag">Power BI</span><span class="tag">NYC</span></div>
-          <a href="#" class="work-link off">Client Project</a>
-        </div>
-        <div class="work-card">
-          <div class="work-num">007</div>
-          <span class="work-icon">🌊</span>
-          <div class="work-title">Climate Vulnerability Index — 10 Coastal Cities</div>
-          <div class="work-desc">Composite index for 10 Indonesian coastal cities using a hazards–exposure–adaptive capacity framework. Delivered for NGO and civic society clients via Datakota.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag">Climate Risk</span><span class="tag g">Vulnerability</span><span class="tag">Indonesia</span></div>
-          <a href="#" class="work-link off">Client Project</a>
-        </div>
-        <div class="work-card">
-          <div class="work-num">008</div>
-          <span class="work-icon">🍽️</span>
-          <div class="work-title">B2B Market Analysis — Restaurant Customer Profiling</div>
-          <div class="work-desc">Catchment zone estimation, demographic customer profiling, competitor spatial benchmarking, and quantitative menu pricing validation for an Indonesian restaurant client.</div>
-          <div class="exp-tags" style="margin-bottom:1rem;"><span class="tag g">Datakota</span><span class="tag">Market Research</span><span class="tag">FNB</span></div>
-          <a href="#" class="work-link off">Client Project</a>
+
+        <div class="xcard feat-card reveal d2"><span class="xtick"></span>
+          <div class="feat-label">Climate Resilience</div>
+          <h3>Climate Vulnerability Index — 10 Coastal Cities</h3>
+          <p>Composite hazards–exposure–adaptive-capacity index for 10 Indonesian coastal cities, delivered for NGO and civil society clients via Datakota.</p>
+          <div class="tags"><span class="tag hydro">Climate Risk</span><span class="tag">Vulnerability</span><span class="tag">Indonesia</span></div>
+          <br>
+          <a href="projects.html" class="text-link">Case study</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- AWARDS -->
-  <section id="awards" class="awards-section">
-    <div class="section-inner">
-      <div class="section-header reveal"><span class="section-num">04 /</span><div class="section-line"></div><h2 class="section-title">Awards & Leadership</h2></div>
+    <!-- NEWS -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">04 /</span><h2>Signal Log</h2><div class="rule"></div>
+        <span class="side-note">RECENT NEWS</span>
+      </div>
+      <div class="news-list reveal">
+        <a class="news-row" href="https://www.youtube.com/watch?v=IjTO3rHgfrs&t=1560s" target="_blank" rel="noopener">
+          <span class="news-date">2025 · Q3</span>
+          <span class="news-txt">Panelist at <span>Regional Tech Summit 2025</span> — enterprise geospatial intelligence, alongside directors from XL Smart Analytics and Jaklingo</span>
+          <span class="news-cat">Talk</span>
+        </a>
+        <a class="news-row" href="https://engineering.nyu.edu/life-tandon/student-life/commencement/2025/awards#chapter-id-70611" target="_blank" rel="noopener">
+          <span class="news-date">2025 · May</span>
+          <span class="news-txt">Received <span>NYU Tandon Scholastic & Community Leadership Awards</span> — highest GPA and outstanding community leadership</span>
+          <span class="news-cat">Award</span>
+        </a>
+        <div class="news-row">
+          <span class="news-date">2025 · Jan</span>
+          <span class="news-txt">Joined <span>GoTo Group (Gojek)</span> as Geospatial Analyst — routing & cartography experimentation</span>
+          <span class="news-cat">Role</span>
+        </div>
+        <a class="news-row" href="https://www.instagram.com/p/DDKSDlGxtjc/" target="_blank" rel="noopener">
+          <span class="news-date">2024 · Nov</span>
+          <span class="news-txt">Won the <span>NYU GIS Day Competition</span> with Life Lines — emergency healthcare access analysis for Los Angeles</span>
+          <span class="news-cat">Award</span>
+        </a>
+        <div class="news-row">
+          <span class="news-date">2024 · Jun</span>
+          <span class="news-txt">Started as <span>Urban Data Scientist at Datakota</span> — spatial analytics consulting across Indonesia</span>
+          <span class="news-cat">Role</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band" id="contact">
+    <div class="section">
       <div class="reveal">
-        <div class="award-item">
-          <div class="award-icon">🏆</div>
-          <div>
-            <div class="award-title">NYU Tandon Scholastic & Community Leadership Awards</div>
-            <div class="award-org">Recognized for graduating with the highest GPA and for outstanding leadership in building an inclusive, collaborative student community.</div>
-            <a href="https://engineering.nyu.edu/life-tandon/student-life/commencement/2025/awards#chapter-id-70611" target="_blank" class="award-link">Official Listing ↗</a>
-          </div>
-          <div class="award-year">2025</div>
-        </div>
-        <div class="award-item">
-          <div class="award-icon">🗺</div>
-          <div>
-            <div class="award-title">Winner — NYU GIS Day Competition</div>
-            <div class="award-org">Analyzed emergency healthcare access in LA, identifying gaps affecting 40% of residents. Recognized for impactful geospatial storytelling.</div>
-            <a href="https://www.instagram.com/p/DDKSDlGxtjc/" target="_blank" class="award-link">Media Coverage ↗</a>
-          </div>
-          <div class="award-year">2024</div>
-        </div>
-        <div class="award-item">
-          <div class="award-icon">🎓</div>
-          <div>
-            <div class="award-title">President — NYU Urban Science Association</div>
-            <div class="award-org">Led executive board, organized events for 100+ students, increased participation by 30%, secured additional funding through multi-department coordination.</div>
-            <a href="https://engage.nyu.edu/organization/applied-urban-science-association" target="_blank" class="award-link">Official Webpage ↗</a>
-          </div>
-          <div class="award-year">2024–25</div>
-        </div>
-        <div class="award-item">
-          <div class="award-icon">🎤</div>
-          <div>
-            <div class="award-title">Speaker — Regional Tech Summit 2025</div>
-            <div class="award-org">Represented Bhumi Varta Technology before 150+ industry stakeholders. Panelist alongside Directors from XL Smart Analytics and Jaklingo on enterprise geospatial intelligence.</div>
-            <a href="https://www.youtube.com/watch?v=IjTO3rHgfrs&t=1560s" target="_blank" class="award-link">Watch Recording ↗</a>
-          </div>
-          <div class="award-year">2025</div>
-        </div>
-        <div class="award-item">
-          <div class="award-icon">🥈</div>
-          <div>
-            <div class="award-title">2nd Place — ActCelerate 2021 Startup Accelerator</div>
-            <div class="award-org">Selected from 170+ startups for co-developing CityPlan's geospatial analytics platform. Recognized by judges from MCash, SiCepat, and AC Ventures.</div>
-            <a href="https://news.dailysocial.id/post/algobash-menjadi-pemenang-actcelerate-2021/" target="_blank" class="award-link">Media Coverage ↗</a>
-          </div>
-          <div class="award-year">2021</div>
-        </div>
-        <div class="award-item">
-          <div class="award-icon">💡</div>
-          <div>
-            <div class="award-title">Top 10 Finalist — PLN Innovation Challenge</div>
-            <div class="award-org">Proposed transforming idle PLN assets into a co-working café, projecting >$13,000 in revenue.</div>
-            <a href="https://www.linkedin.com/posts/cityplanindonesia_cityplan-pln-startup-activity-7043492118874488833-aIBo" target="_blank" class="award-link">Media Coverage ↗</a>
-          </div>
-          <div class="award-year">2022</div>
-        </div>
+        <span class="mono" style="color:var(--survey)">05 / TRANSMIT</span>
+        <h2 style="margin-top:1rem">Let's build something <span>spatial.</span></h2>
+        <p>Open to consulting engagements, research collaborations, and conversations about urban analytics, location intelligence, and spatial strategy — across Southeast Asia and beyond.</p>
+        <a href="mailto:irsrashad3@gmail.com" class="btn btn-solid">Send a message</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://linkedin.com/in/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">in</span>
+          <span><span class="lbl">LinkedIn</span><br><span class="val">linkedin.com/in/irsrashad</span></span>
+        </a>
+        <a class="contact-row" href="https://github.com/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">gh</span>
+          <span><span class="lbl">GitHub</span><br><span class="val">github.com/irsrashad</span></span>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <div class="section-inner">
-      <div class="section-header reveal"><span class="section-num">05 /</span><div class="section-line"></div><h2 class="section-title">Contact</h2></div>
-      <div class="contact-grid">
-        <div class="reveal">
-          <h3 class="contact-hl">Let's build something <span>spatial.</span></h3>
-          <p class="contact-sub">Open to consulting engagements, research collaborations, and conversations about urban analytics, location intelligence, and spatial strategy across Southeast Asia and beyond.</p>
-          <a href="mailto:irsrashad3@gmail.com" class="btn-primary">Send a Message</a>
-        </div>
-        <div class="reveal">
-          <div class="terminal">
-            <div class="t-bar"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div><span class="t-title">ismail_profile.json</span></div>
-            <div class="t-body">
-              <span class="c">// contact</span><br>
-              {<br>
-              &nbsp;&nbsp;<span class="k">"name"</span>: <span class="s">"Ismail Rashad"</span>,<br>
-              &nbsp;&nbsp;<span class="k">"role"</span>: <span class="s">"Geospatial Analyst"</span>,<br>
-              &nbsp;&nbsp;<span class="k">"orgs"</span>: <span class="s">"GoTo Group · Datakota"</span>,<br>
-              &nbsp;&nbsp;<span class="k">"email"</span>: <span class="v">"irsrashad3@gmail.com"</span>,<br>
-              &nbsp;&nbsp;<span class="k">"linkedin"</span>: <span class="v">"linkedin.com/in/irsrashad"</span>,<br>
-              &nbsp;&nbsp;<span class="k">"open_to"</span>: [<span class="s">"consulting"</span>, <span class="s">"research"</span>, <span class="s">"speaking"</span>]<br>
-              }<br><span class="t-cursor"></span>
-            </div>
-          </div>
-          <div class="contact-links" style="margin-top:1.2rem;">
-            <a href="https://linkedin.com/in/irsrashad" class="contact-link" target="_blank">
-              <div class="contact-icon">in</div>
-              <div><div class="contact-lbl">LinkedIn</div><div class="contact-val">linkedin.com/in/irsrashad</div></div>
-            </a>
-            <a href="https://github.com/irsrashad" class="contact-link" target="_blank">
-              <div class="contact-icon">gh</div>
-              <div><div class="contact-lbl">GitHub</div><div class="contact-val">github.com/irsrashad</div></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Ismail Rashad · Geospatial Analyst · Jakarta, Indonesia</p>
-    <p>Built with intention · <span style="color:var(--accent)">irsrashad.github.io</span></p>
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
   </footer>
 
-  <script>
-    // CURSOR
-    const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px';});
-    (function animRing(){rx+=(mx-rx-16)*0.12;ry+=(my-ry-16)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
-    document.querySelectorAll('a,button').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';ring.style.width='44px';ring.style.height='44px';ring.style.borderColor='rgba(26,122,94,0.7)';});
-      el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';ring.style.width='32px';ring.style.height='32px';ring.style.borderColor='rgba(26,122,94,0.4)';});
-    });
-    // COORDS
-    const coordEl=document.getElementById('coords');
-    const cities=['-6.2088° S, 106.8456° E · Jakarta','40.6943° N, 73.9249° W · Brooklyn, NY','-6.9175° S, 107.6191° E · Bandung','40.7128° N, 74.0060° W · New York City'];
-    let ci=0; coordEl.style.transition='opacity 0.3s';
-    setInterval(()=>{ci=(ci+1)%cities.length;coordEl.style.opacity='0';setTimeout(()=>{coordEl.textContent=cities[ci];coordEl.style.opacity='1';},300);},3500);
-    // REVEAL
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.1});
-    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talks & Media — Ismail Rashad</title>
+  <meta name="description" content="Talks, panels, and media coverage — Ismail Rashad on geospatial intelligence, urban analytics, and location strategy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .talk-feature { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; padding: 2.4rem; margin-bottom: 2.5rem; }
+    .talk-feature h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 780; margin-bottom: 0.8rem; }
+    .talk-feature .venue { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--survey); margin-bottom: 1.1rem; display: block; }
+    .talk-feature p { font-size: 0.95rem; color: var(--mist); margin-bottom: 1.5rem; }
+    .yt-embed { position: relative; border: 1px solid var(--line); aspect-ratio: 16/9; background: var(--ink); }
+    .yt-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    .talk-row {
+      display: grid; grid-template-columns: 110px 1fr auto; gap: 2rem; align-items: start;
+      padding: 1.8rem 0.4rem; border-bottom: 1px solid var(--line-soft);
+      transition: background 0.2s, padding-left 0.25s;
+    }
+    .talk-row:hover { background: var(--ink-2); padding-left: 1rem; }
+    .talk-yr { font-family: var(--font-mono); font-size: 0.62rem; color: var(--survey); letter-spacing: 0.12em; padding-top: 0.25rem; }
+    .talk-row h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .talk-row .where { font-size: 0.85rem; color: var(--mist); font-style: italic; margin-bottom: 0.45rem; }
+    .talk-row p { font-size: 0.88rem; color: var(--mist); margin-bottom: 0.55rem; }
+    .talk-kind { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); border: 1px solid var(--line); padding: 0.28rem 0.6rem; white-space: nowrap; }
+
+    .topics-box { border: 1px solid var(--line-soft); background: var(--ink-2); padding: 2.2rem; }
+    .topics-box h3 { font-size: 1.25rem; font-weight: 750; margin-bottom: 1rem; }
+    .topics-box ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 2rem; }
+    .topics-box li { font-size: 0.9rem; color: var(--mist); padding-left: 1.3rem; position: relative; }
+    .topics-box li::before { content: '▸'; position: absolute; left: 0; color: var(--survey); }
+    @media (max-width: 920px) {
+      .talk-feature { grid-template-columns: 1fr; }
+      .talk-row { grid-template-columns: 1fr; gap: 0.4rem; }
+      .talk-kind { display: none; }
+      .topics-box ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="graticule"></div>
+  <div class="grain"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html" class="active">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html" class="active">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="kicker">Sheet D — Transmissions</span>
+      <h1>Talks <span class="dim">/ Media</span></h1>
+      <p class="lede">Panels, presentations, and coverage — on <strong>enterprise geospatial intelligence, urban analytics, and spatial strategy</strong> across Southeast Asia and the US.</p>
+    </div>
+
+    <section class="section" style="padding-top:0.5rem">
+      <!-- FEATURED TALK -->
+      <div class="xcard talk-feature reveal"><span class="xtick"></span>
+        <div>
+          <span class="venue">◆ Featured · Panel · Jakarta · 150+ Attendees</span>
+          <h3>Enterprise Geospatial Intelligence — Regional Tech Summit 2025</h3>
+          <p>Panelist alongside directors from XL Smart Analytics and Jaklingo, representing Bhumi Varta Technology. On how enterprises across Japan and Southeast Asia operationalize location intelligence — from solar siting to retail expansion — and what separates a map from a decision.</p>
+          <a class="btn btn-solid" href="https://www.youtube.com/watch?v=IjTO3rHgfrs&t=1560s" target="_blank" rel="noopener">Watch the recording</a>
+        </div>
+        <div class="yt-embed">
+          <iframe src="https://www.youtube.com/embed/IjTO3rHgfrs?start=1560" title="Regional Tech Summit 2025 panel" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- TALK LIST -->
+      <div class="reveal">
+        <div class="talk-row">
+          <span class="talk-yr">2025</span>
+          <div>
+            <h3>Enterprise Geospatial Intelligence Panel</h3>
+            <div class="where">Regional Tech Summit 2025 · Jakarta, Indonesia</div>
+            <p>Panel with XL Smart Analytics and Jaklingo directors on scaling location intelligence in enterprise settings.</p>
+            <a class="text-link ext" href="https://www.youtube.com/watch?v=IjTO3rHgfrs&t=1560s" target="_blank" rel="noopener">Recording</a>
+          </div>
+          <span class="talk-kind">Panel</span>
+        </div>
+        <div class="talk-row">
+          <span class="talk-yr">2024</span>
+          <div>
+            <h3>Life Lines — Emergency Healthcare Access in Los Angeles</h3>
+            <div class="where">NYU GIS Day · New York City · Competition Winner</div>
+            <p>Winning presentation on network-based emergency access analysis, recognized for impactful geospatial storytelling.</p>
+            <a class="text-link ext" href="https://www.instagram.com/p/DDKSDlGxtjc/" target="_blank" rel="noopener">Coverage</a>
+          </div>
+          <span class="talk-kind">Competition</span>
+        </div>
+        <div class="talk-row">
+          <span class="talk-yr">2024–25</span>
+          <div>
+            <h3>Urban Science Community Events</h3>
+            <div class="where">NYU Urban Science Association · President</div>
+            <p>Organized and hosted events for 100+ students — speaker sessions, workshops, and cross-department collaborations.</p>
+            <a class="text-link ext" href="https://engage.nyu.edu/organization/applied-urban-science-association" target="_blank" rel="noopener">Association page</a>
+          </div>
+          <span class="talk-kind">Organizer</span>
+        </div>
+        <div class="talk-row">
+          <span class="talk-yr">2021</span>
+          <div>
+            <h3>CityPlan Geospatial Analytics Platform Pitch</h3>
+            <div class="where">ActCelerate Startup Accelerator · 2nd Place of 170+ startups</div>
+            <p>Pitched a co-developed geospatial analytics platform to judges from MCash, SiCepat, and AC Ventures.</p>
+            <a class="text-link ext" href="https://news.dailysocial.id/post/algobash-menjadi-pemenang-actcelerate-2021/" target="_blank" rel="noopener">Coverage</a>
+          </div>
+          <span class="talk-kind">Pitch</span>
+        </div>
+      </div>
+
+      <!-- SPEAKING TOPICS -->
+      <div class="topics-box reveal" style="margin-top:3rem">
+        <span class="mono" style="color:var(--survey)">// INVITE ME TO SPEAK ON</span>
+        <h3 style="margin-top:0.8rem">Topics I love talking about</h3>
+        <ul>
+          <li>Location intelligence as business strategy</li>
+          <li>Climate risk & urban vulnerability mapping</li>
+          <li>Routing experiments at platform scale</li>
+          <li>Geospatial storytelling that wins rooms</li>
+          <li>Careers bridging GIS and business</li>
+          <li>Urban data science in Southeast Asia</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band">
+    <div class="section">
+      <div class="reveal">
+        <span class="mono" style="color:var(--survey)">TRANSMIT</span>
+        <h2 style="margin-top:1rem">Need a speaker on <span>spatial thinking?</span></h2>
+        <p>Available for conferences, panels, guest lectures, and podcasts — in English or Bahasa Indonesia.</p>
+        <a href="mailto:irsrashad3@gmail.com?subject=Speaking%20Invitation" class="btn btn-solid">Invite me</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://linkedin.com/in/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">in</span>
+          <span><span class="lbl">LinkedIn</span><br><span class="val">linkedin.com/in/irsrashad</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

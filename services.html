@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Ismail Rashad</title>
+  <meta name="description" content="Geospatial consulting services by Ismail Rashad — location intelligence, market research, climate risk assessment, spatial data products, and training." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .svc-card { padding: 2.2rem; }
+    .svc-num { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.15em; color: var(--survey); display: block; margin-bottom: 1.4rem; }
+    .svc-card h3 { font-size: 1.4rem; font-weight: 750; margin-bottom: 0.8rem; }
+    .svc-card > p { font-size: 0.93rem; color: var(--mist); margin-bottom: 1.4rem; }
+    .svc-list { list-style: none; margin-bottom: 1.5rem; }
+    .svc-list li { font-size: 0.87rem; color: var(--mist); padding: 0.45rem 0 0.45rem 1.4rem; position: relative; border-bottom: 1px dashed var(--line-soft); }
+    .svc-list li:last-child { border-bottom: 0; }
+    .svc-list li::before { content: '+'; position: absolute; left: 0.2rem; color: var(--mint); font-family: var(--font-mono); }
+    .svc-list li b { color: var(--paper); font-weight: 550; }
+
+    /* process strip */
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .step { background: var(--ink-2); padding: 1.8rem 1.5rem; position: relative; }
+    .step .n { font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: transparent; -webkit-text-stroke: 1px var(--survey); display: block; margin-bottom: 0.9rem; }
+    .step h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
+    .step p { font-size: 0.82rem; color: var(--mist); }
+
+    /* sectors marquee-ish row */
+    .sector-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .sector-chip {
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid var(--line); color: var(--mist); padding: 0.65rem 1.2rem;
+      transition: all 0.2s;
+    }
+    .sector-chip:hover { border-color: var(--survey); color: var(--survey); transform: translateY(-2px); }
+    @media (max-width: 920px) {
+      .svc-grid { grid-template-columns: 1fr; }
+      .process { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="graticule"></div>
+  <div class="grain"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="kicker">Sheet B — Field Operations</span>
+      <h1>Services <span class="dim">/ Consulting</span></h1>
+      <p class="lede">I help organizations answer <strong>"where" questions with confidence</strong> — combining spatial data science with business strategy, delivered from scoping call to boardroom presentation.</p>
+    </div>
+
+    <section class="section" style="padding-top:0.5rem">
+      <div class="svc-grid">
+        <div class="xcard svc-card reveal"><span class="xtick"></span>
+          <span class="svc-num">SVC 01 — LOCATION INTELLIGENCE</span>
+          <h3>Location Intelligence & Market Research</h3>
+          <p>Spatially-grounded answers to expansion, siting, and competition questions — built on demographic, mobility, and POI data.</p>
+          <ul class="svc-list">
+            <li><b>Site selection & suitability</b> — retail, F&B, facilities, renewable energy</li>
+            <li><b>Catchment & trade area analysis</b> — who your customers are and where they come from</li>
+            <li><b>Competitor benchmarking</b> — spatial positioning and white-space mapping</li>
+            <li><b>Pricing & demand validation</b> — quantitative checks grounded in local context</li>
+          </ul>
+          <a href="mailto:irsrashad3@gmail.com?subject=Location%20Intelligence%20Engagement" class="text-link">Discuss a project</a>
+        </div>
+
+        <div class="xcard svc-card reveal d1"><span class="xtick"></span>
+          <span class="svc-num">SVC 02 — CLIMATE & RISK</span>
+          <h3>Climate Risk & Vulnerability Assessment</h3>
+          <p>Defensible risk frameworks for portfolios, cities, and communities — from single-asset screening to multi-city composite indices.</p>
+          <ul class="svc-list">
+            <li><b>Multi-hazard risk mapping</b> — flood, earthquake, landslide, volcanic, heat</li>
+            <li><b>Vulnerability indices</b> — hazards–exposure–adaptive-capacity frameworks</li>
+            <li><b>Real estate risk screening</b> — climate due diligence with price overlays</li>
+            <li><b>Adaptation prioritization</b> — where to invest first, and why</li>
+          </ul>
+          <a href="mailto:irsrashad3@gmail.com?subject=Climate%20Risk%20Engagement" class="text-link">Discuss a project</a>
+        </div>
+
+        <div class="xcard svc-card reveal d2"><span class="xtick"></span>
+          <span class="svc-num">SVC 03 — MOBILITY & ACCESS</span>
+          <h3>Mobility, Routing & Accessibility Analytics</h3>
+          <p>Network-science methods for transport, logistics, and service delivery — the same toolkit I apply to routing systems at platform scale.</p>
+          <ul class="svc-list">
+            <li><b>Accessibility & isochrone analysis</b> — service coverage and equity gaps</li>
+            <li><b>Network optimization</b> — delivery zones, fleet coverage, hub placement</li>
+            <li><b>Transit & policy analysis</b> — priority infrastructure, congestion, equity</li>
+            <li><b>Experiment design</b> — A/B evaluation of routing and mapping changes</li>
+          </ul>
+          <a href="mailto:irsrashad3@gmail.com?subject=Mobility%20Analytics%20Engagement" class="text-link">Discuss a project</a>
+        </div>
+
+        <div class="xcard svc-card reveal d3"><span class="xtick"></span>
+          <span class="svc-num">SVC 04 — DATA PRODUCTS</span>
+          <h3>Spatial Data Products & Dashboards</h3>
+          <p>Self-serve tools your team actually uses — from executive dashboards to interactive risk explorers like LokaCheck.</p>
+          <ul class="svc-list">
+            <li><b>Interactive web maps & apps</b> — decision tools, not just pretty maps</li>
+            <li><b>Dashboards</b> — Power BI and web-based monitoring with spatial layers</li>
+            <li><b>Geospatial pipelines</b> — POI standardization, data QA, automation</li>
+            <li><b>Training & workshops</b> — GIS capability building for your analysts</li>
+          </ul>
+          <a href="mailto:irsrashad3@gmail.com?subject=Data%20Product%20Engagement" class="text-link">Discuss a project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">01 /</span><h2>Survey Method</h2><div class="rule"></div>
+        <span class="side-note">HOW ENGAGEMENTS RUN</span>
+      </div>
+      <div class="process reveal">
+        <div class="step"><span class="n">01</span><h4>Scope</h4><p>Free discovery call. We define the "where" question, data availability, and what a decision-ready answer looks like.</p></div>
+        <div class="step"><span class="n">02</span><h4>Survey</h4><p>Data acquisition, QA, and exploratory spatial analysis. You get early signal, not a black box.</p></div>
+        <div class="step"><span class="n">03</span><h4>Analyze</h4><p>Models, indices, and scenarios — validated against ground truth and stress-tested with your team.</p></div>
+        <div class="step"><span class="n">04</span><h4>Deliver</h4><p>Boardroom-ready narrative plus reproducible outputs: maps, dashboards, code, and documentation.</p></div>
+      </div>
+    </section>
+
+    <!-- SECTORS -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">02 /</span><h2>Terrain Covered</h2><div class="rule"></div>
+        <span class="side-note">SECTORS SERVED</span>
+      </div>
+      <div class="sector-row reveal">
+        <span class="sector-chip">Mobility & Ride-hailing</span>
+        <span class="sector-chip">Real Estate</span>
+        <span class="sector-chip">FMCG & Retail</span>
+        <span class="sector-chip">F&B</span>
+        <span class="sector-chip">Healthcare</span>
+        <span class="sector-chip">Logistics</span>
+        <span class="sector-chip">Clean Energy</span>
+        <span class="sector-chip">Smart Cities</span>
+        <span class="sector-chip">NGO & Civil Society</span>
+        <span class="sector-chip">Government</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band">
+    <div class="section">
+      <div class="reveal">
+        <span class="mono" style="color:var(--survey)">TRANSMIT</span>
+        <h2 style="margin-top:1rem">Start with a <span>scoping call.</span></h2>
+        <p>Tell me the decision you're trying to make — I'll tell you whether spatial analysis can move the needle, and how.</p>
+        <a href="mailto:irsrashad3@gmail.com?subject=Scoping%20Call%20Request" class="btn btn-solid">Book a conversation</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://linkedin.com/in/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">in</span>
+          <span><span class="lbl">LinkedIn</span><br><span class="val">linkedin.com/in/irsrashad</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

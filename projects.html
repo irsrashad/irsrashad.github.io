@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Ismail Rashad</title>
+  <meta name="description" content="Geospatial and urban data science projects by Ismail Rashad — network analysis, climate risk, renewable energy siting, mobility, and market intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* filter bar */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.6rem; }
+    .filter-btn {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.13em;
+      text-transform: uppercase; background: none; border: 1px solid var(--line);
+      color: var(--mist); padding: 0.55rem 1.05rem; cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--mint); color: var(--mint); }
+    .filter-btn.active { background: var(--survey); border-color: var(--survey); color: var(--ink); font-weight: 600; }
+    .filter-count { font-family: var(--font-mono); font-size: 0.58rem; color: var(--faint); letter-spacing: 0.12em; align-self: center; margin-left: auto; }
+
+    /* project cards */
+    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .proj-card { display: flex; flex-direction: column; transition: opacity 0.35s, transform 0.35s, border-color 0.25s, background 0.25s; }
+    .proj-card.hidden { display: none; }
+    .proj-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.1rem; }
+    .proj-num { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.14em; color: var(--faint); }
+    .proj-badge { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--survey); }
+    .proj-card h3 { font-size: 1.35rem; font-weight: 750; margin-bottom: 0.35rem; }
+    .proj-geo { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.13em; color: var(--mint); text-transform: uppercase; margin-bottom: 1rem; }
+    .proj-card p { font-size: 0.92rem; color: var(--mist); margin-bottom: 1.3rem; flex: 1; }
+    .proj-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .proj-card .tags { margin-bottom: 1.3rem; }
+    .proj-card.featured { grid-column: span 2; border-color: rgba(255,107,53,0.3); }
+    @media (max-width: 920px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-card.featured { grid-column: span 1; }
+      .filter-count { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="graticule"></div>
+  <div class="grain"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="kicker">Sheet A — Survey Records</span>
+      <h1>Projects <span class="dim">/ 08</span></h1>
+      <p class="lede">Case studies in applied spatial analytics — <strong>network analysis, climate risk, renewable siting, mobility, and market intelligence</strong> — from Los Angeles County to coastal Indonesia.</p>
+    </div>
+
+    <section class="section" style="padding-top:0.5rem">
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="climate">Climate & Risk</button>
+        <button class="filter-btn" data-filter="mobility">Mobility & Access</button>
+        <button class="filter-btn" data-filter="energy">Energy</button>
+        <button class="filter-btn" data-filter="market">Market Intelligence</button>
+        <span class="filter-count" id="count">08 / 08 RECORDS</span>
+      </div>
+
+      <div class="proj-grid" id="grid">
+        <!-- 001 -->
+        <article class="xcard proj-card featured reveal" data-cat="mobility"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 001</span><span class="proj-badge">◆ NYU GIS DAY WINNER 2024</span></div>
+          <h3>Life Lines — Emergency Care Access in Los Angeles</h3>
+          <div class="proj-geo">34.05° N · 118.24° W · LA COUNTY, USA</div>
+          <p>Network-based drive-time analysis for 90+ hospitals across LA County, identifying access gaps for 2.8M residents beyond 15-minute trauma response zones. Findings supported spatial equity recommendations for emergency healthcare infrastructure — and won the NYU GIS Day competition for geospatial storytelling.</p>
+          <div class="tags"><span class="tag hot">Network Analysis</span><span class="tag">Drive-time Isochrones</span><span class="tag">Healthcare Equity</span><span class="tag">ArcGIS</span></div>
+          <div class="proj-foot"><a href="https://arcg.is/P95fL" target="_blank" rel="noopener" class="text-link ext">View project report</a></div>
+        </article>
+
+        <!-- 002 -->
+        <article class="xcard proj-card reveal" data-cat="climate"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 002</span><span class="proj-badge">LIVE APP</span></div>
+          <h3>LokaCheck — Climate Risk Web App</h3>
+          <div class="proj-geo">-2.5° S · 118° E · INDONESIA (NATIONAL)</div>
+          <p>Interactive web application for real-estate developers to navigate disaster and climate risk across Indonesia — flood, earthquake, landslide, and volcano risk layers combined with land price overlays. Built at Datakota.</p>
+          <div class="tags"><span class="tag cool">Web App</span><span class="tag">Climate Risk</span><span class="tag">Real Estate</span><span class="tag">Datakota</span></div>
+          <div class="proj-foot"><a href="https://lokacheck.lovable.app" target="_blank" rel="noopener" class="text-link ext">Open live app</a></div>
+        </article>
+
+        <!-- 003 -->
+        <article class="xcard proj-card reveal" data-cat="energy"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 003</span><span class="proj-badge">STORYMAP</span></div>
+          <h3>Renewable Energy Siting — Maine</h3>
+          <div class="proj-geo">45.25° N · 69.44° W · I-95 CORRIDOR, USA</div>
+          <p>Spatial suitability analysis identifying optimal solar PV sites along Maine's I-95 corridor — modeling slope, aspect, and solar radiation to support the state's 80% renewable energy target by 2030.</p>
+          <div class="tags"><span class="tag cool">Suitability Modeling</span><span class="tag">Solar PV</span><span class="tag">Raster Analysis</span></div>
+          <div class="proj-foot"><a href="https://arcg.is/1bGyPG0" target="_blank" rel="noopener" class="text-link ext">View report</a></div>
+        </article>
+
+        <!-- 004 -->
+        <article class="xcard proj-card reveal" data-cat="climate"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 004</span><span class="proj-badge">RESEARCH</span></div>
+          <h3>Urban Heat Risk — Chicago</h3>
+          <div class="proj-geo">41.88° N · 87.63° W · CHICAGO, USA</div>
+          <p>Spatial analysis of relationships between built environment features and extreme heat vulnerability. Proposed green infrastructure and zoning strategies for the highest-risk neighborhoods.</p>
+          <div class="tags"><span class="tag hydro">Urban Heat</span><span class="tag">Spatial Regression</span><span class="tag">Policy Design</span></div>
+          <div class="proj-foot"><span class="text-link off">In progress</span></div>
+        </article>
+
+        <!-- 005 -->
+        <article class="xcard proj-card reveal" data-cat="mobility"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 005</span><span class="proj-badge">RESEARCH</span></div>
+          <h3>Mobility & Air Quality — New York City</h3>
+          <div class="proj-geo">40.71° N · 74.00° W · NYC, USA</div>
+          <p>Multimodal routing model optimizing jointly for travel time and PM2.5 emissions. Identified zones where commute time reductions of up to 30% aligned with improved air quality and more equitable access.</p>
+          <div class="tags"><span class="tag hot">Routing</span><span class="tag">Air Quality</span><span class="tag">Python</span><span class="tag">Multimodal</span></div>
+          <div class="proj-foot"><span class="text-link off">In progress</span></div>
+        </article>
+
+        <!-- 006 -->
+        <article class="xcard proj-card reveal" data-cat="energy"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 006</span><span class="proj-badge">CLIENT · CON EDISON</span></div>
+          <h3>NYC Clean Energy Adoption Dashboard</h3>
+          <div class="proj-geo">40.71° N · 74.00° W · NYC, USA</div>
+          <p>Clean energy adoption analysis across 2,325 census tracts; identified 353 low-adoption tracts as predominantly residential. Delivered a Power BI dashboard integrating adoption rates, building-type cost efficiency, and demographic overlays for program monitoring.</p>
+          <div class="tags"><span class="tag cool">Clean Energy</span><span class="tag">Power BI</span><span class="tag">Census Tracts</span></div>
+          <div class="proj-foot"><span class="text-link off">Client project</span></div>
+        </article>
+
+        <!-- 007 -->
+        <article class="xcard proj-card reveal" data-cat="climate"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 007</span><span class="proj-badge">CLIENT · DATAKOTA</span></div>
+          <h3>Climate Vulnerability Index — 10 Coastal Cities</h3>
+          <div class="proj-geo">-6.1° S · 106.8° E · COASTAL INDONESIA</div>
+          <p>Composite vulnerability index for 10 Indonesian coastal cities using a hazards–exposure–adaptive-capacity framework. Delivered for NGO and civil society clients to prioritize climate adaptation investment.</p>
+          <div class="tags"><span class="tag hydro">Climate Risk</span><span class="tag">Composite Index</span><span class="tag">Indonesia</span></div>
+          <div class="proj-foot"><span class="text-link off">Client project</span></div>
+        </article>
+
+        <!-- 008 -->
+        <article class="xcard proj-card reveal" data-cat="market"><span class="xtick"></span>
+          <div class="proj-top"><span class="proj-num">REC 008</span><span class="proj-badge">CLIENT · DATAKOTA</span></div>
+          <h3>B2B Market Analysis — Restaurant Profiling</h3>
+          <div class="proj-geo">-6.2° S · 106.8° E · JAKARTA, ID</div>
+          <p>Catchment zone estimation, demographic customer profiling, competitor spatial benchmarking, and quantitative menu pricing validation for an Indonesian restaurant client.</p>
+          <div class="tags"><span class="tag hot">Catchment Analysis</span><span class="tag">Market Research</span><span class="tag">F&B</span></div>
+          <div class="proj-foot"><span class="text-link off">Client project</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band">
+    <div class="section">
+      <div class="reveal">
+        <span class="mono" style="color:var(--survey)">TRANSMIT</span>
+        <h2 style="margin-top:1rem">Have a spatial problem <span>worth solving?</span></h2>
+        <p>These case studies are a sample — I take on consulting engagements across climate, mobility, energy, and market intelligence.</p>
+        <a href="services.html" class="btn btn-solid">See services</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://linkedin.com/in/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">in</span>
+          <span><span class="lbl">LinkedIn</span><br><span class="val">linkedin.com/in/irsrashad</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Category filtering
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('.proj-card');
+      var count = document.getElementById('count');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var f = btn.dataset.filter, shown = 0;
+          cards.forEach(function (c) {
+            var show = f === 'all' || c.dataset.cat === f;
+            c.classList.toggle('hidden', !show);
+            if (show) { shown++; c.classList.add('on'); }
+          });
+          count.textContent = String(shown).padStart(2, '0') + ' / 08 RECORDS';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
