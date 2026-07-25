@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research & Teaching — Ismail Rashad</title>
+  <meta name="description" content="Research assistantships, teaching experience, and university service of Ismail Rashad — urban morphology, energy modeling, transit policy, and GIS education at NYU, UConn, and ITB." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* research entries */
+    .res-item {
+      display: grid; grid-template-columns: 210px 1fr; gap: 2.5rem;
+      padding: 2.4rem 0; border-bottom: 1px solid var(--line-soft);
+    }
+    .res-item:last-child { border-bottom: 0; }
+    .res-period { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; color: var(--survey); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .res-item.current .res-period::before { content: '● '; color: var(--mint); }
+    .res-org { font-family: var(--font-mono); font-size: 0.68rem; color: var(--mist); letter-spacing: 0.05em; }
+    .res-loc { font-family: var(--font-mono); font-size: 0.56rem; color: var(--faint); margin-top: 0.3rem; letter-spacing: 0.08em; }
+    .res-role { font-size: 1.15rem; font-weight: 700; font-family: var(--font-display); margin-bottom: 0.8rem; }
+    .res-bullets { list-style: none; margin-bottom: 1rem; }
+    .res-bullets li { font-size: 0.9rem; color: var(--mist); padding: 0.4rem 0 0.4rem 1.4rem; position: relative; }
+    .res-bullets li::before { content: '▸'; position: absolute; left: 0.15rem; color: var(--mint); }
+    .res-bullets li b { color: var(--paper); font-weight: 550; }
+
+    /* teaching cards */
+    .teach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .teach-card { padding: 1.7rem 1.8rem; }
+    .teach-term { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.14em; color: var(--survey); text-transform: uppercase; display: block; margin-bottom: 0.9rem; }
+    .teach-card h3 { font-size: 1.05rem; font-weight: 720; margin-bottom: 0.25rem; }
+    .teach-card .inst { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); margin-bottom: 0.8rem; }
+    .teach-card p { font-size: 0.85rem; color: var(--mist); }
+
+    /* service */
+    .svc-rows .res-item { padding: 2rem 0; }
+
+    /* pubs teaser */
+    .pub-teaser { border: 1px solid var(--line-soft); background: var(--ink-2); padding: 2.2rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+    .pub-teaser h3 { font-size: 1.3rem; font-weight: 750; margin-bottom: 0.5rem; }
+    .pub-teaser p { color: var(--mist); font-size: 0.92rem; }
+    @media (max-width: 920px) {
+      .res-item { grid-template-columns: 1fr; gap: 0.7rem; }
+      .teach-grid { grid-template-columns: 1fr; }
+      .pub-teaser { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="graticule"></div>
+  <div class="grain"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="kicker">Sheet B — Academic Record</span>
+      <h1>Research <span class="dim">/ Teaching</span></h1>
+      <p class="lede">Research assistantships and teaching across <strong>NYU, the University of Connecticut, and Bandung Institute of Technology</strong> — spanning urban morphology, energy modeling, transit policy, and GIS education.</p>
+    </div>
+
+    <!-- RESEARCH EXPERIENCE -->
+    <section class="section" style="padding-top:0.5rem">
+      <div class="section-head reveal">
+        <span class="idx">01 /</span><h2>Research Experience</h2><div class="rule"></div>
+        <span class="side-note">ASSISTANTSHIPS</span>
+      </div>
+      <div>
+        <div class="res-item current reveal">
+          <div>
+            <div class="res-period">Sep 2025 — Present</div>
+            <div class="res-org">New York University × University of Connecticut</div>
+            <div class="res-loc">REMOTE · ATLANTA METRO STUDY AREA</div>
+          </div>
+          <div>
+            <div class="res-role">Volunteer Research Assistant — Urban Morphology & Energy Consumption</div>
+            <ul class="res-bullets">
+              <li>Evaluated <b>spatial consistency of sociodemographic-based energy consumption models</b> (Random Forest, MATLAB) across ZIP Code and Census Tract geographies in the Atlanta Metro Region using population-weighted areal interpolation — revealing systematic underestimation in 60%+ of matched tracts</li>
+              <li>Collaborated with a research team to build a <b>multi-source Census Tract dataset</b> integrating building footprint metrics, land use classification, and energy estimates using ArcGIS Pro spatial joins and geoprocessing</li>
+              <li>Co-developed a <b>reproducible analytical workflow</b> combining Python, Excel, and ArcGIS Pro to support cross-scale validation of urban energy models — contributing to an in-progress manuscript on urban morphology and energy modeling</li>
+            </ul>
+            <div class="tags"><span class="tag cool">Urban Morphology</span><span class="tag cool">Energy Modeling</span><span class="tag">Random Forest</span><span class="tag">Areal Interpolation</span><span class="tag">ArcGIS Pro</span><span class="tag">Python</span></div>
+          </div>
+        </div>
+
+        <div class="res-item reveal">
+          <div>
+            <div class="res-period">Apr — May 2025</div>
+            <div class="res-org">Marron Institute of Urban Management, NYU</div>
+            <div class="res-loc">NEW YORK, NY</div>
+          </div>
+          <div>
+            <div class="res-role">Graduate Research Assistant — Transit Priority Atlas</div>
+            <ul class="res-bullets">
+              <li>Contributed to the <b>Transit Priority Atlas</b>, a comparative GIS database of bus and transit priority infrastructure across 10 North American cities, applying a standardized typological classification framework (15+ lane typologies) based on NACTO guidelines</li>
+              <li>Encoded transit priority measures as <b>attributed vector geometries in QGIS</b> using a structured GeoJSON schema, capturing operational, physical, and conflict attributes for each segment</li>
+              <li>Data supports <b>cross-city comparative analysis</b> of transit priority policy effectiveness and spatial equity of bus infrastructure</li>
+            </ul>
+            <div class="tags"><span class="tag hydro">Transit Policy</span><span class="tag">QGIS</span><span class="tag">GeoJSON</span><span class="tag">NACTO</span><span class="tag">Spatial Equity</span></div>
+          </div>
+        </div>
+
+        <div class="res-item reveal">
+          <div>
+            <div class="res-period">Jan — Dec 2020</div>
+            <div class="res-org">Urban Planning & Design Research Group, ITB</div>
+            <div class="res-loc">BANDUNG, ID</div>
+          </div>
+          <div>
+            <div class="res-role">Research Assistant — Place Branding & Urban Informatics</div>
+            <ul class="res-bullets">
+              <li>Contributed to an <b>ITB faculty research grant study</b> on place branding and thematic urban development in Bandung — co-authored the resulting publication (Sutriadi, Rashad & Ramadhan, 2020)</li>
+              <li>Assisted an interdisciplinary collaboration between the School of Informatics and Urban Planning on <b>CCTV-based urban problem detection</b>; contributed to draft writing and spatial analysis</li>
+            </ul>
+            <div class="tags"><span class="tag hot">Place Branding</span><span class="tag">Urban Informatics</span><span class="tag">Co-authorship</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">02 /</span><h2>Teaching & Mentoring</h2><div class="rule"></div>
+        <span class="side-note">6 COURSES · 2 UNIVERSITIES</span>
+      </div>
+      <div class="teach-grid">
+        <div class="xcard teach-card reveal"><span class="xtick"></span>
+          <span class="teach-term">Spring 2025</span>
+          <h3>Urban Spatial Analytics (CUSP-GX 8033)</h3>
+          <div class="inst">Course Assistant · NYU Tandon</div>
+          <p>Supported graduate students in advanced spatial methods — network analysis, spatial statistics, and spatial regression in ArcGIS Pro. Mentored midterm replication projects reproducing published GIS research, and guided final projects from proposal to StoryMap presentation.</p>
+        </div>
+        <div class="xcard teach-card reveal d1"><span class="xtick"></span>
+          <span class="teach-term">Fall 2024</span>
+          <h3>Geographic Information Systems (CUSP-GX 5053)</h3>
+          <div class="inst">Course Assistant · NYU Tandon</div>
+          <p>Supported 25+ graduate students through weekly office hours, assignment feedback, and Piazza Q&A on spatial analysis, ArcGIS Pro workflows, and map design. Guided final projects from ideation to publication on ArcGIS StoryMaps.</p>
+        </div>
+        <div class="xcard teach-card reveal"><span class="xtick"></span>
+          <span class="teach-term">Fall 2017 · 2018 · 2020</span>
+          <h3>Introduction to Spatial Data</h3>
+          <div class="inst">Teaching Assistant · ITB</div>
+          <p>Assisted three iterations of an introductory GIS course covering spatial analysis, thematic mapping, and geoprocessing with ArcMap for urban planning applications.</p>
+        </div>
+        <div class="xcard teach-card reveal d1"><span class="xtick"></span>
+          <span class="teach-term">Fall 2020</span>
+          <h3>Site Planning Studio</h3>
+          <div class="inst">Teaching Assistant · ITB</div>
+          <p>Assisted with grading and office hours for a studio on site planning for residential typologies — affordable housing, landed houses, and rusun (low-rise apartment) developments.</p>
+        </div>
+        <div class="xcard teach-card reveal"><span class="xtick"></span>
+          <span class="teach-term">Spring 2020</span>
+          <h3>Urban Planning Studio</h3>
+          <div class="inst">Teaching Assistant · ITB</div>
+          <p>Guided students through problem definition, research design, field surveys, and mixed-methods analysis — supporting reports that informed zoning and land use policy recommendations.</p>
+        </div>
+        <div class="xcard teach-card reveal d1"><span class="xtick"></span>
+          <span class="teach-term">Fall 2019</span>
+          <h3>Planning Process Studio</h3>
+          <div class="inst">Teaching Assistant · ITB</div>
+          <p>Guided students through city planning problem definition, research design, and quantitative/qualitative data analysis against regulatory standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIVERSITY SERVICE -->
+    <section class="section">
+      <div class="section-head reveal">
+        <span class="idx">03 /</span><h2>University Service</h2><div class="rule"></div>
+        <span class="side-note">LEADERSHIP</span>
+      </div>
+      <div class="svc-rows">
+        <div class="res-item reveal">
+          <div>
+            <div class="res-period">Fall 2024 — Spring 2025</div>
+            <div class="res-org">NYU Tandon School of Engineering</div>
+          </div>
+          <div>
+            <div class="res-role">President — Applied Urban Science Student Association (AUSA)</div>
+            <ul class="res-bullets">
+              <li>Primary liaison between students, faculty, and administration; organized academic and community events and coordinated cross-departmental initiatives for the CUSP student community</li>
+            </ul>
+          </div>
+        </div>
+        <div class="res-item reveal">
+          <div>
+            <div class="res-period">Fall 2018 — Spring 2019</div>
+            <div class="res-org">Bandung Institute of Technology</div>
+          </div>
+          <div>
+            <div class="res-role">Co-Head, Multicampus Development — Urban Planning Student Association</div>
+            <ul class="res-bullets">
+              <li>Led outreach establishing a new student association branch at ITB Cirebon; mentored student leaders in governance and program development, with an institutional roadmap toward independent operation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS TEASER -->
+    <section class="section">
+      <div class="pub-teaser reveal">
+        <div>
+          <span class="mono" style="color:var(--survey)">// OUTPUTS</span>
+          <h3 style="margin-top:0.6rem">Peer-reviewed publications & presentations</h3>
+          <p>Two journal publications (International Journal of Sustainable Energy, IOP EES) plus conference talks and posters — indexed on the Publications page.</p>
+        </div>
+        <a href="publications.html" class="btn btn-solid">View publications</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band">
+    <div class="section">
+      <div class="reveal">
+        <span class="mono" style="color:var(--survey)">TRANSMIT</span>
+        <h2 style="margin-top:1rem">Interested in <span>collaborating?</span></h2>
+        <p>Open to research collaborations in urban morphology, energy, mobility, and climate — and to conversations about PhD opportunities in these areas.</p>
+        <a href="mailto:irsrashad3@gmail.com?subject=Research%20Collaboration" class="btn btn-solid">Reach out</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://linkedin.com/in/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">in</span>
+          <span><span class="lbl">LinkedIn</span><br><span class="val">linkedin.com/in/irsrashad</span></span>
+        </a>
+        <a class="contact-row" href="https://github.com/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">gh</span>
+          <span><span class="lbl">GitHub</span><br><span class="val">github.com/irsrashad</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
