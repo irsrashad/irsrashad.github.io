@@ -8,7 +8,7 @@
         "name": "GoTo Group (Gojek)", "kind": "role", "kindLabel": "Role",
         "years": "2025 — Present", "place": "Jakarta, Indonesia", "current": true,
         "blurb": "Geospatial Analyst — A/B experiments on routing and ETA accuracy across one of Southeast Asia's largest mobility platforms.",
-        "link": "../about.html", "linkLabel": "Experience"
+        "link": "about.html", "linkLabel": "Experience"
       }
     },
     {
@@ -18,7 +18,7 @@
         "name": "Datakota", "kind": "role", "kindLabel": "Role",
         "years": "2024 — Present", "place": "Jakarta, Indonesia", "current": true,
         "blurb": "Urban Data Scientist — spatial analytics, web mapping, and data visualization for clients across Indonesia.",
-        "link": "../about.html", "linkLabel": "Experience"
+        "link": "about.html", "linkLabel": "Experience"
       }
     },
     {
@@ -28,7 +28,7 @@
         "name": "Bhumi Varta Technology", "kind": "role", "kindLabel": "Role",
         "years": "2025", "place": "Jakarta, Indonesia",
         "blurb": "Senior Business Analyst — geospatial solutioning and pre-sales for clients across Japan and Southeast Asia.",
-        "link": "../about.html", "linkLabel": "Experience"
+        "link": "about.html", "linkLabel": "Experience"
       }
     },
     {
@@ -38,7 +38,7 @@
         "name": "NYU Tandon / CUSP", "kind": "role", "kindLabel": "Education",
         "years": "2023 — 2025", "place": "Brooklyn, NY",
         "blurb": "MS Urban Data Science — graduated with highest GPA; LPDP scholar; president of the Applied Urban Science Student Association.",
-        "link": "../about.html", "linkLabel": "Education"
+        "link": "about.html", "linkLabel": "Education"
       }
     },
     {
@@ -48,7 +48,7 @@
         "name": "NYU Marron Institute", "kind": "research", "kindLabel": "Research",
         "years": "2025", "place": "New York, NY",
         "blurb": "Graduate RA — Transit Priority Atlas: GIS database of bus priority infrastructure across 10 North American cities.",
-        "link": "../research.html", "linkLabel": "Research"
+        "link": "research.html", "linkLabel": "Research"
       }
     },
     {
@@ -58,7 +58,7 @@
         "name": "Con Edison", "kind": "project", "kindLabel": "Project",
         "years": "2024 — 2025", "place": "New York, NY",
         "blurb": "Clean energy adoption analysis across 2,325 NYC census tracts — capstone with Power BI monitoring dashboard.",
-        "link": "../projects.html", "linkLabel": "Case study"
+        "link": "projects.html", "linkLabel": "Case study"
       }
     },
     {
@@ -68,7 +68,7 @@
         "name": "Urban Morphology × Energy Research", "kind": "research", "kindLabel": "Research",
         "years": "2025 — Present", "place": "Atlanta Metro study area · NYU × UConn", "current": true,
         "blurb": "Volunteer RA — cross-scale validation of energy consumption models using areal interpolation; manuscript in progress.",
-        "link": "../research.html", "linkLabel": "Research"
+        "link": "research.html", "linkLabel": "Research"
       }
     },
     {
@@ -78,7 +78,7 @@
         "name": "ITB — Bandung Institute of Technology", "kind": "role", "kindLabel": "Education",
         "years": "2015 — 2019", "place": "Bandung, Indonesia",
         "blurb": "BS Urban Planning (GIS concentration); research assistant and 6× teaching assistant across GIS and planning studios.",
-        "link": "../research.html", "linkLabel": "Teaching record"
+        "link": "research.html", "linkLabel": "Teaching record"
       }
     },
     {
@@ -88,7 +88,7 @@
         "name": "CityPlan Indonesia", "kind": "role", "kindLabel": "Role",
         "years": "2021 — 2023", "place": "Bandung, Indonesia",
         "blurb": "GIS Data Analyst — nationwide POI standardization, healthcare delivery +20%, ActCelerate 2021 runner-up.",
-        "link": "../about.html", "linkLabel": "Experience"
+        "link": "about.html", "linkLabel": "Experience"
       }
     },
     {
@@ -118,7 +118,7 @@
         "name": "Urban Heat Risk", "kind": "project", "kindLabel": "Project",
         "years": "2025", "place": "Chicago, IL",
         "blurb": "Spatial regression of built-environment features against extreme heat vulnerability; in progress.",
-        "link": "../projects.html", "linkLabel": "Case study"
+        "link": "projects.html", "linkLabel": "Case study"
       }
     },
     {
@@ -128,7 +128,7 @@
         "name": "Climate Vulnerability Index", "kind": "project", "kindLabel": "Project",
         "years": "2024", "place": "10 coastal cities, Indonesia",
         "blurb": "Hazards–exposure–adaptive-capacity composite index prioritizing climate adaptation investment.",
-        "link": "../projects.html", "linkLabel": "Case study"
+        "link": "projects.html", "linkLabel": "Case study"
       }
     },
     {

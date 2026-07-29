@@ -11,6 +11,7 @@ window.MapLab = (function () {
       center: opts.center || [40, 10],
       zoom: opts.zoom || 1.8,
       minZoom: opts.minZoom || 1,
+      cooperativeGestures: !!opts.coop,
       attributionControl: false
     });
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');

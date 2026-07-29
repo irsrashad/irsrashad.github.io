@@ -110,6 +110,58 @@
     .mini-map { border: 1px solid var(--line-soft); background: var(--ink); position: relative; overflow: hidden; }
     .mini-map svg { display: block; width: 100%; height: auto; }
 
+    /* ---------- FIELD MAP ---------- */
+    .feat-thumb { margin: -1.8rem -1.8rem 1.2rem; aspect-ratio: 16/9; overflow: hidden; border-bottom: 1px solid var(--line-soft); }
+    .feat-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); transition: transform 0.5s; }
+    .feat-card:hover .feat-thumb img { transform: scale(1.03); }
+
+    .map-frame { position: relative; height: 480px; border: 1px solid var(--line); background: var(--ink-2); }
+    #map { position: absolute; inset: 0; }
+    .map-legend {
+      position: absolute; top: 1rem; right: 1rem; z-index: 5;
+      background: rgba(16,22,19,0.94); backdrop-filter: blur(8px);
+      border: 1px solid var(--line); padding: 0.9rem 1.1rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+    }
+    .map-legend label {
+      display: flex; align-items: center; gap: 0.6rem; cursor: pointer;
+      font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.11em;
+      text-transform: uppercase; color: var(--mist); user-select: none;
+    }
+    .map-legend input { accent-color: var(--survey); width: 12px; height: 12px; }
+    .map-legend .swatch { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .map-legend .count { margin-left: auto; color: var(--faint); padding-left: 0.8rem; }
+    .map-hint { color: var(--faint); margin-top: 0.9rem; font-size: 0.56rem; }
+    .map-fallback { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 2rem; z-index: 4; }
+    .map-fallback p { color: var(--mist); max-width: 420px; font-size: 0.9rem; }
+
+    .ping-marker { position: relative; width: 18px; height: 18px; pointer-events: none; }
+    .ping-marker::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--survey); }
+    .ping-marker::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--survey); animation: mkping 2.4s ease-out infinite; }
+    @keyframes mkping { 0% { transform: scale(0.4); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+
+    .maplibregl-popup-content {
+      background: var(--ink-2); border: 1px solid var(--line); border-radius: 0;
+      padding: 1.1rem 1.2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      font-family: var(--font-body); max-width: 290px;
+    }
+    .maplibregl-popup-tip { border-top-color: var(--line) !important; border-bottom-color: var(--line) !important; }
+    .maplibregl-popup-close-button { color: var(--mist); font-size: 1rem; right: 4px; top: 2px; }
+    .ml-popup-kind { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .ml-kind-role { color: var(--mint); } .ml-kind-project { color: var(--survey); } .ml-kind-research { color: var(--sky); }
+    .ml-popup-title { font-family: var(--font-display); font-weight: 750; font-size: 0.98rem; color: var(--paper); line-height: 1.25; margin-bottom: 0.2rem; }
+    .ml-popup-place { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.55rem; }
+    .ml-popup-blurb { font-size: 0.78rem; color: var(--mist); line-height: 1.6; margin-bottom: 0.7rem; }
+    .ml-popup-link { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); text-decoration: none; }
+    .ml-popup-link:hover { color: var(--survey); }
+    .maplibregl-ctrl-group { background: var(--ink-2); border: 1px solid var(--line); border-radius: 0; }
+    .maplibregl-ctrl-group button { background: var(--ink-2); }
+    .maplibregl-ctrl-group button + button { border-top: 1px solid var(--line-soft); }
+    .maplibregl-ctrl button .maplibregl-ctrl-icon { filter: invert(0.85); }
+    .maplibregl-ctrl-attrib { background: rgba(11,16,14,0.8) !important; font-family: var(--font-mono); font-size: 0.55rem; }
+    .maplibregl-ctrl-attrib a { color: var(--mist) !important; }
+    .maplibregl-ctrl-scale { background: transparent; border-color: var(--faint); color: var(--faint); font-family: var(--font-mono); font-size: 0.55rem; }
+
     /* ---------- NEWS ---------- */
     .news-list { border-top: 1px solid var(--line-soft); }
     .news-row {
@@ -135,6 +187,9 @@
       .feat-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
       .news-row { grid-template-columns: 1fr; gap: 0.35rem; }
       .news-cat { display: none; }
+      .map-frame { height: 400px; }
+      .map-legend { top: auto; bottom: 0.8rem; right: 0.8rem; left: 0.8rem; flex-direction: row; flex-wrap: wrap; gap: 0.4rem 1rem; }
+      .map-legend .count { display: none; }
     }
   </style>
 </head>
@@ -172,7 +227,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="maps.html">Maps</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="talks.html">Talks</a></li>
@@ -186,7 +240,6 @@
     <a href="about.html">About</a>
     <a href="research.html">Research</a>
     <a href="projects.html">Projects</a>
-    <a href="maps.html">Maps</a>
     <a href="services.html">Services</a>
     <a href="publications.html">Publications</a>
     <a href="talks.html">Talks</a>
@@ -335,12 +388,6 @@
           <p>Conference panels, competition presentations, and media coverage — from Regional Tech Summit to NYU GIS Day.</p>
           <span class="meta">KEYNOTES · PANELS · COVERAGE</span>
         </a>
-        <a href="maps.html" class="xcard explore-card reveal d2"><span class="xtick"></span>
-          <span class="num">SHEET F — LIVE MAPS</span>
-          <h3>Map Lab <span class="arrow">→</span></h3>
-          <p>Interactive maps built with MapLibre and open data, hosted right here — starting with a world map of every role and project.</p>
-          <span class="meta">MAPLIBRE · OPEN DATA · NO TRACKING</span>
-        </a>
       </div>
     </section>
 
@@ -381,6 +428,7 @@
         </div>
 
         <div class="xcard feat-card reveal"><span class="xtick"></span>
+          <div class="feat-thumb"><img src="assets/img/projects/lokacheck.svg" alt="LokaCheck multi-hazard risk map of Indonesia" loading="lazy"></div>
           <div class="feat-label">Datakota · Live App</div>
           <h3>LokaCheck — Climate Risk Web App</h3>
           <p>Interactive tool for real-estate developers navigating disaster and climate risk across Indonesia — flood, earthquake, landslide, and volcano layers with land price overlays.</p>
@@ -390,6 +438,7 @@
         </div>
 
         <div class="xcard feat-card reveal d1"><span class="xtick"></span>
+          <div class="feat-thumb"><img src="assets/img/projects/maine-solar.jpg" alt="Solar suitability map along Maine's I-95 corridor" loading="lazy"></div>
           <div class="feat-label">Renewable Energy</div>
           <h3>Solar PV Siting — Maine, USA</h3>
           <p>Spatial suitability analysis identifying optimal solar sites along the I-95 corridor — slope, aspect, and solar radiation modeling supporting Maine's 80% renewable target by 2030.</p>
@@ -399,6 +448,7 @@
         </div>
 
         <div class="xcard feat-card reveal d2"><span class="xtick"></span>
+          <div class="feat-thumb"><img src="assets/img/projects/cvi-coastal.svg" alt="Coastal climate vulnerability bands for Indonesian cities" loading="lazy"></div>
           <div class="feat-label">Climate Resilience</div>
           <h3>Climate Vulnerability Index — 10 Coastal Cities</h3>
           <p>Composite hazards–exposure–adaptive-capacity index for 10 Indonesian coastal cities, delivered for NGO and civil society clients via Datakota.</p>
@@ -409,10 +459,28 @@
       </div>
     </section>
 
+    <!-- FIELD MAP -->
+    <section class="section" id="field-map">
+      <div class="section-head reveal">
+        <span class="idx">04 /</span><h2>Field Map</h2><div class="rule"></div>
+        <span class="side-note">EVERY ROLE & PROJECT, MAPPED</span>
+      </div>
+      <div class="map-frame reveal">
+        <div id="map"></div>
+        <div class="map-legend">
+          <label><input type="checkbox" data-kind="role" checked><span class="swatch" style="background:#6fe0b2"></span>Roles &amp; Education<span class="count" id="c-role"></span></label>
+          <label><input type="checkbox" data-kind="project" checked><span class="swatch" style="background:#ff6b35"></span>Projects<span class="count" id="c-project"></span></label>
+          <label><input type="checkbox" data-kind="research" checked><span class="swatch" style="background:#6db5e8"></span>Research<span class="count" id="c-research"></span></label>
+        </div>
+        <div class="map-fallback" id="map-fallback"><p>This interactive map needs WebGL. The full list of roles and projects lives on the <a href="about.html" style="color:var(--mint)">About</a> and <a href="projects.html" style="color:var(--mint)">Projects</a> pages.</p></div>
+      </div>
+      <p class="map-hint mono">CLICK MARKERS FOR THE STORY · USE CTRL/⌘ + SCROLL TO ZOOM</p>
+    </section>
+
     <!-- NEWS -->
     <section class="section">
       <div class="section-head reveal">
-        <span class="idx">04 /</span><h2>Recent News</h2><div class="rule"></div>
+        <span class="idx">05 /</span><h2>Recent News</h2><div class="rule"></div>
         <span class="side-note">UPDATES</span>
       </div>
       <div class="news-list reveal">
@@ -454,7 +522,7 @@
   <div class="contact-band" id="contact">
     <div class="section">
       <div class="reveal">
-        <span class="mono" style="color:var(--survey)">05 / TRANSMIT</span>
+        <span class="mono" style="color:var(--survey)">06 / TRANSMIT</span>
         <h2 style="margin-top:1rem">Let's build something <span>spatial.</span></h2>
         <p>Open to consulting engagements, research collaborations, and conversations about urban analytics, location intelligence, and spatial strategy — across Southeast Asia and beyond.</p>
         <a href="mailto:irsrashad3@gmail.com" class="btn btn-solid">Send a message</a>
@@ -483,5 +551,112 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script>
+    // Lazy-load MapLibre + init the Field Map only when the section approaches the viewport
+    (function () {
+      var section = document.getElementById('field-map');
+      if (!section) return;
+      var started = false;
+      var watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !started) { started = true; watcher.disconnect(); boot(); }
+        });
+      }, { rootMargin: '500px' });
+      watcher.observe(section);
+
+      function fail() { document.getElementById('map-fallback').style.display = 'grid'; }
+
+      function boot() {
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+        document.head.appendChild(css);
+        var s = document.createElement('script');
+        s.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+        s.onload = init;
+        s.onerror = fail;
+        document.head.appendChild(s);
+      }
+
+      function init() {
+        var COLORS = { role: '#6fe0b2', project: '#ff6b35', research: '#6db5e8' };
+        var map;
+        try { map = MapLab.createMap('map', { center: [20, 15], zoom: 1.2, coop: true }); }
+        catch (err) { fail(); return; }
+        map.on('error', function () { if (!map.loaded()) fail(); });
+
+        map.on('load', function () {
+          fetch('assets/data/career.geojson')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              var counts = { role: 0, project: 0, research: 0 };
+              data.features.forEach(function (f) { counts[f.properties.kind]++; });
+              Object.keys(counts).forEach(function (k) {
+                var el = document.getElementById('c-' + k);
+                if (el) el.textContent = String(counts[k]).padStart(2, '0');
+              });
+
+              map.addSource('career', { type: 'geojson', data: data });
+              ['role', 'project', 'research'].forEach(function (kind) {
+                map.addLayer({
+                  id: 'halo-' + kind, type: 'circle', source: 'career',
+                  filter: ['==', ['get', 'kind'], kind],
+                  paint: {
+                    'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 11, 6, 17],
+                    'circle-color': 'transparent',
+                    'circle-stroke-width': 1.2,
+                    'circle-stroke-color': COLORS[kind],
+                    'circle-stroke-opacity': 0.45
+                  }
+                });
+                map.addLayer({
+                  id: 'pts-' + kind, type: 'circle', source: 'career',
+                  filter: ['==', ['get', 'kind'], kind],
+                  paint: {
+                    'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 6, 6, 9],
+                    'circle-color': COLORS[kind],
+                    'circle-opacity': 0.95,
+                    'circle-stroke-width': 1.5,
+                    'circle-stroke-color': '#0b100e'
+                  }
+                });
+              });
+
+              // frame all points instantly — no animation, markers visible immediately
+              var b = new maplibregl.LngLatBounds();
+              data.features.forEach(function (f) { b.extend(f.geometry.coordinates); });
+              map.fitBounds(b, { padding: { top: 60, bottom: 40, left: 60, right: 170 }, duration: 0 });
+              map.resize();
+
+              var ping = document.createElement('div');
+              ping.className = 'ping-marker';
+              new maplibregl.Marker({ element: ping }).setLngLat([106.8456, -6.2088]).addTo(map);
+
+              ['role', 'project', 'research'].forEach(function (kind) {
+                map.on('click', 'pts-' + kind, function (e) {
+                  var f = e.features[0];
+                  new maplibregl.Popup({ offset: 12 })
+                    .setLngLat(f.geometry.coordinates)
+                    .setHTML(MapLab.popupHTML(f.properties))
+                    .addTo(map);
+                });
+                map.on('mouseenter', 'pts-' + kind, function () { map.getCanvas().style.cursor = 'pointer'; });
+                map.on('mouseleave', 'pts-' + kind, function () { map.getCanvas().style.cursor = ''; });
+              });
+
+              document.querySelectorAll('.map-legend input').forEach(function (cb) {
+                cb.addEventListener('change', function () {
+                  var vis = cb.checked ? 'visible' : 'none';
+                  map.setLayoutProperty('pts-' + cb.dataset.kind, 'visibility', vis);
+                  map.setLayoutProperty('halo-' + cb.dataset.kind, 'visibility', vis);
+                });
+              });
+            })
+            .catch(fail);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
