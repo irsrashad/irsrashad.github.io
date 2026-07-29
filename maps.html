@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map Lab — Ismail Rashad</title>
+  <meta name="description" content="Interactive maps by Ismail Rashad — self-hosted MapLibre visualizations of career geography, climate risk, and urban analytics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .map-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .map-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; padding: 0; overflow: hidden; }
+    .map-thumb { position: relative; aspect-ratio: 16/8; background: var(--ink); border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+    .map-thumb svg { width: 100%; height: 100%; display: block; }
+    .map-thumb .status {
+      position: absolute; top: 0.8rem; left: 0.8rem;
+      font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink); background: var(--mint);
+      padding: 0.25rem 0.6rem; font-weight: 600;
+    }
+    .map-body { padding: 1.6rem 1.8rem 1.8rem; display: flex; flex-direction: column; flex: 1; }
+    .map-num { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.14em; color: var(--faint); margin-bottom: 0.9rem; }
+    .map-card h3 { font-size: 1.35rem; font-weight: 750; margin-bottom: 0.3rem; }
+    .map-geo { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.13em; color: var(--mint); text-transform: uppercase; margin-bottom: 0.9rem; }
+    .map-card p { font-size: 0.9rem; color: var(--mist); margin-bottom: 1.2rem; flex: 1; }
+    .map-card .tags { margin-bottom: 1.2rem; }
+    .map-card.soon { border-style: dashed; opacity: 0.75; }
+    .map-card.soon .map-thumb .status { background: var(--ink-3); color: var(--faint); border: 1px solid var(--line); }
+    .stack-note {
+      margin-top: 3rem; border: 1px dashed var(--line); padding: 1.5rem 1.8rem;
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; color: var(--faint); line-height: 2;
+    }
+    .stack-note b { color: var(--mint); font-weight: 500; }
+    @media (max-width: 920px) { .map-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="graticule"></div>
+  <div class="grain"></div>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="maps.html" class="active">Maps</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="projects.html">Projects</a>
+    <a href="maps.html" class="active">Maps</a>
+    <a href="services.html">Services</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="mailto:irsrashad3@gmail.com">Get in touch ↗</a>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <span class="kicker">Sheet F — Cartographic Experiments</span>
+      <h1>Map Lab <span class="dim">/ Live</span></h1>
+      <p class="lede">Interactive maps, built and hosted right here — <strong>self-hosted MapLibre GL, open data, no tracking</strong>. New experiments land as they're surveyed.</p>
+    </div>
+
+    <section class="section" style="padding-top:0.5rem">
+      <div class="map-grid">
+        <a class="xcard map-card reveal" href="maps/field-log.html"><span class="xtick"></span>
+          <div class="map-thumb">
+            <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="640" height="320" fill="#0b100e"/>
+              <g stroke="rgba(111,224,178,0.07)"><line x1="0" y1="80" x2="640" y2="80"/><line x1="0" y1="160" x2="640" y2="160"/><line x1="0" y1="240" x2="640" y2="240"/><line x1="107" y1="0" x2="107" y2="320"/><line x1="214" y1="0" x2="214" y2="320"/><line x1="320" y1="0" x2="320" y2="320"/><line x1="427" y1="0" x2="427" y2="320"/><line x1="534" y1="0" x2="534" y2="320"/></g>
+              <!-- simplified continents hint -->
+              <path d="M90,90 C130,70 190,80 210,110 C230,140 200,170 160,175 C120,180 80,150 90,90 Z" fill="rgba(111,224,178,0.05)" stroke="rgba(111,224,178,0.15)"/>
+              <path d="M430,160 C470,150 520,160 545,185 C560,205 540,230 500,235 C455,240 415,200 430,160 Z" fill="rgba(111,224,178,0.05)" stroke="rgba(111,224,178,0.15)"/>
+              <!-- arcs jakarta <-> us -->
+              <path d="M520,210 C400,40 260,40 150,120" stroke="rgba(255,107,53,0.45)" fill="none" stroke-dasharray="5 5"/>
+              <path d="M520,210 C440,120 330,90 175,140" stroke="rgba(109,181,232,0.35)" fill="none" stroke-dasharray="3 6"/>
+              <!-- nodes -->
+              <circle cx="520" cy="210" r="6" fill="#ff6b35"/>
+              <circle cx="520" cy="210" r="12" fill="none" stroke="rgba(255,107,53,0.4)"><animate attributeName="r" values="12;22;12" dur="3s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/></circle>
+              <circle cx="150" cy="120" r="4.5" fill="#6fe0b2"/>
+              <circle cx="175" cy="140" r="4" fill="#6db5e8"/>
+              <circle cx="120" cy="155" r="4" fill="#ff6b35"/>
+              <circle cx="545" cy="185" r="4" fill="#6fe0b2"/>
+              <text x="500" y="240" font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(255,107,53,0.75)">JKT</text>
+              <text x="135" y="105" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(111,224,178,0.7)">NYC</text>
+              <text x="95" y="175" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(255,107,53,0.6)">LA</text>
+            </svg>
+            <span class="status">● Live</span>
+          </div>
+          <div class="map-body">
+            <span class="map-num">MAP 001 · MAPLIBRE GL · GEOJSON</span>
+            <h3>Field Log — The Career Map</h3>
+            <div class="map-geo">JAKARTA ↔ NEW YORK ↔ LOS ANGELES</div>
+            <p>Fourteen markers, three continents: every role, project, and research post plotted with popups linking to the full story. Toggle layers, click around.</p>
+            <div class="tags"><span class="tag cool">Roles</span><span class="tag hot">Projects</span><span class="tag hydro">Research</span></div>
+            <span class="text-link">Open the map</span>
+          </div>
+        </a>
+
+        <div class="xcard map-card soon reveal d1"><span class="xtick"></span>
+          <div class="map-thumb">
+            <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="640" height="320" fill="#0b100e"/>
+              <g stroke="rgba(111,224,178,0.06)"><line x1="0" y1="80" x2="640" y2="80"/><line x1="0" y1="160" x2="640" y2="160"/><line x1="0" y1="240" x2="640" y2="240"/><line x1="160" y1="0" x2="160" y2="320"/><line x1="320" y1="0" x2="320" y2="320"/><line x1="480" y1="0" x2="480" y2="320"/></g>
+              <path d="M120,180 C180,150 260,160 320,175 C390,192 470,180 540,195" stroke="rgba(109,181,232,0.25)" fill="none"/>
+              <path d="M100,210 C190,185 300,200 380,210 C450,218 520,205 560,215" stroke="rgba(109,181,232,0.18)" fill="none"/>
+              <circle cx="240" cy="168" r="14" fill="rgba(255,107,53,0.12)" stroke="rgba(255,107,53,0.35)"/>
+              <circle cx="400" cy="200" r="20" fill="rgba(255,107,53,0.08)" stroke="rgba(255,107,53,0.25)"/>
+              <text x="230" y="120" font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(92,107,99,0.9)" letter-spacing="2">NEXT SURVEY</text>
+            </svg>
+            <span class="status">In preparation</span>
+          </div>
+          <div class="map-body">
+            <span class="map-num">MAP 002 · PLANNED</span>
+            <h3>Indonesia Multi-Hazard Explorer</h3>
+            <div class="map-geo">-2.5° S · 118° E · ARCHIPELAGO-WIDE</div>
+            <p>A LokaCheck-style layer-toggle map of flood, earthquake, landslide, and volcanic risk from open data — the consulting service, demonstrated live.</p>
+            <div class="tags"><span class="tag">Climate Risk</span><span class="tag">Open Data</span></div>
+            <span class="text-link off">Coming soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-note reveal">
+        <b>// STACK</b> — Maps on this page are built with MapLibre GL JS and open basemap tiles,
+        hosted as static files on GitHub Pages. No accounts, no API keys, no tracking.
+        Data ships as GeoJSON; larger datasets will use PMTiles. <b>Want a map like this for your
+        organization? That's literally a service I offer.</b>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT BAND -->
+  <div class="contact-band">
+    <div class="section">
+      <div class="reveal">
+        <span class="mono" style="color:var(--survey)">TRANSMIT</span>
+        <h2 style="margin-top:1rem">Need an interactive map <span>like these?</span></h2>
+        <p>From risk explorers to market dashboards — I design and build web maps that turn spatial data into decisions.</p>
+        <a href="services.html" class="btn btn-solid">See services</a>
+      </div>
+      <div class="contact-list reveal d1">
+        <a class="contact-row" href="mailto:irsrashad3@gmail.com">
+          <span class="ic">@</span>
+          <span><span class="lbl">Email</span><br><span class="val">irsrashad3@gmail.com</span></span>
+        </a>
+        <a class="contact-row" href="https://github.com/irsrashad" target="_blank" rel="noopener">
+          <span class="ic">gh</span>
+          <span><span class="lbl">GitHub</span><br><span class="val">github.com/irsrashad</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ISMAIL RASHAD · GEOSPATIAL ANALYST</span>
+    <span class="coords" data-coords>-6.2088° S · 106.8456° E · JAKARTA</span>
+    <span>BUILT WITH INTENTION · <a href="https://irsrashad.github.io">IRSRASHAD.GITHUB.IO</a></span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Log — Career Map · Ismail Rashad</title>
+  <meta name="description" content="Interactive world map of Ismail Rashad's roles, projects, and research — from Jakarta to New York to Los Angeles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    .map-shell { position: fixed; inset: 64px 0 0 0; }
+    #map { position: absolute; inset: 0; background: var(--ink); }
+
+    /* floating info panel */
+    .panel {
+      position: absolute; top: 1.2rem; left: 1.2rem; z-index: 10;
+      width: min(360px, calc(100vw - 2.4rem));
+      background: rgba(16, 22, 19, 0.94); backdrop-filter: blur(8px);
+      border: 1px solid var(--line); padding: 1.5rem 1.6rem;
+    }
+    .panel::before, .panel::after {
+      content: ''; position: absolute; width: 9px; height: 9px;
+      border: 0 solid var(--survey);
+    }
+    .panel::before { top: -1px; left: -1px; border-top-width: 1.5px; border-left-width: 1.5px; }
+    .panel::after { bottom: -1px; right: -1px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+    .panel .kicker {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--survey); margin-bottom: 0.7rem;
+    }
+    .panel .kicker::before { content: ''; width: 20px; height: 1px; background: var(--survey); }
+    .panel h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .panel p { font-size: 0.83rem; color: var(--mist); line-height: 1.65; margin-bottom: 1.1rem; }
+    .legend { display: flex; flex-direction: column; gap: 0.45rem; }
+    .legend label {
+      display: flex; align-items: center; gap: 0.65rem; cursor: pointer;
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--mist); user-select: none;
+    }
+    .legend input { accent-color: var(--survey); width: 13px; height: 13px; }
+    .legend .swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend .count { margin-left: auto; color: var(--faint); }
+    .panel .hint { font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase; margin: 1rem 0 0; }
+    .panel-toggle { display: none; }
+
+    /* jakarta ping marker */
+    .ping-marker { position: relative; width: 18px; height: 18px; pointer-events: none; }
+    .ping-marker::before {
+      content: ''; position: absolute; inset: 5px; border-radius: 50%; background: var(--survey);
+    }
+    .ping-marker::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      border: 1.5px solid var(--survey); animation: mkping 2.4s ease-out infinite;
+    }
+    @keyframes mkping { 0% { transform: scale(0.4); opacity: 1; } 100% { transform: scale(1.9); opacity: 0; } }
+
+    /* maplibre popup theming */
+    .maplibregl-popup-content {
+      background: var(--ink-2); border: 1px solid var(--line); border-radius: 0;
+      padding: 1.1rem 1.2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      font-family: var(--font-body); max-width: 290px;
+    }
+    .maplibregl-popup-tip { border-top-color: var(--line) !important; border-bottom-color: var(--line) !important; }
+    .maplibregl-popup-close-button { color: var(--mist); font-size: 1rem; right: 4px; top: 2px; }
+    .ml-popup-kind { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .ml-kind-role { color: var(--mint); } .ml-kind-project { color: var(--survey); } .ml-kind-research { color: var(--sky); }
+    .ml-popup-title { font-family: var(--font-display); font-weight: 750; font-size: 0.98rem; color: var(--paper); line-height: 1.25; margin-bottom: 0.2rem; }
+    .ml-popup-place { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.55rem; }
+    .ml-popup-blurb { font-size: 0.78rem; color: var(--mist); line-height: 1.6; margin-bottom: 0.7rem; }
+    .ml-popup-link { font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); text-decoration: none; }
+    .ml-popup-link:hover { color: var(--survey); }
+
+    /* controls theming */
+    .maplibregl-ctrl-group { background: var(--ink-2); border: 1px solid var(--line); border-radius: 0; }
+    .maplibregl-ctrl-group button { background: var(--ink-2); }
+    .maplibregl-ctrl-group button + button { border-top: 1px solid var(--line-soft); }
+    .maplibregl-ctrl button .maplibregl-ctrl-icon { filter: invert(0.85); }
+    .maplibregl-ctrl-attrib { background: rgba(11,16,14,0.8) !important; font-family: var(--font-mono); font-size: 0.55rem; }
+    .maplibregl-ctrl-attrib a { color: var(--mist) !important; }
+    .maplibregl-ctrl-scale { background: transparent; border-color: var(--faint); color: var(--faint); font-family: var(--font-mono); font-size: 0.55rem; }
+
+    .fallback { position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 2rem; }
+    .fallback p { color: var(--mist); max-width: 420px; }
+
+    @media (max-width: 700px) {
+      .panel { top: auto; bottom: 1rem; left: 1rem; right: 1rem; width: auto; padding: 1.1rem 1.2rem; }
+      .panel p { display: none; }
+      .panel h1 { font-size: 1.15rem; margin-bottom: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark"></span>
+        <span class="brand-name">ISMAIL<em>_</em>RASHAD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../research.html">Research</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../maps.html" class="active">Maps</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../talks.html">Talks</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:irsrashad3@gmail.com">Get in touch</a>
+      <button class="nav-burger" aria-label="Menu"><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../maps.html" class="active">Maps</a>
+    <a href="../services.html">Services</a>
+    <a href="../publications.html">Publications</a>
+    <a href="../talks.html">Talks</a>
+  </nav>
+
+  <div class="map-shell">
+    <div id="map"></div>
+    <div class="fallback" id="fallback"><p>This map needs WebGL. Meanwhile, the full list of roles and projects lives on the <a href="../about.html" style="color:var(--mint)">About</a> and <a href="../projects.html" style="color:var(--mint)">Projects</a> pages.</p></div>
+
+    <div class="panel">
+      <span class="kicker">Map Lab · 001</span>
+      <h1>Field Log</h1>
+      <p>Every marker is a role, project, or research post — from routing experiments in Jakarta to emergency-access analysis in Los Angeles. Click a marker for the story.</p>
+      <div class="legend">
+        <label><input type="checkbox" data-kind="role" checked><span class="swatch" style="background:#6fe0b2"></span>Roles &amp; Education<span class="count" id="c-role"></span></label>
+        <label><input type="checkbox" data-kind="project" checked><span class="swatch" style="background:#ff6b35"></span>Projects<span class="count" id="c-project"></span></label>
+        <label><input type="checkbox" data-kind="research" checked><span class="swatch" style="background:#6db5e8"></span>Research<span class="count" id="c-research"></span></label>
+      </div>
+      <p class="hint">SCROLL TO ZOOM · DRAG TO PAN · CLICK MARKERS</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/map.js"></script>
+  <script>
+    (function () {
+      if (!window.maplibregl || !maplibregl.supported && !window.WebGLRenderingContext) {
+        document.getElementById('fallback').style.display = 'grid';
+        return;
+      }
+      var COLORS = { role: '#6fe0b2', project: '#ff6b35', research: '#6db5e8' };
+      var map = MapLab.createMap('map', { center: [20, 18], zoom: 1.6 });
+
+      map.on('load', function () {
+        fetch('data/career.geojson')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            // counts
+            var counts = { role: 0, project: 0, research: 0 };
+            data.features.forEach(function (f) { counts[f.properties.kind]++; });
+            Object.keys(counts).forEach(function (k) {
+              var el = document.getElementById('c-' + k);
+              if (el) el.textContent = String(counts[k]).padStart(2, '0');
+            });
+
+            map.addSource('career', { type: 'geojson', data: data });
+            ['role', 'project', 'research'].forEach(function (kind) {
+              map.addLayer({
+                id: 'pts-' + kind, type: 'circle', source: 'career',
+                filter: ['==', ['get', 'kind'], kind],
+                paint: {
+                  'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 4.5, 6, 8],
+                  'circle-color': COLORS[kind],
+                  'circle-opacity': 0.9,
+                  'circle-stroke-width': 1.5,
+                  'circle-stroke-color': '#0b100e'
+                }
+              });
+              map.addLayer({
+                id: 'halo-' + kind, type: 'circle', source: 'career',
+                filter: ['==', ['get', 'kind'], kind],
+                paint: {
+                  'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 9, 6, 15],
+                  'circle-color': 'transparent',
+                  'circle-stroke-width': 1,
+                  'circle-stroke-color': COLORS[kind],
+                  'circle-stroke-opacity': 0.35
+                }
+              }, 'pts-' + kind);
+            });
+
+            // fit to data
+            var b = new maplibregl.LngLatBounds();
+            data.features.forEach(function (f) { b.extend(f.geometry.coordinates); });
+            map.fitBounds(b, { padding: { top: 90, bottom: 60, left: 90, right: 60 }, duration: 1600 });
+
+            // jakarta ping (current base)
+            var ping = document.createElement('div');
+            ping.className = 'ping-marker';
+            new maplibregl.Marker({ element: ping }).setLngLat([106.8456, -6.2088]).addTo(map);
+
+            // popups
+            ['role', 'project', 'research'].forEach(function (kind) {
+              map.on('click', 'pts-' + kind, function (e) {
+                var f = e.features[0];
+                new maplibregl.Popup({ offset: 12 })
+                  .setLngLat(f.geometry.coordinates)
+                  .setHTML(MapLab.popupHTML(f.properties))
+                  .addTo(map);
+              });
+              map.on('mouseenter', 'pts-' + kind, function () { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', 'pts-' + kind, function () { map.getCanvas().style.cursor = ''; });
+            });
+
+            // legend toggles
+            document.querySelectorAll('.legend input').forEach(function (cb) {
+              cb.addEventListener('change', function () {
+                var vis = cb.checked ? 'visible' : 'none';
+                map.setLayoutProperty('pts-' + cb.dataset.kind, 'visibility', vis);
+                map.setLayoutProperty('halo-' + cb.dataset.kind, 'visibility', vis);
+              });
+            });
+          });
+      });
+
+      map.on('error', function (e) {
+        if (!map.loaded()) document.getElementById('fallback').style.display = 'grid';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [106.8456, -6.2088] },
+      "properties": {
+        "name": "GoTo Group (Gojek)", "kind": "role", "kindLabel": "Role",
+        "years": "2025 — Present", "place": "Jakarta, Indonesia", "current": true,
+        "blurb": "Geospatial Analyst — A/B experiments on routing and ETA accuracy across one of Southeast Asia's largest mobility platforms.",
+        "link": "../about.html", "linkLabel": "Experience"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [106.8100, -6.1900] },
+      "properties": {
+        "name": "Datakota", "kind": "role", "kindLabel": "Role",
+        "years": "2024 — Present", "place": "Jakarta, Indonesia", "current": true,
+        "blurb": "Urban Data Scientist — spatial analytics, web mapping, and data visualization for clients across Indonesia.",
+        "link": "../about.html", "linkLabel": "Experience"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [106.8850, -6.2300] },
+      "properties": {
+        "name": "Bhumi Varta Technology", "kind": "role", "kindLabel": "Role",
+        "years": "2025", "place": "Jakarta, Indonesia",
+        "blurb": "Senior Business Analyst — geospatial solutioning and pre-sales for clients across Japan and Southeast Asia.",
+        "link": "../about.html", "linkLabel": "Experience"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.9866, 40.6942] },
+      "properties": {
+        "name": "NYU Tandon / CUSP", "kind": "role", "kindLabel": "Education",
+        "years": "2023 — 2025", "place": "Brooklyn, NY",
+        "blurb": "MS Urban Data Science — graduated with highest GPA; LPDP scholar; president of the Applied Urban Science Student Association.",
+        "link": "../about.html", "linkLabel": "Education"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.9945, 40.7359] },
+      "properties": {
+        "name": "NYU Marron Institute", "kind": "research", "kindLabel": "Research",
+        "years": "2025", "place": "New York, NY",
+        "blurb": "Graduate RA — Transit Priority Atlas: GIS database of bus priority infrastructure across 10 North American cities.",
+        "link": "../research.html", "linkLabel": "Research"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.9882, 40.7339] },
+      "properties": {
+        "name": "Con Edison", "kind": "project", "kindLabel": "Project",
+        "years": "2024 — 2025", "place": "New York, NY",
+        "blurb": "Clean energy adoption analysis across 2,325 NYC census tracts — capstone with Power BI monitoring dashboard.",
+        "link": "../projects.html", "linkLabel": "Case study"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-84.3880, 33.7490] },
+      "properties": {
+        "name": "Urban Morphology × Energy Research", "kind": "research", "kindLabel": "Research",
+        "years": "2025 — Present", "place": "Atlanta Metro study area · NYU × UConn", "current": true,
+        "blurb": "Volunteer RA — cross-scale validation of energy consumption models using areal interpolation; manuscript in progress.",
+        "link": "../research.html", "linkLabel": "Research"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [107.6107, -6.8915] },
+      "properties": {
+        "name": "ITB — Bandung Institute of Technology", "kind": "role", "kindLabel": "Education",
+        "years": "2015 — 2019", "place": "Bandung, Indonesia",
+        "blurb": "BS Urban Planning (GIS concentration); research assistant and 6× teaching assistant across GIS and planning studios.",
+        "link": "../research.html", "linkLabel": "Teaching record"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [107.6405, -6.9147] },
+      "properties": {
+        "name": "CityPlan Indonesia", "kind": "role", "kindLabel": "Role",
+        "years": "2021 — 2023", "place": "Bandung, Indonesia",
+        "blurb": "GIS Data Analyst — nationwide POI standardization, healthcare delivery +20%, ActCelerate 2021 runner-up.",
+        "link": "../about.html", "linkLabel": "Experience"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-118.2437, 34.0522] },
+      "properties": {
+        "name": "Life Lines — Emergency Care Access", "kind": "project", "kindLabel": "Project",
+        "years": "2024", "place": "Los Angeles County, CA",
+        "blurb": "Drive-time analysis of 90+ hospitals; access gaps for 2.8M residents. Winner, NYU GIS Day Competition.",
+        "link": "https://arcg.is/P95fL", "linkLabel": "StoryMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-69.4455, 45.2538] },
+      "properties": {
+        "name": "Solar PV Siting — I-95 Corridor", "kind": "project", "kindLabel": "Project",
+        "years": "2024", "place": "Maine, USA",
+        "blurb": "Multi-criteria suitability model — slope, aspect, solar radiation — supporting Maine's 80% renewable target.",
+        "link": "https://arcg.is/1bGyPG0", "linkLabel": "StoryMap"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-87.6298, 41.8781] },
+      "properties": {
+        "name": "Urban Heat Risk", "kind": "project", "kindLabel": "Project",
+        "years": "2025", "place": "Chicago, IL",
+        "blurb": "Spatial regression of built-environment features against extreme heat vulnerability; in progress.",
+        "link": "../projects.html", "linkLabel": "Case study"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [110.4167, -6.9667] },
+      "properties": {
+        "name": "Climate Vulnerability Index", "kind": "project", "kindLabel": "Project",
+        "years": "2024", "place": "10 coastal cities, Indonesia",
+        "blurb": "Hazards–exposure–adaptive-capacity composite index prioritizing climate adaptation investment.",
+        "link": "../projects.html", "linkLabel": "Case study"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [113.9213, -0.7893] },
+      "properties": {
+        "name": "LokaCheck", "kind": "project", "kindLabel": "Project",
+        "years": "2024", "place": "Indonesia (national)",
+        "blurb": "Interactive climate & disaster risk web app for real-estate developers — flood, quake, landslide, volcano layers.",
+        "link": "https://lokacheck.lovable.app", "linkLabel": "Live app"
+      }
+    }
+  ]
+}
