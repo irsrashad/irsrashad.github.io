@@ -29,6 +29,26 @@
     .talk-row p { font-size: 0.88rem; color: var(--mist); margin-bottom: 0.55rem; }
     .talk-kind { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); border: 1px solid var(--line); padding: 0.28rem 0.6rem; white-space: nowrap; }
 
+    /* talk cards — image top, like project cards */
+    .talk-card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .talk-card { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+    .talk-card-thumb { position: relative; aspect-ratio: 16/9; background: var(--ink); border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+    .talk-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); transition: filter 0.35s, transform 0.5s; }
+    .talk-card:hover .talk-card-thumb img { filter: saturate(1.05); transform: scale(1.03); }
+    .talk-card-badge {
+      position: absolute; top: 0.8rem; right: 0.8rem;
+      font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--survey);
+      background: rgba(11,16,14,0.88); border: 1px solid rgba(255,107,53,0.35);
+      padding: 0.3rem 0.6rem; backdrop-filter: blur(4px);
+    }
+    .talk-card-body { padding: 1.5rem 1.7rem 1.7rem; display: flex; flex-direction: column; flex: 1; }
+    .talk-card-body .venue { margin-bottom: 0.8rem; }
+    .talk-card-body h3 { font-size: 1.12rem; font-weight: 750; margin-bottom: 0.35rem; line-height: 1.3; }
+    .talk-card-sub { font-size: 0.82rem; color: var(--mint); font-style: italic; margin-bottom: 0.7rem; }
+    .talk-card-body p { font-size: 0.87rem; color: var(--mist); margin-bottom: 1rem; flex: 1; }
+    @media (max-width: 920px) { .talk-card-grid { grid-template-columns: 1fr; } }
+
     .topics-box { border: 1px solid var(--line-soft); background: var(--ink-2); padding: 2.2rem; }
     .topics-box h3 { font-size: 1.25rem; font-weight: 750; margin-bottom: 1rem; }
     .topics-box ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 2rem; }
@@ -97,8 +117,49 @@
         </div>
       </div>
 
+      <!-- TALK CARDS -->
+      <div class="talk-card-grid reveal">
+        <article class="xcard talk-card"><span class="xtick"></span>
+          <div class="talk-card-thumb">
+            <img src="assets/img/talks/pradita-group.jpg" alt="Guest lecture group photo at Pradita University auditorium" loading="lazy">
+            <span class="talk-card-badge">GUEST LECTURE · KULIAH UMUM #9</span>
+          </div>
+          <div class="talk-card-body">
+            <span class="venue mono" style="color:var(--survey); font-size:0.6rem; letter-spacing:0.13em; text-transform:uppercase; display:block;">24 SEP 2025 · Pradita University, Tangerang</span>
+            <h3>Location Intelligence — Turning Data into Sustainable Urban Solutions</h3>
+            <div class="talk-card-sub">Representing Bhumi Varta Technology, alongside Martyn Terpilowski (Founder &amp; CEO)</div>
+            <p>Guest lecture for Pradita's Urban Planning cohorts (classes of 2022–2025) on where <strong>urban analytics and urban planning</strong> overlap and diverge — connecting data-driven methods to both business and planning use cases.</p>
+            <a class="text-link ext" href="assets/img/talks/pradita-poster.jpg" target="_blank" rel="noopener">View event poster</a>
+          </div>
+        </article>
+
+        <article class="xcard talk-card"><span class="xtick"></span>
+          <div class="talk-card-thumb">
+            <img src="assets/img/talks/iap-talks-21.jpg" alt="IAP Talks #21 rundown and speaker lineup flyer" loading="lazy">
+            <span class="talk-card-badge">WEBINAR · IAP TALKS #21</span>
+          </div>
+          <div class="talk-card-body">
+            <span class="venue mono" style="color:var(--survey); font-size:0.6rem; letter-spacing:0.13em; text-transform:uppercase; display:block;">27 MAY 2021 · Online</span>
+            <h3>Utilizing GIS Modeling to Support Priority Area Development</h3>
+            <div class="talk-card-sub">Digital Planning Tools Division, Indonesian Association of Planners (IAP) — session theme: "Advances in Planning Research in the Era of Digital Transformation"</div>
+            <p>Presented on using <strong>cellular automata modeling to forecast land-use change</strong>, as a decision-support tool for prioritizing development areas — delivered while at Cityplan.id.</p>
+            <a class="text-link ext" href="assets/img/talks/iap-talks-21-full.jpg" target="_blank" rel="noopener">View flyer</a>
+          </div>
+        </article>
+      </div>
+
       <!-- TALK LIST -->
       <div class="reveal">
+        <div class="talk-row">
+          <span class="talk-yr">2025</span>
+          <div>
+            <h3>Location Intelligence Guest Lecture</h3>
+            <div class="where">Pradita University · Kuliah Umum #9 · Tangerang, Indonesia</div>
+            <p>Guest lecture representing Bhumi Varta Technology on urban analytics and urban planning for Pradita's Urban Planning program.</p>
+            <a class="text-link ext" href="assets/img/talks/pradita-poster.jpg" target="_blank" rel="noopener">Poster</a>
+          </div>
+          <span class="talk-kind">Guest Lecture</span>
+        </div>
         <div class="talk-row">
           <span class="talk-yr">2025</span>
           <div>
@@ -139,6 +200,16 @@
           </div>
           <span class="talk-kind">Pitch</span>
         </div>
+        <div class="talk-row">
+          <span class="talk-yr">2021</span>
+          <div>
+            <h3>IAP Talks #21 — GIS Modeling for Priority Area Development</h3>
+            <div class="where">Indonesian Association of Planners (IAP) · Digital Planning Tools Division · Online</div>
+            <p>Webinar talk on using cellular automata to forecast land-use change as a tool for development prioritization.</p>
+            <a class="text-link ext" href="assets/img/talks/iap-talks-21-full.jpg" target="_blank" rel="noopener">Flyer</a>
+          </div>
+          <span class="talk-kind">Webinar</span>
+        </div>
       </div>
 
       <!-- SPEAKING TOPICS -->
@@ -152,6 +223,8 @@
           <li>Geospatial storytelling that wins rooms</li>
           <li>Careers bridging GIS and business</li>
           <li>Urban data science in Southeast Asia</li>
+          <li>Cellular automata & land-use forecasting</li>
+          <li>Urban analytics vs. urban planning — where they meet</li>
         </ul>
       </div>
     </section>
