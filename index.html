@@ -107,8 +107,9 @@
     .feat-card.wide h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
     .feat-card p { font-size: 0.9rem; color: var(--mist); margin-bottom: 1.3rem; flex: 1; }
     .feat-card .tags { margin-bottom: 1.3rem; }
-    .mini-map { border: 1px solid var(--line-soft); background: var(--ink); position: relative; overflow: hidden; }
+    .mini-map { border: 1px solid var(--line-soft); background: var(--ink); position: relative; overflow: hidden; aspect-ratio: 16/9; }
     .mini-map svg { display: block; width: 100%; height: auto; }
+    .mini-map img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.92); }
 
     /* ---------- FIELD MAP ---------- */
     .feat-thumb { margin: -1.8rem -1.8rem 1.2rem; aspect-ratio: 16/9; overflow: hidden; border-bottom: 1px solid var(--line-soft); }
@@ -408,22 +409,7 @@
             <a href="https://arcg.is/P95fL" target="_blank" rel="noopener" class="text-link ext">View project report</a>
           </div>
           <div class="mini-map">
-            <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
-              <rect width="420" height="300" fill="#0b100e"/>
-              <g stroke="rgba(111,224,178,0.06)"><line x1="0" y1="60" x2="420" y2="60"/><line x1="0" y1="120" x2="420" y2="120"/><line x1="0" y1="180" x2="420" y2="180"/><line x1="0" y1="240" x2="420" y2="240"/><line x1="70" y1="0" x2="70" y2="300"/><line x1="140" y1="0" x2="140" y2="300"/><line x1="210" y1="0" x2="210" y2="300"/><line x1="280" y1="0" x2="280" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g>
-              <!-- isochrone blobs -->
-              <path d="M120,150 C120,110 170,90 210,100 C260,112 290,140 280,180 C270,220 210,235 165,220 C130,208 120,185 120,150 Z" fill="rgba(255,107,53,0.10)" stroke="rgba(255,107,53,0.5)" stroke-width="1"/>
-              <path d="M140,152 C140,124 178,108 210,116 C248,125 268,146 260,176 C252,206 208,216 175,204 C150,195 140,176 140,152 Z" fill="rgba(255,107,53,0.14)" stroke="rgba(255,107,53,0.65)" stroke-width="1"/>
-              <path d="M165,153 C165,136 188,126 210,131 C234,137 246,150 241,169 C236,188 208,194 187,186 C171,180 165,167 165,153 Z" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="1.2"/>
-              <circle cx="205" cy="158" r="4" fill="#ff6b35"/>
-              <circle cx="205" cy="158" r="9" fill="none" stroke="rgba(255,107,53,0.5)"><animate attributeName="r" values="9;20;9" dur="3.4s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3.4s" repeatCount="indefinite"/></circle>
-              <!-- roads -->
-              <g stroke="rgba(232,237,233,0.16)" stroke-width="1"><path d="M0,90 C90,80 180,110 260,95 C330,82 380,95 420,88"/><path d="M0,210 C80,225 200,200 300,218 C360,228 400,220 420,224"/><path d="M95,0 C105,80 90,180 108,300"/><path d="M330,0 C318,90 340,210 326,300"/></g>
-              <!-- hospitals -->
-              <g fill="#6fe0b2"><rect x="88" y="86" width="5" height="5"/><rect x="256" y="92" width="5" height="5"/><rect x="322" y="212" width="5" height="5"/><rect x="150" y="248" width="5" height="5"/><rect x="300" y="40" width="5" height="5"/></g>
-              <text x="14" y="26" font-family="IBM Plex Mono, monospace" font-size="9" fill="rgba(111,224,178,0.6)" letter-spacing="2">DRIVE-TIME ISOCHRONES · LA COUNTY</text>
-              <text x="14" y="284" font-family="IBM Plex Mono, monospace" font-size="8" fill="rgba(92,107,99,0.9)">■ HOSPITAL   ◉ TRAUMA CENTER   — 5/10/15 MIN</text>
-            </svg>
+            <img src="assets/img/projects/life-lines.jpg" alt="Life Lines drive-time analysis map of Los Angeles County" loading="lazy">
           </div>
         </div>
 
