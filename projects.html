@@ -96,7 +96,7 @@
   <main>
     <div class="page-head">
       <span class="kicker">Sheet A — Survey Records</span>
-      <h1>Projects <span class="dim">/ 13</span></h1>
+      <h1>Projects <span class="dim">/ 14</span></h1>
       <p class="lede">Case studies in applied spatial analytics — <strong>network analysis, climate risk, renewable siting, market intelligence, and spatial data products</strong> — from Los Angeles County to the Indonesian archipelago.</p>
     </div>
 
@@ -108,7 +108,7 @@
         <button class="filter-btn" data-filter="energy">Energy</button>
         <button class="filter-btn" data-filter="market">Market Intelligence</button>
         <button class="filter-btn" data-filter="product">Data Products</button>
-        <span class="filter-count" id="count">13 / 13 RECORDS</span>
+        <span class="filter-count" id="count">14 / 14 RECORDS</span>
       </div>
 
       <div class="proj-grid" id="grid">
@@ -192,14 +192,14 @@
 
         <!-- 007 -->
         <article class="xcard proj-card reveal" data-cat="market"><span class="xtick"></span>
-          <div class="proj-thumb"><img src="assets/img/projects/b2b-fnb.svg" alt="Catchment rings and competitor mapping for a restaurant client" loading="lazy"><span class="proj-badge">CLIENT · DATAKOTA</span></div>
+          <div class="proj-thumb"><img src="assets/img/projects/restaurant-fnb-dbscan.jpg" alt="DBSCAN cluster map of F&amp;B locations across Kota Tangerang" loading="lazy"><span class="proj-badge">CLIENT · DATAKOTA</span></div>
           <div class="proj-body">
             <div class="proj-top"><span class="proj-num">REC 007</span><span class="proj-yr">2024</span></div>
             <h3>B2B Market Analysis — Restaurant Profiling</h3>
-            <div class="proj-geo">-6.2° S · 106.8° E · JAKARTA, ID</div>
-            <p>Catchment zone estimation, demographic customer profiling, competitor spatial benchmarking, and quantitative menu pricing validation for an Indonesian restaurant client.</p>
-            <div class="tags"><span class="tag hot">Catchment Analysis</span><span class="tag">Market Research</span><span class="tag">F&B</span></div>
-            <div class="proj-foot"><span class="text-link off">Client project</span></div>
+            <div class="proj-geo">-6.18° S · 106.63° E · KOTA TANGERANG, ID</div>
+            <p>Catchment zone estimation, demographic customer profiling, competitor spatial benchmarking, and quantitative menu pricing validation for an Indonesian restaurant client — DBSCAN clustering of F&amp;B points-of-interest and road-network centrality analysis.</p>
+            <div class="tags"><span class="tag hot">Catchment Analysis</span><span class="tag">Market Research</span><span class="tag">F&B</span><span class="tag">DBSCAN</span></div>
+            <div class="proj-foot"><a href="https://github.com/irsrashad/restaurant-spatial-analytics" target="_blank" rel="noopener" class="text-link ext">View code</a></div>
           </div>
         </article>
 
@@ -280,6 +280,19 @@
             <div class="proj-foot"><span class="text-link off">Client project</span></div>
           </div>
         </article>
+
+        <!-- 014 -->
+        <article class="xcard proj-card reveal" data-cat="climate"><span class="xtick"></span>
+          <div class="proj-thumb"><img src="assets/img/projects/fire-hazard-kumuh-overlay.jpg" alt="Fire incident overlay on informal settlement areas across DKI Jakarta" loading="lazy"><span class="proj-badge">CLIENT · DATAKOTA</span></div>
+          <div class="proj-body">
+            <div class="proj-top"><span class="proj-num">REC 014</span><span class="proj-yr">2024</span></div>
+            <h3>Fire Hazard &amp; Informal Settlements — Jakarta</h3>
+            <div class="proj-geo">-6.2° S · 106.8° E · DKI JAKARTA, ID</div>
+            <p>Exploratory spatial analysis of fire incidents and mitigation infrastructure across Jakarta, built from an alternative data-acquisition pipeline (scraping, geocoding, OSM network extraction) — mapping incident density, fire station/hydrant coverage gaps, and correlation with informal settlement (<em>kumuh</em>) areas.</p>
+            <div class="tags"><span class="tag hydro">Fire Risk</span><span class="tag">Incident Density</span><span class="tag">Infrastructure Coverage</span><span class="tag">Datakota</span></div>
+            <div class="proj-foot"><a href="https://github.com/irsrashad/fire-hazard-spatial-analytics" target="_blank" rel="noopener" class="text-link ext">View code</a></div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -329,7 +342,7 @@
             c.classList.toggle('hidden', !show);
             if (show) { shown++; c.classList.add('on'); }
           });
-          count.textContent = String(shown).padStart(2, '0') + ' / 13 RECORDS';
+          count.textContent = String(shown).padStart(2, '0') + ' / 14 RECORDS';
         });
       });
     })();
